@@ -174,7 +174,6 @@
     }
 
     input[type="text"],
-    input[type="email"],
     textarea,
     select {
       width: 100%;
@@ -233,45 +232,6 @@
       padding: 4px 10px;
       border: 1px solid rgba(148, 163, 184, 0.6);
       color: var(--text-muted);
-    }
-
-    /* Link section */
-
-    .link-section {
-      margin-top: 18px;
-      padding-top: 14px;
-      border-top: 1px dashed rgba(148, 163, 184, 0.5);
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .link-row {
-      display: flex;
-      gap: 8px;
-      margin-top: 8px;
-      flex-wrap: wrap;
-    }
-
-    .link-row input {
-      flex: 1;
-      font-size: 12px;
-      padding: 8px 10px;
-      border-radius: 999px;
-    }
-
-    .copy-btn {
-      border-radius: 999px;
-      padding: 8px 14px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-main);
-      font-size: 12px;
-      cursor: pointer;
-    }
-
-    .copy-btn:hover {
-      border-color: var(--accent-soft);
-      color: var(--accent-soft);
     }
 
     footer {
@@ -340,13 +300,12 @@
             Start a <span>Fix</span>
           </h1>
           <p class="hero-subtitle">
-            This is your space to say what really happened and how you feel. Take
-            your time, be honest and specific — we will use your words to build a
-            calmer way forward.
+            This is your space to say what really happened and how you feel. We’ll turn
+            both sides into one calmer, respectful message you can send.
           </p>
           <p class="hero-note">
             Only the person who starts pays. <span>4.99&nbsp;$</span> for one situation.  
-            The other person answers for free. (Payment integration coming next.)
+            The other person answers for free.
           </p>
 
           <form class="card" id="fixForm">
@@ -388,22 +347,11 @@
               <input id="name" type="text" placeholder="You can stay anonymous if you prefer" />
             </div>
 
-            <button type="submit" class="btn-primary">
-              Generate private link
+            <button type="button" id="payBtn" class="btn-primary">
+              Continue to payment
             </button>
             <div class="price-note">
-              For now, the link is generated directly. We’ll connect payment and automation next.
-            </div>
-
-            <div id="linkSection" class="link-section" style="display:none;">
-              <div>
-                Here is your private link. Copy it and send it by WhatsApp, SMS or email
-                to the person you want to talk to:
-              </div>
-              <div class="link-row">
-                <input id="generatedLink" type="text" readonly />
-                <button type="button" class="copy-btn" id="copyBtn">Copy</button>
-              </div>
+              Once payment is confirmed, you’ll receive a private link to send to the other person.
             </div>
           </form>
         </section>
@@ -411,16 +359,9 @@
         <aside class="card">
           <div class="side-card-title">Before you write</div>
           <div class="side-card-text">
-            FixTogether is not a place to attack or insult. It’s a space to explain
-            your side clearly and respectfully, so that both of you can move forward
-            with less tension.
-          </div>
-
-          <div class="side-card-title">Good to know</div>
-          <div class="side-card-text">
-            • You can write in any language.  
-            • We never share your words with anyone except you and the person who receives your link.  
-            • You don’t need to be right — you just need to be honest.
+            FixTogether is not a place to insult or attack. It’s a space to
+            explain your side clearly and respectfully, so both of you can move
+            forward with less tension.
           </div>
 
           <div class="side-card-title">Best used for</div>
@@ -447,48 +388,53 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const form = document.getElementById("fixForm");
-    const linkSection = document.getElementById("linkSection");
-    const linkInput = document.getElementById("generatedLink");
-    const copyBtn = document.getElementById("copyBtn");
+    const payBtn = document.getElementById("payBtn");
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
+    payBtn.addEventListener("click", async () => {
       const data = {
         title: document.getElementById("title").value.trim(),
         what: document.getElementById("what").value.trim(),
         feel: document.getElementById("feel").value.trim(),
         goal: document.getElementById("goal").value,
-        name: document.getElementById("name").value.trim(),
+        name: document.getElementById("name").value.trim()
       };
 
-      // Encodage simple dans l'URL (en attendant la base de données)
+      if (!data.what || !data.feel) {
+        alert("Please describe what happened and how you feel.");
+        return;
+      }
+
       const json = JSON.stringify(data);
       const base64 = btoa(unescape(encodeURIComponent(json)));
-      const encoded = encodeURIComponent(base64);
+      const caseData = base64; // sera passé dans l'URL après paiement
 
-      const origin = window.location.origin;
-      const replyUrl = `${origin}/reply.html?data=${encoded}`;
-
-      linkInput.value = replyUrl;
-      linkSection.style.display = "block";
-
-      linkSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-
-    copyBtn.addEventListener("click", async function () {
-      if (!linkInput.value) return;
       try {
-        await navigator.clipboard.writeText(linkInput.value);
-        copyBtn.textContent = "Copied";
-        setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
+        const response = await fetch("/api/create-checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ caseData })
+        });
+
+        if (!response.ok) {
+          alert("Payment could not be started. Please try again.");
+          return;
+        }
+
+        const result = await response.json();
+
+        if (result.checkoutUrl) {
+          window.location = result.checkoutUrl;
+        } else {
+          alert("No checkout URL returned.");
+        }
       } catch (err) {
-        alert("Could not copy the link. You can copy it manually.");
+        console.error(err);
+        alert("Something went wrong. Please try again.");
       }
     });
   </script>
 </body>
 </html>
+
 
 
