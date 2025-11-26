@@ -235,6 +235,45 @@
       color: var(--text-muted);
     }
 
+    /* Link section */
+
+    .link-section {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.5);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .link-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .link-row input {
+      flex: 1;
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    .copy-btn {
+      border-radius: 999px;
+      padding: 8px 14px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--accent-soft);
+      color: var(--accent-soft);
+    }
+
     footer {
       margin-top: 40px;
       font-size: 11px;
@@ -307,10 +346,10 @@
           </p>
           <p class="hero-note">
             Only the person who starts pays. <span>4.99&nbsp;$</span> for one situation.  
-            The other person answers for free.
+            The other person answers for free. (Payment integration coming next.)
           </p>
 
-          <form class="card">
+          <form class="card" id="fixForm">
             <div class="field">
               <label for="title">Give this situation a short title (optional)</label>
               <input id="title" type="text" placeholder="Example: Fight after my birthday dinner" />
@@ -321,7 +360,7 @@
               <small>
                 Describe what was said or done. Include only what is true from your point of view.
               </small>
-              <textarea id="what" placeholder="Write your version here..."></textarea>
+              <textarea id="what" placeholder="Write your version here..." required></textarea>
             </div>
 
             <div class="field">
@@ -329,7 +368,7 @@
               <small>
                 Hurt, angry, disappointed, scared, confused… put it into words.
               </small>
-              <textarea id="feel" placeholder="Explain your feelings here..."></textarea>
+              <textarea id="feel" placeholder="Explain your feelings here..." required></textarea>
             </div>
 
             <div class="field">
@@ -349,16 +388,22 @@
               <input id="name" type="text" placeholder="You can stay anonymous if you prefer" />
             </div>
 
-            <div class="field">
-              <label for="email">Email to receive your private link (optional)</label>
-              <input id="email" type="email" placeholder="If you want the link also by email" />
-            </div>
-
-            <button type="button" class="btn-primary">
-              Continue to payment & private link
+            <button type="submit" class="btn-primary">
+              Generate private link
             </button>
             <div class="price-note">
-              You’ll be able to copy and share your link by WhatsApp, SMS or email right after payment.
+              For now, the link is generated directly. We’ll connect payment and automation next.
+            </div>
+
+            <div id="linkSection" class="link-section" style="display:none;">
+              <div>
+                Here is your private link. Copy it and send it by WhatsApp, SMS or email
+                to the person you want to talk to:
+              </div>
+              <div class="link-row">
+                <input id="generatedLink" type="text" readonly />
+                <button type="button" class="copy-btn" id="copyBtn">Copy</button>
+              </div>
             </div>
           </form>
         </section>
@@ -401,7 +446,49 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const form = document.getElementById("fixForm");
+    const linkSection = document.getElementById("linkSection");
+    const linkInput = document.getElementById("generatedLink");
+    const copyBtn = document.getElementById("copyBtn");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const data = {
+        title: document.getElementById("title").value.trim(),
+        what: document.getElementById("what").value.trim(),
+        feel: document.getElementById("feel").value.trim(),
+        goal: document.getElementById("goal").value,
+        name: document.getElementById("name").value.trim(),
+      };
+
+      // Encodage simple dans l'URL (en attendant la base de données)
+      const json = JSON.stringify(data);
+      const base64 = btoa(unescape(encodeURIComponent(json)));
+      const encoded = encodeURIComponent(base64);
+
+      const origin = window.location.origin;
+      const replyUrl = `${origin}/reply.html?data=${encoded}`;
+
+      linkInput.value = replyUrl;
+      linkSection.style.display = "block";
+
+      linkSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    copyBtn.addEventListener("click", async function () {
+      if (!linkInput.value) return;
+      try {
+        await navigator.clipboard.writeText(linkInput.value);
+        copyBtn.textContent = "Copied";
+        setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
+      } catch (err) {
+        alert("Could not copy the link. You can copy it manually.");
+      }
+    });
   </script>
 </body>
 </html>
+
 
