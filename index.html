@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FixTogether – When you can’t talk, we talk for you</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-main: #020617;
+      --bg-card: rgba(15, 23, 42, 0.9);
+      --accent: #3b82f6;
+      --accent-soft: #60a5fa;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.2);
+      --radius-xl: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: conic-gradient(
+        from 160deg,
+        #0ea5e9,
+        #6366f1,
+        #22c55e,
+        #0ea5e9
+      );
+      padding: 2px;
+      position: relative;
+    }
+
+    .logo-mark-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 10%, #e5f3ff, #0f172a 55%, #020617 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #e5f3ff;
+    }
+
+    .logo-text-main {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-text-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-cta {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .header-cta a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      padding: 10px 18px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+      box-shadow: 0 24px 60px rgba(37, 99, 235, 0.6);
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.6);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #e5f3ff, #22c55e);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 5vw, 40px);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #38bdf8, #6366f1);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .hero-secondary {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-secondary span {
+      color: var(--accent-soft);
+      font-weight: 500;
+    }
+
+    /* Right card */
+
+    .hero-panel {
+      border-radius: var(--radius-xl);
+      padding: 22px 20px;
+      background: radial-gradient(circle at top, #1d283a, #020617 60%);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: -120px;
+      background: radial-gradient(circle at top, rgba(59, 130, 246, 0.18), transparent 60%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-panel-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+    }
+
+    .hero-status-pill {
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 11px;
+      border: 1px solid rgba(52, 211, 153, 0.5);
+      color: #bbf7d0;
+      background: linear-gradient(
+        120deg,
+        rgba(34, 197, 94, 0.05),
+        rgba(16, 185, 129, 0.18)
+      );
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 10%, #bbf7d0, #16a34a);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-card {
+      border-radius: 18px;
+      padding: 12px 12px 10px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 11px;
+    }
+
+    .step-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-soft);
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .step-text {
+      color: var(--text-muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .hero-panel-footer {
+      margin-top: 6px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.4);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-panel-footer span {
+      color: var(--accent-soft);
+    }
+
+    /* HOW IT WORKS SECTION */
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .how-card {
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-subtle);
+      font-size: 12px;
+    }
+
+    .how-number {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--accent-soft);
+      margin-bottom: 8px;
+    }
+
+    .how-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .how-text {
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: var(--accent-soft);
+      text-decoration: none;
+      font-size: 11px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 840px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-panel {
+        order: -1;
+      }
+
+      .how-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 540px) {
+      .page {
+        padding-inline: 14px;
+      }
+
+      .how-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-panel {
+        padding: 18px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <div class="logo-mark">
+          <div class="logo-mark-inner">FT</div>
+        </div>
+        <div>
+          <div class="logo-text-main">FixTogether</div>
+          <div class="logo-text-sub">Silent conflict resolution</div>
+        </div>
+      </div>
+      <div class="header-cta">
+        <a href="#">How it works</a>
+        <button class="btn-primary">Start a Fix</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            EMOTIONAL CONFLICT RESOLUTION
+          </div>
+          <h1 class="hero-title">
+            FixTogether – when you can’t talk, <span>we talk for you.</span>
+          </h1>
+          <p class="hero-subtitle">
+            A simple way to resolve conflicts, arguments, misunderstandings or hurt
+            feelings — without yelling, stress or shame.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary">Start a Fix in 60 seconds</button>
+            <span class="hero-secondary">No account. No app. Just a private link.</span>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <div class="hero-panel-header">
+            <div class="hero-panel-title">LIVE MEDIATION PREVIEW</div>
+            <div class="hero-status-pill">
+              <span class="status-dot"></span>
+              We’re listening
+            </div>
+          </div>
+
+          <div class="steps">
+            <div class="step-card">
+              <div class="step-label">Step 01</div>
+              <div class="step-title">You talk.</div>
+              <div class="step-text">
+                Tell us what happened and how you feel — in your own words.
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-label">Step 02</div>
+              <div class="step-title">You send.</div>
+              <div class="step-text">
+                We generate a private link you can share by WhatsApp, SMS or email.
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-label">Step 03</div>
+              <div class="step-title">They reply.</div>
+              <div class="step-text">
+                The other person shares their side, safely and without interruption.
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-label">Step 04</div>
+              <div class="step-title">We fix.</div>
+              <div class="step-text">
+                Our system reads both sides and sends a calm, neutral way forward.
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-panel-footer">
+            <div>Designed for couples, friends, family & teams.</div>
+            <div><span>4.99&nbsp;$</span> per situation · paid by the person who starts.</div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">How FixTogether works</h2>
+        <p class="section-subtitle">
+          No therapy sessions, no long forms. Just a calm space where both sides
+          can finally be heard — and a clear path to move forward.
+        </p>
+
+        <div class="how-grid">
+          <div class="how-card">
+            <div class="how-number">1</div>
+            <div class="how-title">Describe the situation</div>
+            <div class="how-text">
+              You write what happened, what was said or done, and what hurts you.
+            </div>
+          </div>
+          <div class="how-card">
+            <div class="how-number">2</div>
+            <div class="how-title">Share a private link</div>
+            <div class="how-text">
+              We create a unique link you can send to the other person securely.
+            </div>
+          </div>
+          <div class="how-card">
+            <div class="how-number">3</div>
+            <div class="how-title">They share their side</div>
+            <div class="how-text">
+              They read your version, then calmly write theirs — without pressure.
+            </div>
+          </div>
+          <div class="how-card">
+            <div class="how-number">4</div>
+            <div class="how-title">Receive a neutral response</div>
+            <div class="how-text">
+              We turn both perspectives into a balanced, respectful message and
+              concrete next steps.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> FixTogether. All rights reserved.</div>
+      <div>
+        <a href="#">Terms</a> ·
+        <a href="#">Privacy</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Just to keep the year updated automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
