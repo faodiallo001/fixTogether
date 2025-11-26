@@ -36,6 +36,8 @@
       padding: 32px 16px 64px;
     }
 
+    /* HEADER */
+
     header {
       display: flex;
       justify-content: space-between;
@@ -61,7 +63,6 @@
         #0ea5e9
       );
       padding: 2px;
-      position: relative;
     }
 
     .logo-mark-inner {
@@ -87,11 +88,20 @@
       color: var(--text-muted);
     }
 
-    .header-cta {
+    nav {
       display: flex;
-      gap: 12px;
+      gap: 16px;
       align-items: center;
       font-size: 14px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--accent-soft);
     }
 
     .btn-primary {
@@ -120,7 +130,7 @@
       grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
       gap: 32px;
       align-items: center;
-      margin-bottom: 40px;
+      margin-bottom: 24px;
     }
 
     .hero-badge {
@@ -171,7 +181,7 @@
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 10px;
     }
 
     .hero-secondary {
@@ -184,7 +194,7 @@
       font-weight: 500;
     }
 
-    /* Right card */
+    /* Right panel */
 
     .hero-panel {
       border-radius: var(--radius-xl);
@@ -251,17 +261,17 @@
     .hero-panel-images {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
+      gap: 10px;
       margin-bottom: 14px;
     }
 
     .hero-panel-images img {
       width: 100%;
-      height: 72px;
+      height: 130px; /* plus grand */
       object-fit: cover;
-      border-radius: 14px;
+      border-radius: 16px;
       border: 1px solid rgba(148, 163, 184, 0.5);
-      opacity: 0.95;
+      opacity: 0.96;
     }
 
     .mini-dialog {
@@ -302,103 +312,12 @@
       color: var(--text-muted);
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 8px;
+      align-items: center;
     }
 
     .hero-panel-footer span {
       color: var(--accent-soft);
-    }
-
-    /* SECTION */
-
-    .section {
-      margin-top: 40px;
-    }
-
-    .section-title {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .section-subtitle {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
-
-    .how-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .how-card {
-      border-radius: 18px;
-      padding: 14px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--border-subtle);
-      font-size: 12px;
-    }
-
-    .how-number {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: var(--accent-soft);
-      margin-bottom: 8px;
-    }
-
-    .how-title {
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .how-text {
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* REVIEWS */
-
-    .reviews {
-      margin-top: 40px;
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .review-card {
-      border-radius: 18px;
-      padding: 14px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--border-subtle);
-      font-size: 12px;
-    }
-
-    .review-name {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .review-meta {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .review-text {
-      color: var(--text-main);
-      line-height: 1.5;
-      font-size: 12px;
     }
 
     footer {
@@ -435,14 +354,6 @@
       .hero-panel {
         order: -1;
       }
-
-      .how-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .reviews-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
     }
 
     @media (max-width: 540px) {
@@ -450,17 +361,12 @@
         padding-inline: 14px;
       }
 
-      .how-grid,
-      .reviews-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
       .hero-panel {
         padding: 18px 14px;
       }
 
       .hero-panel-images img {
-        height: 64px;
+        height: 110px;
       }
     }
   </style>
@@ -477,11 +383,13 @@
           <div class="logo-text-sub">Silent conflict resolution</div>
         </div>
       </div>
-      <div class="header-cta">
+
+      <nav>
+        <a href="howitworks.html">How it works</a>
         <button class="btn-primary" onclick="location.href='fix.html'">
           Start a Fix
         </button>
-      </div>
+      </nav>
     </header>
 
     <main>
@@ -519,10 +427,10 @@
             </div>
 
             <div class="hero-panel-images">
-              <!-- Tu pourras remplacer ces URLs par tes propres images -->
-              <img src="https://images.pexels.com/photos/6238031/pexels-photo-6238031.jpeg?auto=compress&cs=tinysrgb&w=600"
+              <!-- Remplace plus tard par tes propres images -->
+              <img src="https://images.pexels.com/photos/6238031/pexels-photo-6238031.jpeg?auto=compress&cs=tinysrgb&w=800"
                    alt="Two people in conflict" />
-              <img src="https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=600"
+              <img src="https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=800"
                    alt="Two people reconnecting" />
             </div>
 
@@ -531,19 +439,19 @@
               <div class="mini-line">
                 <span class="mini-label">You:</span>
                 <span class="mini-text">
-                  “She stopped talking to me after our last argument. I regret what I said, but I don’t know how to start.”
+                  “We stopped talking after our last argument. I regret what I said, but I don’t know how to start.”
                 </span>
               </div>
               <div class="mini-line">
                 <span class="mini-label">Them:</span>
                 <span class="mini-text">
-                  “He never really listened. I’m hurt, but I don’t want to end things like this.”
+                  “I’m hurt and tired of fighting, but I don’t want to lose this connection.”
                 </span>
               </div>
               <div class="mini-line">
                 <span class="mini-label">We reply:</span>
                 <span class="mini-text">
-                  A calm, balanced message that acknowledges both sides and suggests a way to reconnect.
+                  A calm, balanced message that recognises both sides and offers a way to reconnect.
                 </span>
               </div>
             </div>
@@ -555,84 +463,12 @@
           </div>
         </aside>
       </section>
-
-      <section class="section">
-        <h2 class="section-title">How FixTogether works</h2>
-        <p class="section-subtitle">
-          One simple flow: you share your side, they share theirs, and we turn it
-          into a clear, respectful way forward.
-        </p>
-
-        <div class="how-grid">
-          <div class="how-card">
-            <div class="how-number">1</div>
-            <div class="how-title">Share your side</div>
-            <div class="how-text">
-              Describe what happened and how you feel — in your own words.
-            </div>
-          </div>
-          <div class="how-card">
-            <div class="how-number">2</div>
-            <div class="how-title">Send a private link</div>
-            <div class="how-text">
-              We create a unique link you can share by WhatsApp, SMS or email.
-            </div>
-          </div>
-          <div class="how-card">
-            <div class="how-number">3</div>
-            <div class="how-title">They respond calmly</div>
-            <div class="how-text">
-              The other person reads your version and then writes theirs, without interruption.
-            </div>
-          </div>
-          <div class="how-card">
-            <div class="how-number">4</div>
-            <div class="how-title">Receive a neutral response</div>
-            <div class="how-text">
-              We turn both perspectives into a balanced message and simple next steps.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section reviews">
-        <h2 class="section-title">People we’ve already helped</h2>
-        <p class="section-subtitle">
-          When conversations were blocked, FixTogether created a bridge.
-        </p>
-
-        <div class="reviews-grid">
-          <div class="review-card">
-            <div class="review-name">Ana & Lucas</div>
-            <div class="review-meta">Long-distance couple · 2 years together</div>
-            <div class="review-text">
-              “We spent a week without speaking. FixTogether helped us say what we
-              really felt without attacking each other. It changed the tone of our conversations.”
-            </div>
-          </div>
-          <div class="review-card">
-            <div class="review-name">Maria</div>
-            <div class="review-meta">Mother & adult daughter conflict</div>
-            <div class="review-text">
-              “It was easier to write than to talk. Reading her side and the final
-              message made me understand her pain. We cried, then we hugged.”
-            </div>
-          </div>
-          <div class="review-card">
-            <div class="review-name">Jamal & coworker</div>
-            <div class="review-meta">Work misunderstanding</div>
-            <div class="review-text">
-              “We were both defensive. The neutral answer we received gave us words
-              we couldn’t find alone. We ended up having a mature, calm conversation.”
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
 
     <footer>
       <div>© <span id="year"></span> FixTogether. All rights reserved.</div>
       <div>
+        <a href="howitworks.html">How it works</a> ·
         <a href="#">Terms</a> ·
         <a href="#">Privacy</a>
       </div>
@@ -644,4 +480,5 @@
   </script>
 </body>
 </html>
+
 
