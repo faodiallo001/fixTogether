@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reply to a Fix – FixTogether</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-main: #020617;
+      --bg-card: rgba(15, 23, 42, 0.96);
+      --accent: #3b82f6;
+      --accent-soft: #60a5fa;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --radius-xl: 24px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: conic-gradient(
+        from 160deg,
+        #0ea5e9,
+        #6366f1,
+        #22c55e,
+        #0ea5e9
+      );
+      padding: 2px;
+    }
+
+    .logo-mark-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 10%, #e5f3ff, #0f172a 55%, #020617 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #e5f3ff;
+    }
+
+    .logo-text-main {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-text-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: var(--accent-soft);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .card {
+      border-radius: var(--radius-xl);
+      padding: 20px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(24px, 4vw, 30px);
+      margin-bottom: 8px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #38bdf8, #6366f1);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .other-text-block {
+      font-size: 13px;
+      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .field small {
+      display: block;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      padding: 9px 10px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #6b7280;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      padding: 9px 18px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+      box-shadow: 0 24px 60px rgba(37, 99, 235, 0.6);
+    }
+
+    .result-block {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .result-text {
+      margin-top: 8px;
+      font-size: 13px;
+      white-space: pre-wrap;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 10px 12px;
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: var(--accent-soft);
+      text-decoration: none;
+      font-size: 11px;
+    }
+
+    @media (max-width: 840px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 540px) {
+      .page {
+        padding-inline: 14px;
+      }
+
+      .card {
+        padding: 18px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <div class="logo-mark">
+          <div class="logo-mark-inner">FT</div>
+        </div>
+        <div>
+          <div class="logo-text-main">FixTogether</div>
+          <div class="logo-text-sub">Silent conflict resolution</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html">Home</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="layout">
+        <section class="card">
+          <h1 class="hero-title">
+            Someone invited you to <span>FixTogether</span>
+          </h1>
+          <p class="hero-subtitle" id="introText">
+            You’ve been sent this link because a conflict or misunderstanding has been
+            heavy for both of you. First, read what they shared. Then you’ll have space
+            to answer calmly in your own words.
+          </p>
+
+          <h2 class="section-title">What they shared</h2>
+
+          <div id="otherTitle" class="pill" style="display:none;"></div>
+
+          <div id="otherWhat" class="other-text-block"></div>
+          <div id="otherFeel" class="other-text-block" style="display:none;"></div>
+          <div id="otherGoal" class="pill" style="display:none;"></div>
+        </section>
+
+        <section class="card">
+          <h2 class="section-title">Your turn</h2>
+          <p class="hero-subtitle">
+            This is not about winning or losing. It’s about both of you being heard,
+            so you can move forward with less tension.
+          </p>
+
+          <form id="replyForm">
+            <div class="field">
+              <label for="yourName">Your name or nickname (optional)</label>
+              <input id="yourName" type="text" placeholder="You can stay anonymous if you prefer" />
+            </div>
+
+            <div class="field">
+              <label for="yourView">How do you see the situation?</label>
+              <small>Describe what happened from your point of view.</small>
+              <textarea id="yourView" required></textarea>
+            </div>
+
+            <div class="field">
+              <label for="yourFeel">How do you feel about it?</label>
+              <small>Hurt, angry, sad, tired, confused… put it into words.</small>
+              <textarea id="yourFeel" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Generate a calm message</button>
+
+            <div id="resultBlock" class="result-block" style="display:none;">
+              <div>This is a neutral message you can both use as a starting point:</div>
+              <div id="resultText" class="result-text"></div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> FixTogether. All rights reserved.</div>
+      <div>
+        <a href="index.html">Home</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function getDataFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const raw = params.get("data");
+      if (!raw) return null;
+      try {
+        const json = decodeURIComponent(raw);
+        const parsed = JSON.parse(decodeURIComponent(escape(atob(json))));
+        return parsed;
+      } catch (e) {
+        console.error("Cannot decode data", e);
+        return null;
+      }
+    }
+
+    const data = getDataFromUrl();
+
+    if (!data || !data.what) {
+      document.getElementById("introText").textContent =
+        "The invitation link seems incomplete or expired. Please ask the person who sent it to generate a new one.";
+    } else {
+      if (data.title) {
+        const t = document.getElementById("otherTitle");
+        t.textContent = data.title;
+        t.style.display = "inline-flex";
+      }
+      document.getElementById("otherWhat").textContent = data.what;
+
+      if (data.feel) {
+        const f = document.getElementById("otherFeel");
+        f.textContent = data.feel;
+        f.style.display = "block";
+      }
+      if (data.goal) {
+        const g = document.getElementById("otherGoal");
+        g.textContent = "What they hope for: " + data.goal;
+        g.style.display = "inline-flex";
+      }
+    }
+
+    const replyForm = document.getElementById("replyForm");
+    const resultBlock = document.getElementById("resultBlock");
+    const resultText = document.getElementById("resultText");
+
+    replyForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!data || !data.what) {
+        alert("The original message could not be loaded.");
+        return;
+      }
+
+      const yourName = document.getElementById("yourName").value.trim();
+      const yourView = document.getElementById("yourView").value.trim();
+      const yourFeel = document.getElementById("yourFeel").value.trim();
+
+      const theirName = data.name && data.name.length > 0 ? data.name : "you";
+      const situation =
+        data.title && data.title.length > 0 ? data.title : "what happened between us";
+
+      const opening =
+        yourName.length > 0
+          ? `Hi ${theirName}, it’s ${yourName}.`
+          : `Hi ${theirName},`;
+
+      const part1 = `I don’t want us to stay stuck in silence about ${situation}. I’ve read what you wrote and I understand that this has been heavy for you.`;
+
+      const part2 =
+        data.feel && data.feel.length > 0
+          ? `You said you feel ${data.feel}. I want you to know I’m taking that seriously.`
+          : `I see that this situation has affected you deeply and I’m taking that seriously.`;
+
+      const part3 = `From my side, this is how I see things: ${yourView}`;
+
+      const part4 = `Emotionally, I feel ${yourFeel}. I’m not sharing this to attack you, but so you can understand where I’m standing.`;
+
+      const goal =
+        data.goal && data.goal.length > 0
+          ? `My wish now is that we can ${data.goal.toLowerCase()}.`
+          : `My wish now is that we can talk in a calmer way and decide together what is best for both of us.`;
+
+      const closing = `If you’re open to it, we can use this message as a starting point and continue the conversation without shouting, blame or pressure.`;
+
+      const full =
+        `${opening}\n\n` +
+        `${part1}\n\n` +
+        `${part2}\n\n` +
+        `${part3}\n\n` +
+        `${part4}\n\n` +
+        `${goal}\n\n` +
+        `${closing}`;
+
+      resultText.textContent = full;
+      resultBlock.style.display = "block";
+      resultBlock.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+</body>
+</html>
