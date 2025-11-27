@@ -156,27 +156,34 @@
 
     .how-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .how-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     .how-card {
       border-radius: 18px;
-      padding: 14px;
-      background: rgba(15, 23, 42, 0.9);
+      padding: 16px 16px 14px;
+      background: rgba(15, 23, 42, 0.95);
       border: 1px solid var(--border-subtle);
-      font-size: 12px;
+      font-size: 13px;
+      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.8);
     }
 
     .how-number {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.6);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--accent-soft);
       margin-bottom: 8px;
     }
@@ -188,38 +195,8 @@
 
     .how-text {
       color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .review-card {
-      border-radius: 18px;
-      padding: 14px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--border-subtle);
-      font-size: 12px;
-    }
-
-    .review-name {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .review-meta {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .review-text {
-      color: var(--text-main);
-      line-height: 1.5;
-      font-size: 12px;
+      line-height: 1.6;
+      font-size: 13px;
     }
 
     footer {
@@ -246,24 +223,11 @@
         align-items: flex-start;
         gap: 12px;
       }
-
-      .how-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .reviews-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
     }
 
     @media (max-width: 540px) {
       .page {
         padding-inline: 14px;
-      }
-
-      .how-grid,
-      .reviews-grid {
-        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
@@ -297,15 +261,15 @@
         <p class="hero-subtitle">
           FixTogether is a quiet, structured way to handle conflict when direct
           conversation feels impossible. You each write in your own time; we turn
-          both perspectives into a calm path forward.
+          both perspectives into a calmer path forward.
         </p>
       </section>
 
       <section class="section">
         <h2 class="section-title">One conflict, four simple steps</h2>
         <p class="section-subtitle">
-          No therapy sessions. No video calls. Just a shared written space that keeps
-          things calm and clear.
+          No therapy sessions. No video calls. Just a written space that keeps things
+          calm, clear, and respectful for both of you.
         </p>
 
         <div class="how-grid">
@@ -313,63 +277,38 @@
             <div class="how-number">1</div>
             <div class="how-title">You share your side</div>
             <div class="how-text">
-              Describe what happened and how you feel — freely, without being interrupted
-              or judged.
+              You describe what happened and how you feel — freely, without being
+              interrupted or judged. This is your moment to put everything into words.
             </div>
           </div>
+
           <div class="how-card">
             <div class="how-number">2</div>
             <div class="how-title">We create a private link</div>
             <div class="how-text">
-              You send this link to the other person by WhatsApp, SMS or email. No login is needed.
+              FixTogether creates a private link that only you can share. You send it
+              by WhatsApp, SMS or email to the person you want to reach. No account or
+              login is required.
             </div>
           </div>
+
           <div class="how-card">
             <div class="how-number">3</div>
             <div class="how-title">They answer in their own words</div>
             <div class="how-text">
-              They can read your side, then write theirs calmly. Both stories stay in one safe place.
+              The other person can calmly read your side, then write theirs in the
+              same space, at their own pace. Both perspectives stay together, safely
+              in writing.
             </div>
           </div>
+
           <div class="how-card">
             <div class="how-number">4</div>
             <div class="how-title">You receive a neutral message</div>
             <div class="how-text">
-              We combine both perspectives into a respectful response and concrete next steps you can accept.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section-title">People we’ve already helped</h2>
-        <p class="section-subtitle">
-          When words were stuck, FixTogether created a bridge.
-        </p>
-
-        <div class="reviews-grid">
-          <div class="review-card">
-            <div class="review-name">Ana & Lucas</div>
-            <div class="review-meta">Long-distance couple · 2 years together</div>
-            <div class="review-text">
-              “We spent a week without speaking. FixTogether helped us say what we
-              really felt without attacking each other. It changed the tone of our conversations.”
-            </div>
-          </div>
-          <div class="review-card">
-            <div class="review-name">Maria</div>
-            <div class="review-meta">Mother & adult daughter conflict</div>
-            <div class="review-text">
-              “It was easier to write than to talk. Reading her side and the final
-              message made me understand her pain. We cried, then we hugged.”
-            </div>
-          </div>
-          <div class="review-card">
-            <div class="review-name">Jamal & coworker</div>
-            <div class="review-meta">Work misunderstanding</div>
-            <div class="review-text">
-              “We were both defensive. The neutral answer we received gave us words
-              we couldn’t find alone. We ended up having a mature, calm conversation.”
+              FixTogether turns both stories into one balanced, respectful message
+              you can both accept — plus clear next steps to move forward, whether
+              that means reconnecting, setting boundaries, or ending things gently.
             </div>
           </div>
         </div>
