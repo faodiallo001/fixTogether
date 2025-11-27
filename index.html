@@ -7,12 +7,12 @@
   <style>
     :root {
       --bg-main: #020617;
-      --bg-card: rgba(15, 23, 42, 0.9);
+      --bg-card: rgba(15, 23, 42, 0.94);
       --accent: #3b82f6;
       --accent-soft: #60a5fa;
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.2);
+      --border-subtle: rgba(148, 163, 184, 0.25);
       --radius-xl: 24px;
     }
 
@@ -127,10 +127,10 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
       gap: 32px;
       align-items: center;
-      margin-bottom: 32px;
+      margin-bottom: 36px;
     }
 
     .hero-badge {
@@ -145,7 +145,7 @@
       text-transform: uppercase;
       letter-spacing: 0.13em;
       color: var(--text-muted);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .hero-badge-dot {
@@ -157,9 +157,9 @@
     }
 
     .hero-title {
-      font-size: clamp(30px, 5vw, 40px);
+      font-size: clamp(30px, 5vw, 38px);
       line-height: 1.1;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .hero-title span {
@@ -171,9 +171,9 @@
     .hero-subtitle {
       font-size: 15px;
       color: var(--text-muted);
-      max-width: 520px;
+      max-width: 480px;
       line-height: 1.6;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
 
     .hero-actions {
@@ -194,84 +194,45 @@
       font-weight: 500;
     }
 
-    /* Trust strip */
-
-    .trust-strip {
-      margin-top: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+    .hero-note {
       font-size: 11px;
       color: var(--text-muted);
+      margin-top: 4px;
     }
 
-    .trust-pill {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      padding: 6px 10px;
-      background: rgba(15, 23, 42, 0.7);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .trust-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 10%, #e5f3ff, #6366f1);
-    }
-
-    /* Right panel */
+    /* Right card: big simple visual */
 
     .hero-panel {
       border-radius: var(--radius-xl);
-      padding: 22px 20px;
-      background: radial-gradient(circle at top, #1d283a, #020617 60%);
+      padding: 18px 18px 16px;
+      background: radial-gradient(circle at top, #111827, #020617 70%);
       border: 1px solid var(--border-subtle);
       box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
-      position: relative;
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .hero-panel::before {
-      content: "";
-      position: absolute;
-      inset: -120px;
-      background: radial-gradient(circle at top, rgba(59, 130, 246, 0.18), transparent 60%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    .hero-panel-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-panel-header {
+    .hero-panel-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
-    }
-
-    .hero-panel-title {
-      font-size: 13px;
+      font-size: 11px;
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: var(--text-muted);
     }
 
     .hero-status-pill {
       border-radius: 999px;
       padding: 4px 10px;
-      font-size: 11px;
-      border: 1px solid rgba(52, 211, 153, 0.5);
-      color: #bbf7d0;
+      font-size: 10px;
+      border: 1px solid rgba(59, 130, 246, 0.6);
+      color: #dbeafe;
       background: linear-gradient(
         120deg,
-        rgba(34, 197, 94, 0.05),
-        rgba(16, 185, 129, 0.18)
+        rgba(37, 99, 235, 0.15),
+        rgba(59, 130, 246, 0.32)
       );
       display: inline-flex;
       align-items: center;
@@ -282,79 +243,97 @@
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 10%, #bbf7d0, #16a34a);
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+      background: radial-gradient(circle at 30% 10%, #bfdbfe, #1d4ed8);
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.9);
     }
 
-    .hero-panel-images {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 14px;
+    .hero-image {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      height: 260px;             /* plus grand visuel */
     }
 
-    .hero-panel-images img {
+    .hero-image img {
       width: 100%;
-      height: 130px;
+      height: 100%;
       object-fit: cover;
-      border-radius: 16px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      opacity: 0.96;
+      display: block;
     }
 
-    .mini-dialog {
-      border-radius: 16px;
-      padding: 10px 12px;
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid rgba(148, 163, 184, 0.45);
+    .mini-example {
       font-size: 11px;
+      color: var(--text-muted);
+      padding-top: 4px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.4);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .mini-col-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-soft);
+      margin-bottom: 3px;
+    }
+
+    /* HOW IT WORKS (3 steps) */
+
+    .steps {
+      margin-top: 8px;
+      margin-bottom: 32px;
+    }
+
+    .steps-title {
+      font-size: 15px;
+      font-weight: 600;
       margin-bottom: 10px;
     }
 
-    .mini-dialog-tag {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--accent-soft);
-      margin-bottom: 4px;
-    }
-
-    .mini-line {
-      margin-bottom: 6px;
-    }
-
-    .mini-label {
-      font-weight: 600;
-      margin-right: 4px;
-    }
-
-    .mini-text {
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      font-size: 12px;
       color: var(--text-muted);
     }
 
-    .hero-panel-footer {
-      margin-top: 8px;
-      padding-top: 10px;
-      border-top: 1px dashed rgba(148, 163, 184, 0.4);
-      font-size: 11px;
-      color: var(--text-muted);
+    .step-card {
+      border-radius: 18px;
+      padding: 10px 12px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .step-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
       display: flex;
-      justify-content: space-between;
-      gap: 8px;
       align-items: center;
-    }
-
-    .hero-panel-footer span {
+      justify-content: center;
+      font-size: 11px;
+      margin-bottom: 6px;
       color: var(--accent-soft);
     }
 
-    /* REVIEWS SECTION */
+    .step-title {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    /* REVIEWS SECTION (simpler) */
 
     .reviews {
-      margin-top: 40px;
-      padding: 20px 18px;
+      margin-top: 8px;
+      padding: 18px 18px;
       border-radius: var(--radius-xl);
-      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), #020617 70%);
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), #020617 80%);
       border: 1px solid var(--border-subtle);
     }
 
@@ -363,46 +342,45 @@
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     .reviews-title {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 600;
     }
 
     .reviews-subtitle {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
-      max-width: 420px;
+      max-width: 380px;
       line-height: 1.5;
     }
 
     .stars {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--accent-soft);
     }
 
     .reviews-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-bottom: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
     }
 
     .review-card {
       border-radius: 18px;
-      padding: 12px 12px 14px;
-      background: rgba(15, 23, 42, 0.95);
+      padding: 10px 12px 12px;
+      background: rgba(15, 23, 42, 0.96);
       border: 1px solid rgba(148, 163, 184, 0.5);
       font-size: 12px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .review-role {
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--accent-soft);
@@ -419,6 +397,7 @@
       align-items: center;
       font-size: 11px;
       color: var(--text-muted);
+      margin-top: 2px;
     }
 
     .review-name {
@@ -426,63 +405,10 @@
       color: var(--text-main);
     }
 
-    .review-rating {
-      font-size: 11px;
-    }
-
-    .review-form {
-      margin-top: 10px;
-      padding-top: 12px;
-      border-top: 1px dashed rgba(148, 163, 184, 0.4);
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 1.2fr);
-      gap: 10px;
-      align-items: center;
-    }
-
-    .review-form label {
-      font-size: 11px;
-      color: var(--text-muted);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .review-form textarea,
-    .review-form input {
-      width: 100%;
-      border-radius: 10px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-main);
-      padding: 8px 9px;
-      font-size: 12px;
-      resize: vertical;
-      min-height: 46px;
-    }
-
-    .review-form textarea:focus,
-    .review-form input:focus {
-      outline: none;
-      border-color: var(--accent-soft);
-      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.35);
-    }
-
-    .review-form-right {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      align-items: flex-start;
-    }
-
-    .review-helper {
-      font-size: 10px;
-      color: var(--text-muted);
-    }
-
     /* FOOTER */
 
     footer {
-      margin-top: 40px;
+      margin-top: 32px;
       font-size: 11px;
       color: var(--text-muted);
       border-top: 1px solid rgba(15, 23, 42, 0.9);
@@ -501,19 +427,7 @@
 
     /* RESPONSIVE */
 
-    @media (max-width: 960px) {
-      .reviews-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 840px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-
+    @media (max-width: 900px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -522,7 +436,11 @@
         order: -1;
       }
 
-      .review-form {
+      .steps-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .reviews-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
@@ -533,15 +451,11 @@
       }
 
       .hero-panel {
-        padding: 18px 14px;
+        padding: 16px 14px;
       }
 
-      .hero-panel-images img {
-        height: 110px;
-      }
-
-      .reviews-grid {
-        grid-template-columns: minmax(0, 1fr);
+      .hero-image {
+        height: 220px;
       }
     }
   </style>
@@ -568,104 +482,113 @@
     </header>
 
     <main>
+      <!-- HERO -->
       <section class="hero">
         <div>
           <div class="hero-badge">
             <span class="hero-badge-dot"></span>
-            EMOTIONAL CONFLICT RESOLUTION
+            PRIVATE CONFLICT RESOLUTION
           </div>
           <h1 class="hero-title">
-            FixTogether – when you can’t talk, <span>we talk for you.</span>
+            When you can’t talk,<br />
+            <span>we talk for you.</span>
           </h1>
           <p class="hero-subtitle">
-            You both share your side of the story. We read what each of you writes,
-            put your feelings in the same calm message, and help you understand
-            each other again – without shouting, pressure or public drama.
+            You both write your side of the story. We read what each of you says
+            and turn it into one calm message you can share, so you finally
+            understand each other again.
           </p>
           <div class="hero-actions">
             <button class="btn-primary" onclick="location.href='fix.html'">
-              Start in 60 seconds
+              Start a Fix
             </button>
             <span class="hero-secondary">
-              No account needed. <span>One private link.</span>
+              4.99&nbsp;$ · <span>No account</span> · Private link
             </span>
           </div>
-
-          <!-- Trust / reassurance -->
-          <div class="trust-strip">
-            <div class="trust-pill">
-              <span class="trust-dot"></span>
-              We use your words only to create your Fix, then clear them from our active system.
-            </div>
-            <div class="trust-pill">
-              <span class="trust-dot"></span>
-              We never contact the other person directly. You decide what to send and when.
-            </div>
-            <div class="trust-pill">
-              <span class="trust-dot"></span>
-              Works for couples, friends, family and work situations.
-            </div>
-          </div>
+          <p class="hero-note">
+            We never contact the other person for you. You stay in control of what you send.
+          </p>
         </div>
 
         <aside class="hero-panel">
-          <div class="hero-panel-inner">
-            <div class="hero-panel-header">
-              <div class="hero-panel-title">SESSION SNAPSHOT</div>
-              <div class="hero-status-pill">
-                <span class="status-dot"></span>
-                We’re working on your Fix
-              </div>
+          <div class="hero-panel-top">
+            <span>Live example</span>
+            <div class="hero-status-pill">
+              <span class="status-dot"></span>
+              Working on a Fix
             </div>
+          </div>
 
-            <div class="hero-panel-images">
-              <!-- Tu pourras remplacer par tes propres images plus tard -->
-              <img
-                src="https://images.pexels.com/photos/5558232/pexels-photo-5558232.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Two people in silent conflict sitting apart" />
-              <img
-                src="https://images.pexels.com/photos/5699749/pexels-photo-5699749.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Two people having a calm conversation" />
+          <div class="hero-image">
+            <!-- Tu peux remplacer cette image par une image plus adaptée -->
+            <img
+              src="https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Two people in a calm conversation"
+            />
+          </div>
+
+          <div class="mini-example">
+            <div>
+              <div class="mini-col-title">You write</div>
+              <p class="mini-text">
+                “After our last fight we stopped talking. I feel rejected and sad.”
+              </p>
             </div>
-
-            <div class="mini-dialog">
-              <div class="mini-dialog-tag">Example</div>
-              <div class="mini-line">
-                <span class="mini-label">You write:</span>
-                <span class="mini-text">
-                  “After my birthday dinner, we argued and stopped talking. I feel rejected and I don’t know how to fix it.”
-                </span>
-              </div>
-              <div class="mini-line">
-                <span class="mini-label">They write:</span>
-                <span class="mini-text">
-                  “I felt attacked and misunderstood. I needed space, but I never wanted to lose them.”
-                </span>
-              </div>
-              <div class="mini-line">
-                <span class="mini-label">We send:</span>
-                <span class="mini-text">
-                  One balanced message that explains both sides in simple, calm words
-                  – so each of you can finally see what the other is really feeling.
-                </span>
-              </div>
+            <div>
+              <div class="mini-col-title">They write</div>
+              <p class="mini-text">
+                “I felt attacked and judged. I needed space but I still care.”
+              </p>
             </div>
-
-            <div class="hero-panel-footer">
-              <div>One situation · one shared message.</div>
-              <div><span>4.99&nbsp;$</span> · paid by the person who starts.</div>
+            <div>
+              <div class="mini-col-title">We send</div>
+              <p class="mini-text">
+                One clear, calm message that puts both feelings together, without blame.
+              </p>
             </div>
           </div>
         </aside>
       </section>
 
-      <!-- REVIEWS SECTION -->
+      <!-- HOW IT WORKS -->
+      <section class="steps">
+        <h2 class="steps-title">How FixTogether works</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-badge">1</div>
+            <div class="step-title">You start a Fix</div>
+            <p>
+              You explain what happened and how you feel. Only you pay
+              4.99&nbsp;$ for this situation.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-badge">2</div>
+            <div class="step-title">You share the link</div>
+            <p>
+              The other person writes their side for free. No account,
+              no app to install, no public drama.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-badge">3</div>
+            <div class="step-title">We write one message</div>
+            <p>
+              We read both sides and send one shared message that helps
+              you both see what the other really feels.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- REVIEWS -->
       <section class="reviews" aria-label="User reviews">
         <div class="reviews-header">
           <div>
             <div class="reviews-title">What people say about FixTogether</div>
             <p class="reviews-subtitle">
-              Stories from people who chose a calm Fix instead of one more explosion.
+              Short, calm words instead of shouting and silence. That’s what most people tell us.
             </p>
           </div>
           <div class="stars">
@@ -675,11 +598,11 @@
 
         <div class="reviews-grid">
           <article class="review-card">
-            <div class="review-role">COUPLE AFTER A BIG FIGHT</div>
+            <div class="review-role">COUPLE · AFTER A FIGHT</div>
             <p class="review-text">
-              “We both wrote our side and let FixTogether do the rest.
-              The message we received made us feel seen on both sides.
-              It was the first time we could read each other without shouting.”
+              “We were not talking for two weeks. The Fix we received showed
+              both of our feelings in one message. It was much easier to answer
+              this than each other directly.”
             </p>
             <div class="review-footer">
               <span class="review-name">Maya &amp; Leo</span>
@@ -688,50 +611,18 @@
           </article>
 
           <article class="review-card">
-            <div class="review-role">SIBLINGS · FAMILY TENSION</div>
+            <div class="review-role">SIBLINGS · FAMILY ISSUE</div>
             <p class="review-text">
-              “Instead of another drama in the family group, we tried a Fix.
-              It put our misunderstandings in one clear message.
-              No one was ‘the bad one’, and that helped us talk again.”
+              “I used it with my sister. We both wrote our side, and the Fix
+              felt fair to each of us. It helped us talk again without
+              starting a new war.”
             </p>
             <div class="review-footer">
               <span class="review-name">Amina, 29</span>
               <span class="review-rating">★★★★☆</span>
             </div>
           </article>
-
-          <article class="review-card">
-            <div class="review-role">COWORKERS · WORK ISSUE</div>
-            <p class="review-text">
-              “There was tension after a missed deadline.
-              FixTogether turned our emails and frustrations into one neutral explanation.
-              It calmed the whole team more than a meeting would have.”
-            </p>
-            <div class="review-footer">
-              <span class="review-name">Daniel, team lead</span>
-              <span class="review-rating">★★★★★</span>
-            </div>
-          </article>
         </div>
-
-        <form class="review-form" onsubmit="event.preventDefault(); alert('Thank you for your feedback ♥');">
-          <div>
-            <label for="review-text">Leave your review (optional)</label>
-            <textarea id="review-text" name="review" placeholder="How did FixTogether help your situation?"></textarea>
-          </div>
-          <div class="review-form-right">
-            <div>
-              <label for="review-name">Your name (or initials)</label>
-              <input id="review-name" name="name" placeholder="e.g. S. Rodriguez" />
-            </div>
-            <button type="submit" class="btn-primary">
-              Share feedback
-            </button>
-            <div class="review-helper">
-              By sending a review, you agree that we may display it anonymously on this page.
-            </div>
-          </div>
-        </form>
       </section>
     </main>
 
@@ -750,6 +641,7 @@
   </script>
 </body>
 </html>
+
 
 
 
