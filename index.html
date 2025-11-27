@@ -16,11 +16,7 @@
       --radius-xl: 24px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -181,7 +177,7 @@
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .hero-secondary {
@@ -200,17 +196,14 @@
       margin-top: 4px;
     }
 
-    /* Right card: big simple visual */
+    /* Right panel: single big image + small example */
 
     .hero-panel {
       border-radius: var(--radius-xl);
-      padding: 18px 18px 16px;
+      padding: 18px 18px 14px;
       background: radial-gradient(circle at top, #111827, #020617 70%);
       border: 1px solid var(--border-subtle);
       box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
     }
 
     .hero-panel-top {
@@ -221,6 +214,7 @@
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.14em;
+      margin-bottom: 10px;
     }
 
     .hero-status-pill {
@@ -251,7 +245,8 @@
       border-radius: 18px;
       overflow: hidden;
       border: 1px solid rgba(148, 163, 184, 0.6);
-      height: 260px;             /* plus grand visuel */
+      height: 260px;
+      margin-bottom: 10px;
     }
 
     .hero-image img {
@@ -264,7 +259,7 @@
     .mini-example {
       font-size: 11px;
       color: var(--text-muted);
-      padding-top: 4px;
+      padding-top: 6px;
       border-top: 1px dashed rgba(148, 163, 184, 0.4);
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -279,59 +274,13 @@
       margin-bottom: 3px;
     }
 
-    /* HOW IT WORKS (3 steps) */
+    .mini-text { line-height: 1.5; }
 
-    .steps {
-      margin-top: 8px;
-      margin-bottom: 32px;
-    }
-
-    .steps-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .step-card {
-      border-radius: 18px;
-      padding: 10px 12px;
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-    }
-
-    .step-badge {
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      margin-bottom: 6px;
-      color: var(--accent-soft);
-    }
-
-    .step-title {
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 4px;
-      color: var(--text-main);
-    }
-
-    /* REVIEWS SECTION (simpler) */
+    /* REVIEWS (slider) */
 
     .reviews {
-      margin-top: 8px;
-      padding: 18px 18px;
+      margin-top: 12px;
+      padding: 18px 18px 16px;
       border-radius: var(--radius-xl);
       background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), #020617 80%);
       border: 1px solid var(--border-subtle);
@@ -342,7 +291,7 @@
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .reviews-title {
@@ -360,12 +309,12 @@
     .stars {
       font-size: 12px;
       color: var(--accent-soft);
+      align-self: flex-start;
     }
 
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+    .review-slider {
+      position: relative;
+      margin-bottom: 10px;
     }
 
     .review-card {
@@ -374,9 +323,14 @@
       background: rgba(15, 23, 42, 0.96);
       border: 1px solid rgba(148, 163, 184, 0.5);
       font-size: 12px;
-      display: flex;
+      display: none;
       flex-direction: column;
       gap: 6px;
+      min-height: 90px;
+    }
+
+    .review-card.active {
+      display: flex;
     }
 
     .review-role {
@@ -403,6 +357,113 @@
     .review-name {
       font-weight: 500;
       color: var(--text-main);
+    }
+
+    .review-rating { font-size: 11px; }
+
+    .review-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .review-buttons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .review-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .review-btn:hover {
+      border-color: var(--accent-soft);
+    }
+
+    .review-dots {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.6);
+    }
+
+    .dot.active {
+      background: var(--accent-soft);
+    }
+
+    /* REVIEW FORM */
+
+    .review-form {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.4);
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 1.4fr);
+      gap: 10px;
+      align-items: center;
+    }
+
+    .review-form label {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .review-form textarea,
+    .review-form input {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      padding: 8px 9px;
+      font-size: 12px;
+      resize: vertical;
+      min-height: 46px;
+    }
+
+    .review-form textarea::placeholder,
+    .review-form input::placeholder {
+      color: #6b7280;
+    }
+
+    .review-form textarea:focus,
+    .review-form input:focus {
+      outline: none;
+      border-color: var(--accent-soft);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.35);
+    }
+
+    .review-form-right {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .review-helper {
+      font-size: 10px;
+      color: var(--text-muted);
     }
 
     /* FOOTER */
@@ -436,11 +497,7 @@
         order: -1;
       }
 
-      .steps-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .reviews-grid {
+      .review-form {
         grid-template-columns: minmax(0, 1fr);
       }
     }
@@ -507,24 +564,24 @@
             </span>
           </div>
           <p class="hero-note">
-            We never contact the other person for you. You stay in control of what you send.
+            We never contact the other person for you. Your words are used only to create your Fix, then cleared from our active system.
           </p>
         </div>
 
         <aside class="hero-panel">
           <div class="hero-panel-top">
-            <span>Live example</span>
+            <span>Example</span>
             <div class="hero-status-pill">
               <span class="status-dot"></span>
-              Working on a Fix
+              Fix in progress
             </div>
           </div>
 
           <div class="hero-image">
-            <!-- Tu peux remplacer cette image par une image plus adaptée -->
+            <!-- Tu peux changer l'image si tu veux une autre -->
             <img
-              src="https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=1200"
-              alt="Two people in a calm conversation"
+              src="https://images.pexels.com/photos/5700529/pexels-photo-5700529.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Couple reconciling and hugging"
             />
           </div>
 
@@ -551,38 +608,7 @@
         </aside>
       </section>
 
-      <!-- HOW IT WORKS -->
-      <section class="steps">
-        <h2 class="steps-title">How FixTogether works</h2>
-        <div class="steps-grid">
-          <div class="step-card">
-            <div class="step-badge">1</div>
-            <div class="step-title">You start a Fix</div>
-            <p>
-              You explain what happened and how you feel. Only you pay
-              4.99&nbsp;$ for this situation.
-            </p>
-          </div>
-          <div class="step-card">
-            <div class="step-badge">2</div>
-            <div class="step-title">You share the link</div>
-            <p>
-              The other person writes their side for free. No account,
-              no app to install, no public drama.
-            </p>
-          </div>
-          <div class="step-card">
-            <div class="step-badge">3</div>
-            <div class="step-title">We write one message</div>
-            <p>
-              We read both sides and send one shared message that helps
-              you both see what the other really feels.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- REVIEWS -->
+      <!-- REVIEWS (slider + form) -->
       <section class="reviews" aria-label="User reviews">
         <div class="reviews-header">
           <div>
@@ -596,13 +622,13 @@
           </div>
         </div>
 
-        <div class="reviews-grid">
-          <article class="review-card">
+        <div class="review-slider">
+          <article class="review-card active" data-index="0">
             <div class="review-role">COUPLE · AFTER A FIGHT</div>
             <p class="review-text">
               “We were not talking for two weeks. The Fix we received showed
-              both of our feelings in one message. It was much easier to answer
-              this than each other directly.”
+              both of our feelings in one message. It was easier to answer that
+              than to text each other directly.”
             </p>
             <div class="review-footer">
               <span class="review-name">Maya &amp; Leo</span>
@@ -610,19 +636,63 @@
             </div>
           </article>
 
-          <article class="review-card">
+          <article class="review-card" data-index="1">
             <div class="review-role">SIBLINGS · FAMILY ISSUE</div>
             <p class="review-text">
               “I used it with my sister. We both wrote our side, and the Fix
-              felt fair to each of us. It helped us talk again without
-              starting a new war.”
+              felt fair for each of us. It helped us talk again without
+              starting a new war in the family group.”
             </p>
             <div class="review-footer">
               <span class="review-name">Amina, 29</span>
               <span class="review-rating">★★★★☆</span>
             </div>
           </article>
+
+          <article class="review-card" data-index="2">
+            <div class="review-role">COWORKERS · WORK TENSION</div>
+            <p class="review-text">
+              “There was a lot of tension after a missed deadline.
+              FixTogether turned our frustration into one neutral message.
+              It calmed the team more than a long meeting.”
+            </p>
+            <div class="review-footer">
+              <span class="review-name">Daniel, team lead</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+          </article>
+
+          <div class="review-nav">
+            <div class="review-dots">
+              <div class="dot active" data-dot="0"></div>
+              <div class="dot" data-dot="1"></div>
+              <div class="dot" data-dot="2"></div>
+            </div>
+            <div class="review-buttons">
+              <button type="button" class="review-btn" id="prevReview" aria-label="Previous review">‹</button>
+              <button type="button" class="review-btn" id="nextReview" aria-label="Next review">›</button>
+            </div>
+          </div>
         </div>
+
+        <form class="review-form" onsubmit="event.preventDefault(); alert('Thank you for your feedback ♥');">
+          <div>
+            <label for="review-text">Leave your review (optional)</label>
+            <textarea id="review-text" name="review" placeholder="How did FixTogether help your situation?"></textarea>
+          </div>
+          <div class="review-form-right">
+            <div>
+              <label for="review-name">Your name (or initials)</label>
+              <input id="review-name" name="name" placeholder="e.g. S. Rodriguez" />
+            </div>
+            <button type="submit" class="btn-primary">
+              Share feedback
+            </button>
+            <div class="review-helper">
+              By sending a review, you agree that we may display it anonymously on this page.
+            </div>
+          </div>
+        </form>
       </section>
     </main>
 
@@ -638,9 +708,44 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Simple review slider
+    const reviewCards = document.querySelectorAll('.review-card');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('prevReview');
+    const nextBtn = document.getElementById('nextReview');
+    let currentReview = 0;
+
+    function showReview(index) {
+      reviewCards.forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+      currentReview = index;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      const nextIndex = (currentReview - 1 + reviewCards.length) % reviewCards.length;
+      showReview(nextIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const nextIndex = (currentReview + 1) % reviewCards.length;
+      showReview(nextIndex);
+    });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.getAttribute('data-dot'), 10);
+        showReview(idx);
+      });
+    });
   </script>
 </body>
 </html>
+
 
 
 
