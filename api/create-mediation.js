@@ -1,16 +1,25 @@
-import OpenAI from "openai";
+const OpenAI = require("openai");
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
-    const { versionA, versionB, goal } = req.body;
-
     if (!process.env.OPENAI_API_KEY) {
       return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
     }
+
+    // Vercel peut envoyer le body en string ou en objet,
+    // donc on gère les deux cas comme dans create-checkout
+    let body = req.body;
+    if (typeof body === "string") {
+      body = JSON.parse(body || "{}");
+    } else if (!body) {
+      body = {};
+    }
+
+    const { versionA, versionB, goal } = body;
 
     if (!versionA || !versionB || !goal) {
       return res.status(400).json({ error: "Missing request fields" });
@@ -46,25 +55,35 @@ Now, write ONE final message as if you were a human mediator.
 Tone: warm, respectful, soft, emotionally intelligent.
 
 Important:
-- speak directly to “you two”
-- never say “AI” or “assistant”
+- speak directly to "you two"
+- never say "AI" or "assistant"
 - do not take sides
 `;
 
     const response = await client.responses.create({
-      model: "gpt-5.1",
+      // tu peux mettre "gpt-4o-mini" pour que ça te coûte moins cher
+      model: "gpt-4o-mini",
       input: prompt,
     });
 
-    const output = response.output_text || "We couldn't generate a response.";
+    // nouvelle SDK : on essaie d'abord output_text, sinon on va chercher dans output
+    const text =
+      response.output_text ||
+      (response.output &&
+        response.output[0] &&
+        response.output[0].content &&
+        response.output[0].content[0] &&
+        response.output[0].content[0].text) ||
+      "We couldn't generate a response.";
 
-    return res.status(200).json({ message: output });
+    return res.status(200).json({ message: text });
   } catch (error) {
     console.error("Mediation error:", error);
     return res.status(500).json({
       error: "Mediation failed",
-      details: error.message || error,
+      details: error.message || String(error),
     });
   }
-}
+};
+
 
