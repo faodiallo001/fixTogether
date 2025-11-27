@@ -38,7 +38,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
     }
 
     .logo {
@@ -119,14 +119,11 @@
       box-shadow: 0 24px 60px rgba(37, 99, 235, 0.6);
     }
 
-    /* HERO */
+    /* HERO TEXT (TOP) */
 
     .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
-      gap: 32px;
-      align-items: center;
-      margin-bottom: 36px;
+      max-width: 640px;
+      margin-bottom: 28px;
     }
 
     .hero-badge {
@@ -141,7 +138,7 @@
       text-transform: uppercase;
       letter-spacing: 0.13em;
       color: var(--text-muted);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .hero-badge-dot {
@@ -153,7 +150,7 @@
     }
 
     .hero-title {
-      font-size: clamp(30px, 5vw, 38px);
+      font-size: clamp(30px, 5vw, 40px);
       line-height: 1.1;
       margin-bottom: 12px;
     }
@@ -167,7 +164,7 @@
     .hero-subtitle {
       font-size: 15px;
       color: var(--text-muted);
-      max-width: 480px;
+      max-width: 520px;
       line-height: 1.6;
       margin-bottom: 18px;
     }
@@ -177,7 +174,7 @@
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .hero-secondary {
@@ -193,20 +190,21 @@
     .hero-note {
       font-size: 11px;
       color: var(--text-muted);
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
-    /* Right panel: single big image + small example */
+    /* EXAMPLE PANEL (UNDER HERO) */
 
-    .hero-panel {
-      border-radius: var(--radius-xl);
+    .example-panel {
+      border-radius: 28px;
       padding: 18px 18px 14px;
       background: radial-gradient(circle at top, #111827, #020617 70%);
       border: 1px solid var(--border-subtle);
       box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
+      margin-bottom: 28px;
     }
 
-    .hero-panel-top {
+    .example-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -242,11 +240,11 @@
     }
 
     .hero-image {
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(148, 163, 184, 0.6);
       height: 260px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .hero-image img {
@@ -259,11 +257,11 @@
     .mini-example {
       font-size: 11px;
       color: var(--text-muted);
-      padding-top: 6px;
+      padding-top: 8px;
       border-top: 1px dashed rgba(148, 163, 184, 0.4);
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
+      gap: 12px;
     }
 
     .mini-col-title {
@@ -276,10 +274,10 @@
 
     .mini-text { line-height: 1.5; }
 
-    /* REVIEWS (slider) */
+    /* REVIEWS (SLIDER) */
 
     .reviews {
-      margin-top: 12px;
+      margin-top: 8px;
       padding: 18px 18px 16px;
       border-radius: var(--radius-xl);
       background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), #020617 80%);
@@ -488,27 +486,19 @@
 
     /* RESPONSIVE */
 
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-panel {
-        order: -1;
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
 
       .review-form {
         grid-template-columns: minmax(0, 1fr);
       }
-    }
 
-    @media (max-width: 540px) {
-      .page {
-        padding-inline: 14px;
-      }
-
-      .hero-panel {
-        padding: 16px 14px;
+      .hero {
+        max-width: 100%;
       }
 
       .hero-image {
@@ -539,76 +529,75 @@
     </header>
 
     <main>
-      <!-- HERO -->
+      <!-- HERO TEXT ON TOP -->
       <section class="hero">
-        <div>
-          <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
-            PRIVATE CONFLICT RESOLUTION
-          </div>
-          <h1 class="hero-title">
-            When you can’t talk,<br />
-            <span>we talk for you.</span>
-          </h1>
-          <p class="hero-subtitle">
-            You both write your side of the story. We read what each of you says
-            and turn it into one calm message you can share, so you finally
-            understand each other again.
-          </p>
-          <div class="hero-actions">
-            <button class="btn-primary" onclick="location.href='fix.html'">
-              Start a Fix
-            </button>
-            <span class="hero-secondary">
-              4.99&nbsp;$ · <span>No account</span> · Private link
-            </span>
-          </div>
-          <p class="hero-note">
-            We never contact the other person for you. Your words are used only to create your Fix, then cleared from our active system.
-          </p>
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          PRIVATE CONFLICT RESOLUTION
         </div>
-
-        <aside class="hero-panel">
-          <div class="hero-panel-top">
-            <span>Example</span>
-            <div class="hero-status-pill">
-              <span class="status-dot"></span>
-              Fix in progress
-            </div>
-          </div>
-
-          <div class="hero-image">
-            <!-- Tu peux changer l'image si tu veux une autre -->
-            <img
-              src="https://images.pexels.com/photos/5700529/pexels-photo-5700529.jpeg?auto=compress&cs=tinysrgb&w=1200"
-              alt="Couple reconciling and hugging"
-            />
-          </div>
-
-          <div class="mini-example">
-            <div>
-              <div class="mini-col-title">You write</div>
-              <p class="mini-text">
-                “After our last fight we stopped talking. I feel rejected and sad.”
-              </p>
-            </div>
-            <div>
-              <div class="mini-col-title">They write</div>
-              <p class="mini-text">
-                “I felt attacked and judged. I needed space but I still care.”
-              </p>
-            </div>
-            <div>
-              <div class="mini-col-title">We send</div>
-              <p class="mini-text">
-                One clear, calm message that puts both feelings together, without blame.
-              </p>
-            </div>
-          </div>
-        </aside>
+        <h1 class="hero-title">
+          When you can’t talk,<br />
+          <span>we talk for you.</span>
+        </h1>
+        <p class="hero-subtitle">
+          You both write your side of the story. We read what each of you says
+          and turn it into one calm message you can share, so you finally
+          understand each other again.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="location.href='fix.html'">
+            Start a Fix
+          </button>
+          <span class="hero-secondary">
+            4.99&nbsp;$ · <span>No account</span> · Private link
+          </span>
+        </div>
+        <p class="hero-note">
+          We never contact the other person for you. Your words are used only to create your Fix, then cleared from our active system.
+        </p>
       </section>
 
-      <!-- REVIEWS (slider + form) -->
+      <!-- EXAMPLE PANEL UNDER HERO -->
+      <section class="example-panel">
+        <div class="example-header">
+          <span>Example</span>
+          <div class="hero-status-pill">
+            <span class="status-dot"></span>
+            Fix in progress
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <!-- Tu peux remplacer cette image par la tienne (hébergée dans ton projet) -->
+          <img
+            src="https://images.unsplash.com/photo-1517840933442-d2d1a05edb75?auto=format&fit=crop&w=1200&q=80"
+            alt="Couple reconciling and hugging"
+          />
+        </div>
+
+        <div class="mini-example">
+          <div>
+            <div class="mini-col-title">You write</div>
+            <p class="mini-text">
+              “After our last fight we stopped talking. I feel rejected and sad.”
+            </p>
+          </div>
+          <div>
+            <div class="mini-col-title">They write</div>
+            <p class="mini-text">
+              “I felt attacked and judged. I needed space but I still care.”
+            </p>
+          </div>
+          <div>
+            <div class="mini-col-title">We send</div>
+            <p class="mini-text">
+              One clear, calm message that puts both feelings together, without blame.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- REVIEWS (SLIDER + FORM) -->
       <section class="reviews" aria-label="User reviews">
         <div class="reviews-header">
           <div>
@@ -745,6 +734,7 @@
   </script>
 </body>
 </html>
+
 
 
 
