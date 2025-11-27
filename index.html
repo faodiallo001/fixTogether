@@ -194,6 +194,34 @@
       font-weight: 500;
     }
 
+    /* NEW: Trust strip */
+
+    .trust-strip {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .trust-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 6px 10px;
+      background: rgba(15, 23, 42, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 10%, #e5f3ff, #6366f1);
+    }
+
     /* Right panel */
 
     .hero-panel {
@@ -267,7 +295,7 @@
 
     .hero-panel-images img {
       width: 100%;
-      height: 130px; /* plus grand */
+      height: 130px;
       object-fit: cover;
       border-radius: 16px;
       border: 1px solid rgba(148, 163, 184, 0.5);
@@ -403,8 +431,9 @@
             FixTogether – when you can’t talk, <span>we talk for you.</span>
           </h1>
           <p class="hero-subtitle">
-            A quiet, private way to resolve conflicts, misunderstandings and hurt
-            feelings — without pressure, shouting or drama.
+            Share what happened, share how you feel, and let a calm,
+            neutral assistant craft a message that respects both sides
+            and opens the door to reconnecting.
           </p>
           <div class="hero-actions">
             <button class="btn-primary" onclick="location.href='fix.html'">
@@ -414,6 +443,22 @@
               No account needed. <span>One private link.</span>
             </span>
           </div>
+
+          <!-- Trust / reassurance -->
+          <div class="trust-strip">
+            <div class="trust-pill">
+              <span class="trust-dot"></span>
+              Messages used only to generate your response – then cleared from our system.
+            </div>
+            <div class="trust-pill">
+              <span class="trust-dot"></span>
+              We never contact the other person directly. You stay in control of what you send.
+            </div>
+            <div class="trust-pill">
+              <span class="trust-dot"></span>
+              Designed for couples, friends, family and teams.
+            </div>
+          </div>
         </div>
 
         <aside class="hero-panel">
@@ -422,16 +467,20 @@
               <div class="hero-panel-title">SESSION SNAPSHOT</div>
               <div class="hero-status-pill">
                 <span class="status-dot"></span>
-                We’re listening
+                Quiet, neutral assistant
               </div>
             </div>
 
             <div class="hero-panel-images">
-              <!-- Remplace plus tard par tes propres images -->
-              <img src="https://images.pexels.com/photos/6238031/pexels-photo-6238031.jpeg?auto=compress&cs=tinysrgb&w=800"
-                   alt="Two people in conflict" />
-              <img src="https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=800"
-                   alt="Two people reconnecting" />
+              <!-- Idéalement : remplace par des images plus symboliques
+                   - gauche : deux personnes dos à dos / tension
+                   - droite : deux personnes qui se reparlent calmement -->
+              <img
+                src="https://images.pexels.com/photos/5558232/pexels-photo-5558232.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Two people in silent conflict sitting apart" />
+              <img
+                src="https://images.pexels.com/photos/5699749/pexels-photo-5699749.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Two people having a calm conversation" />
             </div>
 
             <div class="mini-dialog">
@@ -449,15 +498,17 @@
                 </span>
               </div>
               <div class="mini-line">
-                <span class="mini-label">We reply:</span>
+                <span class="mini-label">We craft:</span>
                 <span class="mini-text">
-                  A calm, balanced message that recognises both sides and offers a way to reconnect.
+                  A calm, balanced message that validates both emotions,
+                  takes responsibility where needed and suggests a small,
+                  safe step to talk again.
                 </span>
               </div>
             </div>
 
             <div class="hero-panel-footer">
-              <div>For couples, friends, family & teams.</div>
+              <div>One situation · one carefully crafted message.</div>
               <div><span>4.99&nbsp;$</span> per situation · paid by the person who starts.</div>
             </div>
           </div>
@@ -480,5 +531,6 @@
   </script>
 </body>
 </html>
+
 
 
