@@ -130,7 +130,7 @@
       grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
       gap: 32px;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
 
     .hero-badge {
@@ -194,7 +194,7 @@
       font-weight: 500;
     }
 
-    /* NEW: Trust strip */
+    /* Trust strip */
 
     .trust-strip {
       margin-top: 12px;
@@ -348,6 +348,139 @@
       color: var(--accent-soft);
     }
 
+    /* REVIEWS SECTION */
+
+    .reviews {
+      margin-top: 40px;
+      padding: 20px 18px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), #020617 70%);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .reviews-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .reviews-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 420px;
+      line-height: 1.5;
+    }
+
+    .stars {
+      font-size: 13px;
+      color: var(--accent-soft);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .review-card {
+      border-radius: 18px;
+      padding: 12px 12px 14px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .review-role {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-soft);
+    }
+
+    .review-text {
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .review-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .review-name {
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .review-rating {
+      font-size: 11px;
+    }
+
+    .review-form {
+      margin-top: 10px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.4);
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 1.2fr);
+      gap: 10px;
+      align-items: center;
+    }
+
+    .review-form label {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .review-form textarea,
+    .review-form input {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      padding: 8px 9px;
+      font-size: 12px;
+      resize: vertical;
+      min-height: 46px;
+    }
+
+    .review-form textarea:focus,
+    .review-form input:focus {
+      outline: none;
+      border-color: var(--accent-soft);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.35);
+    }
+
+    .review-form-right {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .review-helper {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    /* FOOTER */
+
     footer {
       margin-top: 40px;
       font-size: 11px;
@@ -368,6 +501,12 @@
 
     /* RESPONSIVE */
 
+    @media (max-width: 960px) {
+      .reviews-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     @media (max-width: 840px) {
       header {
         flex-direction: column;
@@ -382,6 +521,10 @@
       .hero-panel {
         order: -1;
       }
+
+      .review-form {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
     @media (max-width: 540px) {
@@ -395,6 +538,10 @@
 
       .hero-panel-images img {
         height: 110px;
+      }
+
+      .reviews-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
@@ -448,7 +595,7 @@
           <div class="trust-strip">
             <div class="trust-pill">
               <span class="trust-dot"></span>
-              Messages used only to generate your response – then cleared from our system.
+              Messages are used only to generate your response – then cleared from our system.
             </div>
             <div class="trust-pill">
               <span class="trust-dot"></span>
@@ -472,9 +619,7 @@
             </div>
 
             <div class="hero-panel-images">
-              <!-- Idéalement : remplace par des images plus symboliques
-                   - gauche : deux personnes dos à dos / tension
-                   - droite : deux personnes qui se reparlent calmement -->
+              <!-- À remplacer plus tard par tes propres visuels -->
               <img
                 src="https://images.pexels.com/photos/5558232/pexels-photo-5558232.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Two people in silent conflict sitting apart" />
@@ -514,6 +659,81 @@
           </div>
         </aside>
       </section>
+
+      <!-- REVIEWS SECTION -->
+      <section class="reviews" aria-label="User reviews">
+        <div class="reviews-header">
+          <div>
+            <div class="reviews-title">What people say about FixTogether</div>
+            <p class="reviews-subtitle">
+              Real stories from people who used a calm, neutral message instead of another fight.
+            </p>
+          </div>
+          <div class="stars">
+            ★★★★★ &nbsp; Average rating 4.8 / 5
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-role">COUPLE AFTER A BIG FIGHT</div>
+            <p class="review-text">
+              “We hadn’t spoken properly for two weeks. The message FixTogether
+              suggested was honest but gentle. It helped us apologise without
+              blaming each other again.”
+            </p>
+            <div class="review-footer">
+              <span class="review-name">Maya &amp; Leo</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-role">SIBLINGS · FAMILY TENSION</div>
+            <p class="review-text">
+              “I used it to talk to my younger brother after a money issue.
+              It made it easier to explain my side without sounding angry.
+              We’re on good terms again.”
+            </p>
+            <div class="review-footer">
+              <span class="review-name">Amina, 29</span>
+              <span class="review-rating">★★★★☆</span>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-role">COWORKERS · WORK MISUNDERSTANDING</div>
+            <p class="review-text">
+              “I was scared to message my colleague directly. The assistant
+              helped me choose clear but respectful words. The situation calmed
+              down the same day.”
+            </p>
+            <div class="review-footer">
+              <span class="review-name">Daniel, team lead</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+          </article>
+        </div>
+
+        <form class="review-form" onsubmit="event.preventDefault(); alert('Thank you for your feedback ♥');">
+          <div>
+            <label for="review-text">Leave your review (optional)</label>
+            <textarea id="review-text" name="review" placeholder="How did FixTogether help you?"></textarea>
+          </div>
+          <div class="review-form-right">
+            <div>
+              <label for="review-name">Your name (or initials)</label>
+              <input id="review-name" name="name" placeholder="e.g. S.&nbsp;Rodriguez" />
+            </div>
+            <button type="submit" class="btn-primary">
+              Share feedback
+            </button>
+            <div class="review-helper">
+              By sending a review, you agree that we may display it anonymously on this page.
+            </div>
+          </div>
+        </form>
+      </section>
     </main>
 
     <footer>
@@ -531,6 +751,7 @@
   </script>
 </body>
 </html>
+
 
 
 
