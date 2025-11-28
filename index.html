@@ -90,9 +90,27 @@
 
     nav {
       display: flex;
-      gap: 16px;
+      gap: 12px;
       align-items: center;
       font-size: 14px;
+    }
+
+    .nav-link {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.65);
+      color: var(--text-muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      background: rgba(37, 99, 235, 0.2);
+      color: #e5e7eb;
+      border-color: rgba(96, 165, 250, 0.8);
     }
 
     .btn-primary {
@@ -188,7 +206,7 @@
       margin-top: 2px;
     }
 
-    /* EXAMPLE PANEL */
+    /* IMAGE + TAGLINE PANEL */
 
     .example-panel {
       border-radius: 28px;
@@ -216,7 +234,7 @@
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(248, 250, 252, 0.12);
-      height: 260px;
+      height: 320px; /* plus grand sur desktop */
       margin-bottom: 14px;
       background: radial-gradient(circle at center, #111827, #020617 70%);
     }
@@ -460,7 +478,7 @@
       }
 
       .hero-image {
-        height: 220px;
+        height: 240px; /* plus petit sur mobile */
       }
 
       .review-form {
@@ -483,6 +501,7 @@
       </div>
 
       <nav>
+        <a href="howitworks.html" class="nav-link">How it works</a>
         <button class="btn-primary" onclick="location.href='fix.html'">
           Start a Fix
         </button>
@@ -671,6 +690,7 @@
   </script>
 </body>
 </html>
+
 
 
 
