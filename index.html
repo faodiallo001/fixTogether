@@ -203,37 +203,13 @@
 
     .example-header {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       font-size: 11px;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.14em;
       margin-bottom: 10px;
-    }
-
-    .hero-status-pill {
-      border-radius: 999px;
-      padding: 4px 10px;
-      font-size: 10px;
-      border: 1px solid rgba(234, 179, 8, 0.7);
-      color: var(--warm-main);
-      background: linear-gradient(
-        120deg,
-        rgba(250, 204, 21, 0.12),
-        rgba(234, 179, 8, 0.32)
-      );
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 10%, #fefce8, #eab308);
-      box-shadow: 0 0 12px rgba(250, 204, 21, 0.9);
     }
 
     .hero-image {
@@ -252,25 +228,14 @@
       display: block;
     }
 
-    .mini-example {
-      font-size: 11px;
-      color: var(--text-muted);
-      padding-top: 10px;
-      border-top: 1px dashed rgba(148, 163, 184, 0.45);
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+    .example-tagline {
+      margin: 4px 16px 6px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-main);
+      opacity: 0.95;
+      line-height: 1.6;
     }
-
-    .mini-col-title {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--warm-main);
-      margin-bottom: 3px;
-    }
-
-    .mini-text { line-height: 1.5; }
 
     /* REVIEWS */
 
@@ -498,10 +463,6 @@
         height: 220px;
       }
 
-      .mini-example {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
       .review-form {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -540,8 +501,8 @@
           <span>we talk for you.</span>
         </h1>
         <p class="hero-subtitle">
-          You both write your side of the story. We read what each of you says
-          and turn it into one calm message you can share, so you finally
+          You both write your side of the story. FixTogether turns your words
+          into calm, balanced messages you can share, so you finally
           understand each other again.
         </p>
         <div class="hero-actions">
@@ -557,41 +518,19 @@
         </p>
       </section>
 
-      <!-- EXAMPLE PANEL -->
+      <!-- IMAGE + TAGLINE PANEL -->
       <section class="example-panel">
         <div class="example-header">
-          <span>Example</span>
-          <div class="hero-status-pill">
-            <span class="status-dot"></span>
-            Fix in progress
-          </div>
+          <span>REAL PEOPLE • REAL SITUATIONS</span>
         </div>
 
         <div class="hero-image">
-          <!-- IMPORTANT : ajoute ton image dans /public/couple.jpg -->
-          <img src="people.jpg" alt="People reconciling" />
+          <img src="people.jpg" alt="People reconnecting and hugging" />
         </div>
 
-        <div class="mini-example">
-          <div>
-            <div class="mini-col-title">You write</div>
-            <p class="mini-text">
-              “After our last fight we stopped talking. I feel rejected and sad.”
-            </p>
-          </div>
-          <div>
-            <div class="mini-col-title">They write</div>
-            <p class="mini-text">
-              “I felt attacked and judged. I needed space but I still care.”
-            </p>
-          </div>
-          <div>
-            <div class="mini-col-title">We send</div>
-            <p class="mini-text">
-              One clear, calm message that puts both feelings together, without blame.
-            </p>
-          </div>
-        </div>
+        <p class="example-tagline">
+          We help people reconnect when silence, pride and hurt are in the way.
+        </p>
       </section>
 
       <!-- REVIEWS -->
