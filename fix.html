@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,10 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --bg-main: #020617;
-      --bg-card: rgba(15, 23, 42, 0.96);
-      --accent: #3b82f6;
-      --accent-soft: #60a5fa;
+      --bg-main: #020617; /* bleu nuit */
+      --bg-card: rgba(12, 19, 38, 0.96);
+      --accent: #3b82f6;      /* bleu */
+      --accent-soft: #60a5fa; /* bleu clair */
+      --warm-main: #f7e6b5;   /* beige or */
+      --warm-soft: #e7c880;   /* or sable */
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
       --border-subtle: rgba(148, 163, 184, 0.25);
@@ -21,22 +23,77 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+      background:
+        radial-gradient(circle at top, #0b1120 0, #020617 50%, #000 100%);
       color: var(--text-main);
       min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Futuristic background glow layers */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -120px;
+      pointer-events: none;
+      opacity: 0.4;
+      mix-blend-mode: screen;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.22), transparent 55%),
+        radial-gradient(circle at 90% 20%, rgba(99, 102, 241, 0.2), transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(250, 204, 21, 0.16), transparent 55%);
+      z-index: -2;
+      animation: drift 16s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      opacity: 0.18;
+      filter: blur(10px);
+      animation-duration: 22s;
+    }
+
+    @keyframes drift {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(10px, -12px, 0) scale(1.03); }
     }
 
     .page {
       max-width: 1120px;
       margin: 0 auto;
       padding: 32px 16px 64px;
+      position: relative;
     }
+
+    /* subtle grid overlay */
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(
+          rgba(148, 163, 184, 0.07) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(148, 163, 184, 0.06) 1px,
+          transparent 1px
+        );
+      background-size: 26px 26px;
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: -1;
+      mask-image: radial-gradient(circle at top, black 0, black 45%, transparent 100%);
+    }
+
+    /* HEADER */
 
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
 
     .logo {
@@ -53,23 +110,28 @@
         from 160deg,
         #0ea5e9,
         #6366f1,
-        #22c55e,
+        #fbbf24,
+        #f97316,
         #0ea5e9
       );
       padding: 2px;
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.8),
+        0 0 18px rgba(59, 130, 246, 0.6);
     }
 
     .logo-mark-inner {
       width: 100%;
       height: 100%;
       border-radius: inherit;
-      background: radial-gradient(circle at 30% 10%, #e5f3ff, #0f172a 55%, #020617 100%);
+      background: radial-gradient(circle at 30% 10%, #fefce8, #0f172a 55%, #020617 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 14px;
       font-weight: 600;
-      color: #e5f3ff;
+      color: #fefce8;
+      text-shadow: 0 0 6px rgba(15, 23, 42, 0.8);
     }
 
     .logo-text-main {
@@ -86,29 +148,45 @@
       color: var(--text-muted);
       text-decoration: none;
       font-size: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
 
     nav a:hover {
-      color: var(--accent-soft);
+      background: rgba(37, 99, 235, 0.2);
+      color: #e5e7eb;
+      border-color: rgba(96, 165, 250, 0.8);
     }
 
     .btn-primary {
       border-radius: 999px;
-      padding: 10px 18px;
+      padding: 10px 22px;
       border: none;
       cursor: pointer;
-      background: linear-gradient(120deg, var(--accent), var(--accent-soft));
-      color: white;
+      background: linear-gradient(120deg, var(--accent), var(--warm-soft));
+      color: #0b1120;
       font-weight: 600;
       font-size: 14px;
-      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.45);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      box-shadow: 0 18px 40px rgba(250, 204, 21, 0.4);
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        opacity 0.15s ease,
+        filter 0.15s ease;
     }
 
     .btn-primary:hover {
-      transform: translateY(-1px);
-      opacity: 0.96;
-      box-shadow: 0 24px 60px rgba(37, 99, 235, 0.6);
+      transform: translateY(-1px) scale(1.01);
+      opacity: 0.97;
+      filter: saturate(1.05);
+      box-shadow: 0 24px 60px rgba(234, 179, 8, 0.55);
     }
 
     .layout {
@@ -119,21 +197,24 @@
     }
 
     .hero-title {
-      font-size: clamp(26px, 4vw, 32px);
+      font-size: clamp(30px, 5vw, 38px);
       margin-bottom: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-shadow: 0 0 24px rgba(15, 23, 42, 0.9);
     }
 
     .hero-title span {
-      background: linear-gradient(120deg, #38bdf8, #6366f1);
+      background: linear-gradient(120deg, #38bdf8, #6366f1, #facc15);
       -webkit-background-clip: text;
       color: transparent;
     }
 
     .hero-subtitle {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-muted);
       max-width: 520px;
-      line-height: 1.6;
+      line-height: 1.7;
       margin-bottom: 14px;
     }
 
@@ -144,16 +225,32 @@
     }
 
     .hero-note span {
-      color: var(--accent-soft);
+      color: var(--warm-main);
       font-weight: 500;
     }
 
     .card {
+      position: relative;
       border-radius: var(--radius-xl);
       padding: 20px 18px;
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      opacity: 0.18;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(96, 165, 250, 0.23), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(250, 204, 21, 0.2), transparent 55%);
+      pointer-events: none;
+      z-index: -1;
+      transform: translate3d(0, 8px, 0);
+      filter: blur(2px);
     }
 
     .field {
@@ -184,6 +281,11 @@
       padding: 9px 10px;
       font-size: 13px;
       outline: none;
+      transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease,
+        transform 0.1s ease;
     }
 
     textarea {
@@ -196,8 +298,27 @@
       color: #6b7280;
     }
 
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--accent-soft);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5), 0 0 0 6px rgba(37, 99, 235, 0.18);
+      background: rgba(15, 23, 42, 0.96);
+      transform: translateY(-0.5px);
+    }
+
     select {
       appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, #9ca3af 50%),
+        linear-gradient(135deg, #9ca3af 50%, transparent 50%);
+      background-position:
+        calc(100% - 14px) 50%,
+        calc(100% - 9px) 50%;
+      background-size:
+        6px 6px,
+        6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 28px;
     }
 
     .price-note {
@@ -215,7 +336,7 @@
     .side-card-text {
       font-size: 12px;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.7;
       margin-bottom: 10px;
     }
 
@@ -232,6 +353,8 @@
       padding: 4px 10px;
       border: 1px solid rgba(148, 163, 184, 0.6);
       color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(4px);
     }
 
     footer {
@@ -250,6 +373,10 @@
       color: var(--accent-soft);
       text-decoration: none;
       font-size: 11px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 840px) {
@@ -300,8 +427,9 @@
             Start a <span>Fix</span>
           </h1>
           <p class="hero-subtitle">
-            This is your space to say what really happened and how you feel. We’ll turn
-            both sides into one calmer, respectful message you can send.
+            This is your space to explain what really happened and how you feel. FixTogether
+            will later read both sides and turn them into one calmer, fair explanation with
+            next steps for both of you.
           </p>
           <p class="hero-note">
             Only the person who starts pays. <span>4.99&nbsp;$</span> for one situation.  
@@ -319,7 +447,7 @@
               <small>
                 Describe what was said or done. Include only what is true from your point of view.
               </small>
-              <textarea id="what" placeholder="Write your version here..." required></textarea>
+              <textarea id="what" placeholder="Write what happened here..." required></textarea>
             </div>
 
             <div class="field">
@@ -344,11 +472,11 @@
 
             <div class="field">
               <label for="name">Your name or nickname (optional)</label>
-              <input id="name" type="text" placeholder="You can stay anonymous if you prefer" />
+              <input id="name" type="text" placeholder="Example: Faoziat (used in your invite message)" />
             </div>
 
             <button type="button" id="payBtn" class="btn-primary">
-              Continue to payment
+              Fix it
             </button>
             <div class="price-note">
               Once payment is confirmed, you’ll receive a private link to send to the other person.
@@ -360,8 +488,8 @@
           <div class="side-card-title">Before you write</div>
           <div class="side-card-text">
             FixTogether is not a place to insult or attack. It’s a space to
-            explain your side clearly and respectfully, so both of you can move
-            forward with less tension.
+            explain what happened clearly and respectfully, so both of you can move
+            forward with less tension and more understanding.
           </div>
 
           <div class="side-card-title">Best used for</div>
@@ -435,6 +563,7 @@
   </script>
 </body>
 </html>
+
 
 
 
