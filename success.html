@@ -124,11 +124,11 @@
 
     input {
       flex: 1;
-      border-radius: 999px;
+      border-radius: 16px;
       border: 1px solid rgba(148, 163, 184, 0.7);
       background: rgba(15, 23, 42, 0.9);
       color: var(--text-main);
-      padding: 8px 10px;
+      padding: 10px 12px;
       font-size: 12px;
     }
 
@@ -182,13 +182,12 @@
     <div class="steps">
       <div class="step">
         <div class="step-badge">1</div>
-        <div class="step-text">Copy the link below.</div>
+        <div class="step-text">Copy the message below.</div>
       </div>
       <div class="step">
         <div class="step-badge">2</div>
         <div class="step-text">
-          Send it by WhatsApp, SMS or email with a short note like
-          “Can we try this to fix what happened?”
+          Paste it into WhatsApp, SMS or email and send it to the other person.
         </div>
       </div>
       <div class="step">
@@ -199,42 +198,63 @@
       </div>
     </div>
 
-    <div class="link-block-label">Your private FixTogether link</div>
+    <div class="link-block-label">Message to send</div>
     <div class="link-row">
       <input id="linkInput" type="text" readonly />
-      <button id="copyBtn">Copy link</button>
+      <button id="copyBtn">Copy</button>
     </div>
     <div class="hint">
-      You can reuse this link if you want to resend it later to the same person.
+      You can reuse this same message if you need to resend it later.
     </div>
   </div>
 
   <script>
-    // récupère les données passées par Stripe (caseData encodé)
+    // On récupère le paramètre data dans l'URL
     const params = new URLSearchParams(window.location.search);
-    const data = params.get("data");
+    const dataParam = params.get("data");
 
-    // construit l'URL pour la personne qui doit répondre
     const origin = window.location.origin;
-    const replyUrl = `${origin}/reply.html?data=${data}`;
+    const replyUrl = `${origin}/reply.html?data=${dataParam || ""}`;
+
+    let name = "";
+
+    // On essaie de décoder le JSON d'origine pour récupérer le name
+    if (dataParam) {
+      try {
+        const base64 = decodeURIComponent(dataParam);
+        const json = decodeURIComponent(escape(atob(base64)));
+        const obj = JSON.parse(json);
+        if (obj && typeof obj.name === "string") {
+          name = obj.name.trim();
+        }
+      } catch (e) {
+        console.error("Could not decode case data", e);
+      }
+    }
+
+    const displayName = name || "me";
+
+    const message = `Hi, it's ${displayName}. I used FixTogether to help us fix our issue. Can you share your side here?\n${replyUrl}`;
 
     const linkInput = document.getElementById("linkInput");
     const copyBtn = document.getElementById("copyBtn");
 
-    linkInput.value = replyUrl;
+    linkInput.value = message;
 
     copyBtn.addEventListener("click", async () => {
       try {
-        await navigator.clipboard.writeText(replyUrl);
+        await navigator.clipboard.writeText(message);
         copyBtn.textContent = "Copied";
-        setTimeout(() => (copyBtn.textContent = "Copy link"), 1500);
+        setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
       } catch (err) {
-        alert("Could not copy. Please copy manually.");
+        console.error(err);
+        alert("Could not copy. Please select and copy the text manually.");
       }
     });
   </script>
 </body>
 </html>
+
 
 
 
