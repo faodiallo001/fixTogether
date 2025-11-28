@@ -6,10 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --bg-main: #020617;
-      --bg-card: rgba(15, 23, 42, 0.96);
-      --accent: #3b82f6;
-      --accent-soft: #60a5fa;
+      --bg-main: #020617; /* bleu nuit */
+      --bg-card: rgba(12, 19, 38, 0.96);
+      --accent: #3b82f6;      /* bleu */
+      --accent-soft: #60a5fa; /* bleu clair */
+      --warm-main: #f7e6b5;   /* beige or */
+      --warm-soft: #e7c880;   /* or sable */
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
       --border-subtle: rgba(148, 163, 184, 0.25);
@@ -21,16 +23,71 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+      background:
+        radial-gradient(circle at top, #0b1120 0, #020617 50%, #000 100%);
       color: var(--text-main);
       min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Futuristic background glow layers */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -120px;
+      pointer-events: none;
+      opacity: 0.4;
+      mix-blend-mode: screen;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.22), transparent 55%),
+        radial-gradient(circle at 90% 20%, rgba(99, 102, 241, 0.2), transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(250, 204, 21, 0.16), transparent 55%);
+      z-index: -2;
+      animation: drift 16s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      opacity: 0.18;
+      filter: blur(10px);
+      animation-duration: 22s;
+    }
+
+    @keyframes drift {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(10px, -12px, 0) scale(1.03); }
     }
 
     .page {
       max-width: 1120px;
       margin: 0 auto;
       padding: 32px 16px 64px;
+      position: relative;
     }
+
+    /* subtle grid overlay */
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(
+          rgba(148, 163, 184, 0.07) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(148, 163, 184, 0.06) 1px,
+          transparent 1px
+        );
+      background-size: 26px 26px;
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: -1;
+      mask-image: radial-gradient(circle at top, black 0, black 45%, transparent 100%);
+    }
+
+    /* HEADER */
 
     header {
       display: flex;
@@ -53,23 +110,28 @@
         from 160deg,
         #0ea5e9,
         #6366f1,
-        #22c55e,
+        #fbbf24,
+        #f97316,
         #0ea5e9
       );
       padding: 2px;
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.8),
+        0 0 18px rgba(59, 130, 246, 0.6);
     }
 
     .logo-mark-inner {
       width: 100%;
       height: 100%;
       border-radius: inherit;
-      background: radial-gradient(circle at 30% 10%, #e5f3ff, #0f172a 55%, #020617 100%);
+      background: radial-gradient(circle at 30% 10%, #fefce8, #0f172a 55%, #020617 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 14px;
       font-weight: 600;
-      color: #e5f3ff;
+      color: #fefce8;
+      text-shadow: 0 0 6px rgba(15, 23, 42, 0.8);
     }
 
     .logo-text-main {
@@ -86,11 +148,22 @@
       color: var(--text-muted);
       text-decoration: none;
       font-size: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
 
     nav a:hover {
-      color: var(--accent-soft);
+      background: rgba(37, 99, 235, 0.2);
+      color: #e5e7eb;
+      border-color: rgba(96, 165, 250, 0.8);
     }
+
+    /* LAYOUT & CARDS */
 
     .layout {
       display: grid;
@@ -100,20 +173,39 @@
     }
 
     .card {
+      position: relative;
       border-radius: var(--radius-xl);
       padding: 20px 18px;
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      opacity: 0.18;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(96, 165, 250, 0.23), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(250, 204, 21, 0.2), transparent 55%);
+      pointer-events: none;
+      z-index: -1;
+      transform: translate3d(0, 8px, 0);
+      filter: blur(2px);
     }
 
     .hero-title {
       font-size: clamp(24px, 4vw, 30px);
       margin-bottom: 8px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(15, 23, 42, 0.9);
     }
 
     .hero-title span {
-      background: linear-gradient(120deg, #38bdf8, #6366f1);
+      background: linear-gradient(120deg, #38bdf8, #6366f1, #facc15);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -127,7 +219,7 @@
 
     .section-title {
       font-size: 15px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       font-weight: 600;
     }
 
@@ -151,7 +243,11 @@
       font-size: 11px;
       color: var(--text-muted);
       margin-top: 4px;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(4px);
     }
+
+    /* FORM */
 
     .field {
       margin-bottom: 14px;
@@ -180,6 +276,11 @@
       padding: 9px 10px;
       font-size: 13px;
       outline: none;
+      transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease,
+        transform 0.1s ease;
     }
 
     textarea {
@@ -192,23 +293,38 @@
       color: #6b7280;
     }
 
+    input:focus,
+    textarea:focus {
+      border-color: var(--accent-soft);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5), 0 0 0 6px rgba(37, 99, 235, 0.18);
+      background: rgba(15, 23, 42, 0.96);
+      transform: translateY(-0.5px);
+    }
+
     .btn-primary {
       border-radius: 999px;
-      padding: 9px 18px;
+      padding: 9px 20px;
       border: none;
       cursor: pointer;
       background: linear-gradient(120deg, var(--accent), var(--accent-soft));
       color: white;
       font-weight: 600;
       font-size: 14px;
-      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.45);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.6);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        opacity 0.15s ease,
+        filter 0.15s ease;
     }
 
     .btn-primary:hover {
-      transform: translateY(-1px);
-      opacity: 0.96;
-      box-shadow: 0 24px 60px rgba(37, 99, 235, 0.6);
+      transform: translateY(-1px) scale(1.01);
+      opacity: 0.97;
+      filter: saturate(1.05);
+      box-shadow: 0 24px 60px rgba(37, 99, 235, 0.85);
     }
 
     .result-block {
@@ -228,6 +344,8 @@
       line-height: 1.5;
     }
 
+    /* FOOTER */
+
     footer {
       margin-top: 40px;
       font-size: 11px;
@@ -245,6 +363,12 @@
       text-decoration: none;
       font-size: 11px;
     }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE */
 
     @media (max-width: 840px) {
       header {
@@ -289,13 +413,14 @@
 
     <main>
       <div class="layout">
+        <!-- LEFT: what they shared -->
         <section class="card">
           <h1 class="hero-title">
             Someone invited you to <span>FixTogether</span>
           </h1>
           <p class="hero-subtitle" id="introText">
             You’ve been sent this link because a conflict or misunderstanding has been
-            heavy for both of you. First, read what they shared. Then you’ll have space
+            heavy between you. First, read what they shared. Then you’ll have space
             to answer calmly in your own words.
           </p>
 
@@ -308,11 +433,12 @@
           <div id="otherGoal" class="pill" style="display:none;"></div>
         </section>
 
+        <!-- RIGHT: your turn -->
         <section class="card">
           <h2 class="section-title">Your turn</h2>
           <p class="hero-subtitle">
             This is not about winning or losing. It’s about both of you being heard,
-            so you can move forward with less tension.
+            so FixTogether can create a calmer, fair explanation for both sides.
           </p>
 
           <form id="replyForm">
@@ -324,19 +450,19 @@
             <div class="field">
               <label for="yourView">How do you see the situation?</label>
               <small>Describe what happened from your point of view.</small>
-              <textarea id="yourView" required></textarea>
+              <textarea id="yourView" placeholder="Write your side here..." required></textarea>
             </div>
 
             <div class="field">
               <label for="yourFeel">How do you feel about it?</label>
               <small>Hurt, angry, sad, tired, confused… put it into words.</small>
-              <textarea id="yourFeel" required></textarea>
+              <textarea id="yourFeel" placeholder="Put your feelings into words here..." required></textarea>
             </div>
 
             <button type="submit" class="btn-primary">Generate a calm message</button>
 
             <div id="resultBlock" class="result-block" style="display:none;">
-              <div>This is a neutral message you can both use as a starting point:</div>
+              <div>This is a calmer message FixTogether created based on both sides:</div>
               <div id="resultText" class="result-text"></div>
             </div>
           </form>
@@ -450,4 +576,5 @@
   </script>
 </body>
 </html>
+
 
