@@ -301,30 +301,24 @@
       transform: translateY(-0.5px);
     }
 
+    /* bouton même style que sur fix.html */
     .btn-primary {
       border-radius: 999px;
-      padding: 9px 20px;
+      padding: 10px 18px;
       border: none;
       cursor: pointer;
-      background: linear-gradient(120deg, var(--accent), var(--accent-soft));
-      color: white;
+      background: linear-gradient(120deg, var(--accent), var(--warm-soft));
+      color: #0b1120;
       font-weight: 600;
       font-size: 14px;
-      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.6);
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease,
-        opacity 0.15s ease,
-        filter 0.15s ease;
+      box-shadow: 0 18px 40px rgba(250, 204, 21, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
     }
 
     .btn-primary:hover {
-      transform: translateY(-1px) scale(1.01);
-      opacity: 0.97;
-      filter: saturate(1.05);
-      box-shadow: 0 24px 60px rgba(37, 99, 235, 0.85);
+      transform: translateY(-1px);
+      opacity: 0.96;
+      box-shadow: 0 24px 60px rgba(234, 179, 8, 0.55);
     }
 
     .result-block {
@@ -413,18 +407,18 @@
 
     <main>
       <div class="layout">
-        <!-- LEFT: what they shared -->
+        <!-- LEFT: their version -->
         <section class="card">
           <h1 class="hero-title">
-            Someone invited you to <span>FixTogether</span>
+            <span id="inviterNameHeading">Someone</span> invited you to <span>FixTogether</span>
           </h1>
           <p class="hero-subtitle" id="introText">
             You’ve been sent this link because a conflict or misunderstanding has been
-            heavy between you. First, read what they shared. Then you’ll have space
-            to answer calmly in your own words.
+            heavy between you. First, read their version of what happened. Then you’ll
+            have space to answer calmly in your own words.
           </p>
 
-          <h2 class="section-title">What they shared</h2>
+          <h2 class="section-title">Here’s their version of what happened</h2>
 
           <div id="otherTitle" class="pill" style="display:none;"></div>
 
@@ -433,9 +427,9 @@
           <div id="otherGoal" class="pill" style="display:none;"></div>
         </section>
 
-        <!-- RIGHT: your turn -->
+        <!-- RIGHT: your version -->
         <section class="card">
-          <h2 class="section-title">Your turn</h2>
+          <h2 class="section-title">Your version</h2>
           <p class="hero-subtitle">
             This is not about winning or losing. It’s about both of you being heard,
             so FixTogether can create a calmer, fair explanation for both sides.
@@ -443,23 +437,36 @@
 
           <form id="replyForm">
             <div class="field">
-              <label for="yourName">Your name or nickname (optional)</label>
-              <input id="yourName" type="text" placeholder="You can stay anonymous if you prefer" />
+              <label for="yourName">Your name</label>
+              <input
+                id="yourName"
+                type="text"
+                placeholder="Write your name here"
+                required
+              />
             </div>
 
             <div class="field">
               <label for="yourView">How do you see the situation?</label>
               <small>Describe what happened from your point of view.</small>
-              <textarea id="yourView" placeholder="Write your side here..." required></textarea>
+              <textarea
+                id="yourView"
+                placeholder="Write your side here..."
+                required
+              ></textarea>
             </div>
 
             <div class="field">
               <label for="yourFeel">How do you feel about it?</label>
               <small>Hurt, angry, sad, tired, confused… put it into words.</small>
-              <textarea id="yourFeel" placeholder="Put your feelings into words here..." required></textarea>
+              <textarea
+                id="yourFeel"
+                placeholder="Put your feelings into words here..."
+                required
+              ></textarea>
             </div>
 
-            <button type="submit" class="btn-primary">Generate a calm message</button>
+            <button type="submit" class="btn-primary">Let’s fix this</button>
 
             <div id="resultBlock" class="result-block" style="display:none;">
               <div>This is a calmer message FixTogether created based on both sides:</div>
@@ -497,10 +504,20 @@
 
     const data = getDataFromUrl();
 
+    const inviterHeading = document.getElementById("inviterNameHeading");
+    const introText = document.getElementById("introText");
+
     if (!data || !data.what) {
-      document.getElementById("introText").textContent =
+      introText.textContent =
         "The invitation link seems incomplete or expired. Please ask the person who sent it to generate a new one.";
     } else {
+      const inviterName = (data.name && data.name.trim()) || "Someone";
+      inviterHeading.textContent = inviterName;
+
+      introText.textContent =
+        `You’ve been sent this link because a conflict or misunderstanding has been heavy between you and ${inviterName}. ` +
+        "First, read their version of what happened. Then you’ll have space to answer calmly in your own words.";
+
       if (data.title) {
         const t = document.getElementById("otherTitle");
         t.textContent = data.title;
@@ -536,6 +553,10 @@
       const yourView = document.getElementById("yourView").value.trim();
       const yourFeel = document.getElementById("yourFeel").value.trim();
 
+      if (!yourName) {
+        alert("Please enter your name.");
+        return;
+      }
       if (!yourView || !yourFeel) {
         alert("Please fill in how you see the situation and how you feel.");
         return;
@@ -543,7 +564,7 @@
 
       const payloadA = JSON.stringify(data);
       const payloadB =
-        (yourName ? `From ${yourName}:\n` : "") +
+        `From ${yourName}:\n` +
         yourView +
         "\n\nFeelings:\n" +
         yourFeel;
@@ -576,5 +597,6 @@
   </script>
 </body>
 </html>
+
 
 
