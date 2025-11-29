@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "stripe": "^16.0.0",
-    "openai": "^4.73.0"
+    "openai": "^4.73.0",
+    "resend": "^4.0.0"
   }
 }
