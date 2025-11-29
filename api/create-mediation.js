@@ -1,27 +1,27 @@
 const OpenAI = require("openai");
 
 module.exports = async (req, res) => {
+  // Only allow POST
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  try {
-    if (!process.env.OPENAI_API_KEY) {
-      return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
-    }
+  // Check API key
+  if (!process.env.OPENAI_API_KEY) {
+    return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
+  }
 
-    // Vercel peut envoyer le body en string ou en objet,
-    // donc on gère les deux cas comme dans create-checkout
+  try {
+    // Vercel can send body as string or object
     let body = req.body;
     if (typeof body === "string") {
       body = JSON.parse(body || "{}");
-    } else if (!body) {
-      body = {};
     }
 
-    const { versionA, versionB, goal } = body;
+    // 👇 This must match what reply.html sends
+    const { personA, personB } = body;
 
-    if (!versionA || !versionB || !goal) {
+    if (!personA || !personB) {
       return res.status(400).json({ error: "Missing request fields" });
     }
 
@@ -29,61 +29,65 @@ module.exports = async (req, res) => {
       apiKey: process.env.OPENAI_API_KEY,
     });
 
-    const prompt = `
-You are a calm, wise, emotionally intelligent mediator.
-Two people are in conflict. Your job is to write a single, balanced, respectful
-message that:
+    const systemPrompt = `
+You are FixTogether, an AI mediator.
 
-- acknowledges both sides fairly
-- reduces tension
-- avoids blaming
-- promotes peace, clarity and reconnection
-- is short, simple, warm and human
-- NEVER mentions AI or mediation
-- NEVER sounds robotic
+Your job:
+- Read both sides of a conflict written by two people.
+- Write ONE single calm, neutral message that speaks to BOTH of them at the same time.
+- Explain where each person misunderstood the other, where mistakes were made, and what could have been done differently — without taking sides.
+- Acknowledge emotions from both sides (hurt, anger, fear, frustration) in a validating, gentle way.
+- Show what each person did right, and what each person could improve, very clearly but respectfully.
+- At the end of the message, give 3–5 practical next steps they can use (for example: how to talk, how to set boundaries, how to apologise, or how to end things peacefully if needed).
 
-Person A said:
-"${versionA}"
+Tone:
+- Calm, human, warm, but firm when needed.
+- No therapy jargon, no legal language.
+- No emojis, no jokes, no slang.
+- Never say "as an AI". You are just "FixTogether".
+    `.trim();
 
-Person B said:
-"${versionB}"
+    const userPrompt = `
+Here are the two versions of the situation.
 
-They both want:
-"${goal}"
+PERSON A (the one who started FixTogether):
+${personA}
 
-Now, write ONE final message as if you were a human mediator.
-Tone: warm, respectful, soft, emotionally intelligent.
+PERSON B (the one who received the link and replied):
+${personB}
 
-Important:
-- speak directly to "you two"
-- never say "AI" or "assistant"
-- do not take sides
-`;
+Now write ONE message addressed to both of them at the same time.
 
-    const response = await client.responses.create({
-      // tu peux mettre "gpt-4o-mini" pour que ça te coûte moins cher
-      model: "gpt-4o-mini",
-      input: prompt,
+Structure:
+1) Short opening that calms things down and shows you understand both.
+2) Clear explanation of what happened, showing where each person is coming from.
+3) What each person did well.
+4) What each person could have done differently (very clear but respectful).
+5) 3–5 practical next steps adapted to this situation (reconnect / talk / set boundaries / or end things gently).
+
+Write it as if it will appear on their FixTogether page and both will read the EXACT SAME message.
+    `.trim();
+
+    const completion = await client.chat.completions.create({
+      model: "gpt-4.1-mini",      // tu peux changer pour gpt-4.1 si tu veux
+      temperature: 0.6,
+      max_tokens: 900,
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt },
+      ],
     });
 
-    // nouvelle SDK : on essaie d'abord output_text, sinon on va chercher dans output
-    const text =
-      response.output_text ||
-      (response.output &&
-        response.output[0] &&
-        response.output[0].content &&
-        response.output[0].content[0] &&
-        response.output[0].content[0].text) ||
-      "We couldn't generate a response.";
+    const message =
+      completion.choices?.[0]?.message?.content?.trim() ||
+      "Sorry, FixTogether could not generate a message this time.";
 
-    return res.status(200).json({ message: text });
-  } catch (error) {
-    console.error("Mediation error:", error);
-    return res.status(500).json({
-      error: "Mediation failed",
-      details: error.message || String(error),
-    });
+    return res.status(200).json({ message });
+  } catch (err) {
+    console.error("Error in create-mediation:", err);
+    return res.status(500).json({ error: "Failed to create mediation message" });
   }
 };
+
 
 
