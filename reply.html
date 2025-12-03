@@ -574,14 +574,16 @@
 
         const result = await response.json();
 
-        if (!response.ok || !result.ok) {
-          console.error("Mediation error:", result);
-          alert("Could not complete the Fix. Please try again.");
-          return;
-        }
+// On vérifie que l'API renvoie bien { success: true }
+if (!response.ok || !result.success) {
+  console.error("Mediation error:", result);
+  alert("Could not complete the Fix. Please try again.");
+  return;
+}
 
-        alert("FixTogether has sent the final message to both of your emails.");
-        replyForm.reset();
+alert("FixTogether has sent the final message to both of your emails.");
+replyForm.reset();
+
       } catch (err) {
         console.error(err);
         alert("Something went wrong. Please try again.");
