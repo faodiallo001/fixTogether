@@ -1,14 +1,31 @@
 const OpenAI = require("openai");
+const { Resend } = require("resend");
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 module.exports = async (req, res) => {
   // Only allow POST
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return res.status(405).json({ success: false, error: "Method not allowed" });
   }
 
-  // Check API key
+  // Check API keys
   if (!process.env.OPENAI_API_KEY) {
-    return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
+    console.error("Missing OPENAI_API_KEY");
+    return res
+      .status(500)
+      .json({ success: false, error: "Missing OPENAI_API_KEY" });
+  }
+
+  if (!process.env.RESEND_API_KEY) {
+    console.error("Missing RESEND_API_KEY");
+    return res
+      .status(500)
+      .json({ success: false, error: "Missing RESEND_API_KEY" });
   }
 
   try {
@@ -19,15 +36,17 @@ module.exports = async (req, res) => {
     }
 
     // 👇 This must match what reply.html sends
-    const { personA, personB } = body;
+    const { personA, personB, emailA, emailB } = body || {};
 
-    if (!personA || !personB) {
-      return res.status(400).json({ error: "Missing request fields" });
+    if (!personA || !personB || !emailA || !emailB) {
+      console.error("Missing request fields:", body);
+      return res.status(400).json({
+        success: false,
+        error: "Missing personA, personB, emailA or emailB",
+      });
     }
 
-    const client = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-    });
+    // ---------- OPENAI PART (ton prompt) ----------
 
     const systemPrompt = `
 You are FixTogether, an AI mediator.
@@ -117,8 +136,10 @@ Do not add any section titles like "Section 1" or "Analysis".
 Just write the message naturally, with short paragraphs and, if useful, bullet points for clarity.
     `.trim();
 
-    const completion = await client.chat.completions.create({
-      model: "gpt-4.1-mini", // you can upgrade to "gpt-4.1" later if you want
+    console.log("Calling OpenAI for FixTogether…");
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4.1-mini",
       temperature: 0.6,
       max_tokens: 900,
       messages: [
@@ -131,10 +152,58 @@ Just write the message naturally, with short paragraphs and, if useful, bullet p
       completion.choices?.[0]?.message?.content?.trim() ||
       "Sorry, FixTogether could not generate a message this time.";
 
-    return res.status(200).json({ message });
+    console.log("OpenAI message length:", message.length);
+
+    // ---------- RESEND PART (envoi email A + B) ----------
+
+    const fromEmail = "FixTogether <onboarding@resend.dev>"; // à changer plus tard par ton domaine vérifié
+    const subject = "Your FixTogether Mediation";
+
+    const html = `
+      <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6;">
+        <h2 style="color:#111827; margin-bottom:12px;">Your FixTogether Mediation</h2>
+        <p style="color:#374151; margin-bottom:16px;">
+          Here is the message prepared for both of you, based on what you each shared:
+        </p>
+        <div style="background:#F3F4F6; padding:16px 18px; border-radius:10px; color:#111827; white-space:pre-wrap;">
+          ${message.replace(/\n/g, "<br />")}
+        </div>
+        <p style="color:#6B7280; margin-top:16px; font-size:14px;">
+          — FixTogether · Helping you fix the unspoken.
+        </p>
+      </div>
+    `;
+
+    console.log("Sending emails via Resend…");
+
+    const [resultA, resultB] = await Promise.all([
+      resend.emails.send({
+        from: fromEmail,
+        to: emailA,
+        subject,
+        html,
+      }),
+      resend.emails.send({
+        from: fromEmail,
+        to: emailB,
+        subject,
+        html,
+      }),
+    ]);
+
+    console.log("Resend result A:", resultA);
+    console.log("Resend result B:", resultB);
+
+    // ---------- FRONT RESPONSE (pas de texte) ----------
+    return res.status(200).json({ success: true });
   } catch (err) {
     console.error("Error in create-mediation:", err);
-    return res.status(500).json({ error: "Failed to create mediation message" });
+    if (err?.response) {
+      console.error("Resend/OpenAI error response:", err.response.data);
+    }
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create mediation message" });
   }
 };
 
