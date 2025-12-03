@@ -106,6 +106,7 @@ Important:
 Structure of your answer (follow this order):
 
 1) Short opening (2–4 sentences)  
+  - If you detect full names (first name + family name), only use their first names in your greeting and in the rest of the message.
    - Calm things down.  
    - Acknowledge that this situation is painful or heavy for both.  
    - Show that you have understood the main emotional struggle.
