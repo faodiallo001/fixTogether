@@ -126,21 +126,19 @@
       font-weight: 500;
     }
 
-    .link-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-
-    .link-input {
-      flex: 1;
-      border-radius: 999px;
+    .share-area {
+      width: 100%;
+      border-radius: 14px;
       border: 1px solid rgba(148, 163, 184, 0.7);
       background: rgba(15, 23, 42, 0.9);
       color: var(--text-main);
-      padding: 8px 10px;
+      padding: 10px 12px;
       font-size: 12px;
+      resize: none;
+      min-height: 110px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      white-space: pre-wrap;
     }
 
     .btn-primary {
@@ -159,24 +157,16 @@
       transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
     }
 
-    .msg-label {
-      font-size: 12px;
-      margin-bottom: 4px;
-      color: var(--text-main);
-      font-weight: 500;
+    .btn-primary:hover {
+      opacity: 0.97;
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 22px 55px rgba(234, 179, 8, 0.55);
     }
 
-    .msg-area {
-      width: 100%;
-      border-radius: 14px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-main);
-      padding: 8px 10px;
-      font-size: 12px;
-      resize: none;
-      min-height: 90px;
-      line-height: 1.5;
+    .hint {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
     }
   </style>
 </head>
@@ -193,31 +183,25 @@
     <div class="steps">
       <div class="step">
         <div class="step-badge">1</div>
-        <div>Copy the link below.</div>
+        <div>Copy the text below.</div>
       </div>
-
       <div class="step">
         <div class="step-badge">2</div>
-        <div>Send it with the message below (or your own words).</div>
+        <div>Paste it into WhatsApp, SMS, email or wherever you talk.</div>
       </div>
-
       <div class="step">
         <div class="step-badge">3</div>
         <div>Once they answer, FixTogether will send one calm message to both of your emails.</div>
       </div>
     </div>
 
-    <div class="link-block-label">Your private FixTogether link</div>
+    <div class="link-block-label">Text to send (message + link)</div>
 
-    <div class="link-row">
-      <input id="linkInput" class="link-input" type="text" readonly />
-      <button id="copyBtn" class="btn-primary">Copy link</button>
-    </div>
+    <!-- UN SEUL BLOC : message + lien -->
+    <textarea id="shareText" class="share-area" readonly></textarea>
 
-    <div class="msg-label">Message to send with the link</div>
-
-    <!-- NEW MESSAGE AREA (clean, simple) -->
-    <textarea id="msgArea" class="msg-area" readonly></textarea>
+    <button id="copyBtn" class="btn-primary">Copy message</button>
+    <div class="hint">This will copy the entire message and link, ready to paste.</div>
   </div>
 
   <script>
@@ -225,10 +209,11 @@
     const dataParam = params.get("data");
 
     const origin = window.location.origin || "";
-    const linkInput = document.getElementById("linkInput");
-    const msgArea = document.getElementById("msgArea");
+    const shareTextEl = document.getElementById("shareText");
+    const copyBtn = document.getElementById("copyBtn");
 
     let senderName = "someone";
+    let replyUrl = origin + "/reply.html";
 
     if (dataParam) {
       try {
@@ -236,34 +221,35 @@
         const json = decodeURIComponent(escape(atob(base64)));
         const parsed = JSON.parse(json);
 
-        // CHANGED: use only FIRST NAME
+        // On prend seulement le PRÉNOM + majuscule
         if (parsed && parsed.name && parsed.name.trim()) {
-          senderName = parsed.name.trim().split(" ")[0];
+          const raw = parsed.name.trim().split(" ")[0];
+          senderName = raw.charAt(0).toUpperCase() + raw.slice(1);
         }
 
-        const replyUrl = `${origin}/reply.html?data=${encodeURIComponent(base64)}`;
-        linkInput.value = replyUrl;
-
-        // CLEANER MESSAGE — exactly as you asked
-        const msg = `Hi, it’s ${senderName}.
-I used FixTogether to help us calmly fix something between us.
-Here is the private page where you can read my version and share yours.`;
-
-        msgArea.value = msg;
-
+        replyUrl = `${origin}/reply.html?data=${encodeURIComponent(base64)}`;
       } catch (e) {
-        linkInput.value = origin + "/reply.html";
-        msgArea.value = "Hi, it's me. Here is the private FixTogether page.";
+        console.error("Could not decode data", e);
       }
     }
 
-    document.getElementById("copyBtn").addEventListener("click", async () => {
+    // Message complet : phrase + lien
+    const fullMessage =
+`Hi, it's ${senderName}.
+I used FixTogether to help us calmly fix something between us.
+Here is the private page where you can read my version and share yours:
+
+${replyUrl}`;
+
+    shareTextEl.value = fullMessage;
+
+    copyBtn.addEventListener("click", async () => {
       try {
-        await navigator.clipboard.writeText(linkInput.value);
+        await navigator.clipboard.writeText(shareTextEl.value);
         copyBtn.textContent = "Copied";
-        setTimeout(() => (copyBtn.textContent = "Copy link"), 1500);
+        setTimeout(() => (copyBtn.textContent = "Copy message"), 1500);
       } catch (err) {
-        alert("Please copy manually.");
+        alert("Could not copy. Please select and copy manually.");
       }
     });
   </script>
