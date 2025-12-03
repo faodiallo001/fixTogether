@@ -98,6 +98,7 @@ ${personB}
 Now write ONE message addressed to both of them at the same time.
 
 Important:
+- If you can detect full names (first name + family name), only use their first names in your greeting and in the rest of the message.
 - If you can detect their names, start with a short greeting that uses both names (for example: "Bonjour X et Y," or "Dear X and Y,").
 - Do NOT copy their messages word for word; summarise and transform them.
 - Make the message feel specific to THEIR situation, not like a generic template.
@@ -106,7 +107,6 @@ Important:
 Structure of your answer (follow this order):
 
 1) Short opening (2–4 sentences)  
-  - If you detect full names (first name + family name), only use their first names in your greeting and in the rest of the message.
    - Calm things down.  
    - Acknowledge that this situation is painful or heavy for both.  
    - Show that you have understood the main emotional struggle.
@@ -160,19 +160,76 @@ Just write the message naturally, with short paragraphs and, if useful, bullet p
     const fromEmail = "FixTogether <onboarding@resend.dev>"; // à changer plus tard par ton domaine vérifié
     const subject = "Your FixTogether Mediation";
 
+    // 🔥 NOUVEAU DESIGN EMAIL (fond sombre, carte propre, inline styles)
     const html = `
-      <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6;">
-        <h2 style="color:#111827; margin-bottom:12px;">Your FixTogether Mediation</h2>
-        <p style="color:#374151; margin-bottom:16px;">
-          Here is the message prepared for both of you, based on what you each shared:
-        </p>
-        <div style="background:#F3F4F6; padding:16px 18px; border-radius:10px; color:#111827; white-space:pre-wrap;">
-          ${message.replace(/\n/g, "<br />")}
-        </div>
-        <p style="color:#6B7280; margin-top:16px; font-size:14px;">
-          — FixTogether · Helping you fix the unspoken.
-        </p>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Your FixTogether Mediation</title>
+  </head>
+  <body style="margin:0;padding:0;background-color:#020617;">
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#020617;padding:24px 12px;">
+      <tr>
+        <td align="center">
+          <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:620px;background-color:#020617;border-radius:18px;border:1px solid #1f2937;">
+            <!-- HEADER -->
+            <tr>
+              <td style="padding:20px 22px 8px 22px;text-align:left;">
+                <div style="font-size:11px;letter-spacing:0.20em;color:#9ca3af;text-transform:uppercase;margin-bottom:6px;">
+                  FIXTOGETHER
+                </div>
+                <div style="font-size:22px;font-weight:600;color:#e5e7eb;margin-bottom:6px;">
+                  Your FixTogether Mediation
+                </div>
+                <p style="margin:0;font-size:13px;line-height:1.6;color:#9ca3af;">
+                  Here is the message prepared for both of you, based on what you each shared:
+                </p>
+              </td>
+            </tr>
+
+            <!-- MAIN MESSAGE CARD -->
+            <tr>
+              <td style="padding:16px 22px 20px 22px;">
+                <div style="
+                  border-radius:14px;
+                  background-color:#0b1120;
+                  border:1px solid #273549;
+                  padding:16px 18px;
+                ">
+                  <div style="font-size:14px;line-height:1.7;color:#e5e7eb;">
+                    ${message.replace(/\n/g, "<br />")}
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <!-- FOOT NOTE -->
+            <tr>
+              <td style="padding:0 22px 16px 22px;">
+                <p style="margin:0;font-size:11px;line-height:1.5;color:#6b7280;">
+                  This message was generated for you by
+                  <span style="color:#e5e7eb;font-weight:500;">FixTogether</span>
+                  to help you put words on what stayed unspoken and move forward with more calm and clarity.
+                </p>
+              </td>
+            </tr>
+
+            <!-- FOOTER -->
+            <tr>
+              <td style="padding:0 22px 22px 22px;text-align:center;">
+                <p style="margin:0;font-size:11px;color:#4b5563;">
+                  © ${new Date().getFullYear()} FixTogether. All rights reserved.
+                </p>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
     `;
 
     console.log("Sending emails via Resend…");
