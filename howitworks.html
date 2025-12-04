@@ -10,8 +10,8 @@
       --bg-card: rgba(12, 19, 38, 0.96);
       --accent: #3b82f6;
       --accent-soft: #60a5fa;
-      --warm-main: #f7e6b5;   /* beige or */
-      --warm-soft: #e7c880;   /* or sable */
+      --warm-main: #f7e6b5;
+      --warm-soft: #e7c880;
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
       --border-subtle: rgba(148, 163, 184, 0.2);
@@ -35,7 +35,6 @@
     }
 
     /* HEADER */
-
     header {
       display: flex;
       justify-content: space-between;
@@ -77,15 +76,9 @@
       color: #fefce8;
     }
 
-    .logo-text-main {
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
+    .logo-text-main { font-weight: 600; letter-spacing: 0.03em; }
 
-    .logo-text-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+    .logo-text-sub { font-size: 12px; color: var(--text-muted); }
 
     nav {
       display: flex;
@@ -102,8 +95,7 @@
       color: var(--text-muted);
       text-decoration: none;
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      transition: 0.15s ease;
     }
 
     .nav-link:hover {
@@ -122,7 +114,7 @@
       font-weight: 600;
       font-size: 14px;
       box-shadow: 0 18px 40px rgba(250, 204, 21, 0.4);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      transition: 0.15s ease;
     }
 
     .btn-primary:hover {
@@ -132,10 +124,7 @@
     }
 
     /* HERO */
-
-    .hero {
-      margin-bottom: 32px;
-    }
+    .hero { margin-bottom: 32px; }
 
     .hero-title {
       font-size: clamp(26px, 4vw, 32px);
@@ -155,16 +144,10 @@
       line-height: 1.65;
     }
 
-    /* SECTIONS */
+    /* SECTION */
+    .section { margin-top: 32px; }
 
-    .section {
-      margin-top: 32px;
-    }
-
-    .section-title {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
+    .section-title { font-size: 18px; margin-bottom: 8px; }
 
     .section-subtitle {
       font-size: 13px;
@@ -179,14 +162,12 @@
     }
 
     @media (min-width: 768px) {
-      .how-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .how-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     .how-card {
       border-radius: 18px;
-      padding: 16px 16px 14px;
+      padding: 16px;
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       font-size: 13px;
@@ -206,19 +187,11 @@
       margin-bottom: 8px;
     }
 
-    .how-title {
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
+    .how-title { font-weight: 600; margin-bottom: 6px; }
 
-    .how-text {
-      color: var(--text-muted);
-      line-height: 1.6;
-      font-size: 13px;
-    }
+    .how-text { color: var(--text-muted); line-height: 1.6; }
 
     /* FOOTER */
-
     footer {
       margin-top: 40px;
       font-size: 11px;
@@ -227,42 +200,20 @@
       padding-top: 16px;
       display: flex;
       justify-content: space-between;
-      gap: 12px;
       flex-wrap: wrap;
     }
 
-    footer a {
-      color: var(--accent-soft);
-      text-decoration: none;
-      font-size: 11px;
-    }
+    footer a { color: var(--accent-soft); text-decoration: none; }
 
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 840px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-    }
-
-    @media (max-width: 540px) {
-      .page {
-        padding-inline: 14px;
-      }
-    }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="page">
+
     <header>
       <div class="logo">
-        <div class="logo-mark">
-          <div class="logo-mark-inner">FT</div>
-        </div>
+        <div class="logo-mark"><div class="logo-mark-inner">FT</div></div>
         <div>
           <div class="logo-text-main">FixTogether</div>
           <div class="logo-text-sub">Silent conflict resolution</div>
@@ -279,66 +230,70 @@
 
     <main>
       <section class="hero">
-        <h1 class="hero-title">
-          How <span>FixTogether</span> works
-        </h1>
+        <h1 class="hero-title">How <span>FixTogether</span> works</h1>
+
         <p class="hero-subtitle">
-          FixTogether is a quiet, written space to handle conflict when direct
-          conversation feels impossible. You each write in your own time; we read
-          what both of you share and send you a calmer way forward by email.
+          FixTogether is a calm written space for couples, friends, family members
+          or coworkers who can’t talk without tension. Each person shares their
+          version of what happened in their own words. The other person can read
+          it quietly, without pressure. FixTogether then creates one balanced
+          Fix that brings clarity, helps both sides understand each other’s
+          feelings, and offers gentle guidance on how to move forward — whether
+          that means reconnecting or letting go peacefully.
         </p>
       </section>
 
       <section class="section">
-        <h2 class="section-title">One conflict, four simple steps</h2>
+        <h2 class="section-title">One conflict, four calm steps</h2>
         <p class="section-subtitle">
-          No therapy sessions. No video calls. Just a written space that keeps things
-          calm, clear, and respectful for both of you.
+          No calls, no confrontation, no outside intervention. Just a written
+          space where both sides can finally be heard and understood.
         </p>
 
         <div class="how-grid">
+
           <div class="how-card">
             <div class="how-number">1</div>
-            <div class="how-title">You share your side</div>
+            <div class="how-title">You write your version</div>
             <div class="how-text">
-              You describe what happened and how you feel — freely, without being
-              interrupted or judged. This is your moment to put everything into words.
+              You explain what happened and how you feel in your own words,
+              freely and without interruption. This is your moment to speak
+              honestly and calmly.
             </div>
           </div>
 
           <div class="how-card">
             <div class="how-number">2</div>
-            <div class="how-title">We create a private link</div>
+            <div class="how-title">You receive a private Fix link</div>
             <div class="how-text">
-              FixTogether creates a private link that only you can share. You send it
-              by WhatsApp, SMS or email to the person you want to reach. No account or
-              login is required.
+              FixTogether generates a private link for this Fix. You share it
+              with the other person so they can read your version safely and
+              without emotional pressure.
             </div>
           </div>
 
           <div class="how-card">
             <div class="how-number">3</div>
-            <div class="how-title">They answer in their own words</div>
+            <div class="how-title">They write their side</div>
             <div class="how-text">
-              The other person can calmly read your side, then write theirs in the
-              same space, at their own pace. Both perspectives stay together, safely
-              in writing.
+              The other person reads your version quietly and takes their time
+              to express their own. Both stories remain together, side by side,
+              offering a full picture of the situation.
             </div>
           </div>
 
           <div class="how-card">
             <div class="how-number">4</div>
-            <div class="how-title">We send one calm message to both of you</div>
+            <div class="how-title">FixTogether creates the Fix</div>
             <div class="how-text">
-              FixTogether reads both stories side by side and writes one neutral,
-              balanced message that speaks to both of you at the same time. It
-              explains what each of you is trying to say, where you’re hurting, and
-              what could be done differently. That message — plus practical next
-              steps — is then sent by email to you and to the other person, so you
-              can move forward more calmly, whether that means reconnecting,
-              setting boundaries, or ending things gently.
+              After reading both perspectives, FixTogether prepares one calm,
+              balanced Fix that helps both sides understand each other’s
+              feelings clearly and offers gentle guidance on how to move
+              forward — whether that means rebuilding the connection or
+              separating peacefully.
             </div>
           </div>
+
         </div>
       </section>
     </main>
@@ -351,6 +306,7 @@
         <a href="privacy.html">Privacy</a>
       </div>
     </footer>
+
   </div>
 
   <script>
@@ -358,6 +314,7 @@
   </script>
 </body>
 </html>
+
 
 
 
