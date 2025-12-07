@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
 
-  <title>Privacy Policy – FixTogether</title>
+  <title>FixTogether – Privacy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --bg-main: #020617; /* bleu nuit */
+      --bg-main: #020617;
       --bg-card: rgba(12, 19, 38, 0.96);
-      --accent: #3b82f6;      /* bleu */
-      --accent-soft: #60a5fa; /* bleu clair */
-      --warm-main: #f7e6b5;   /* beige or */
-      --warm-soft: #e7c880;   /* or sable */
+      --accent: #3b82f6;
+      --accent-soft: #60a5fa;
+      --warm-main: #f7e6b5;
+      --warm-soft: #e7c880;
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.25);
+      --border-subtle: rgba(148, 163, 184, 0.2);
       --radius-xl: 24px;
     }
 
@@ -26,75 +26,23 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background:
-        radial-gradient(circle at top, #0b1120 0, #020617 50%, #000 100%);
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #000 100%);
       color: var(--text-main);
       min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: -120px;
-      pointer-events: none;
-      opacity: 0.4;
-      mix-blend-mode: screen;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.22), transparent 55%),
-        radial-gradient(circle at 90% 20%, rgba(99, 102, 241, 0.2), transparent 55%),
-        radial-gradient(circle at 20% 80%, rgba(250, 204, 21, 0.16), transparent 55%);
-      z-index: -2;
-      animation: drift 16s ease-in-out infinite alternate;
-    }
-
-    body::after {
-      opacity: 0.18;
-      filter: blur(10px);
-      animation-duration: 22s;
-    }
-
-    @keyframes drift {
-      0% { transform: translate3d(0, 0, 0) scale(1); }
-      100% { transform: translate3d(10px, -12px, 0) scale(1.03); }
     }
 
     .page {
       max-width: 1120px;
       margin: 0 auto;
       padding: 32px 16px 64px;
-      position: relative;
-    }
-
-    .page::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(
-          rgba(148, 163, 184, 0.07) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(148, 163, 184, 0.06) 1px,
-          transparent 1px
-        );
-      background-size: 26px 26px;
-      opacity: 0.12;
-      pointer-events: none;
-      z-index: -1;
-      mask-image: radial-gradient(circle at top, black 0, black 45%, transparent 100%);
     }
 
     /* HEADER */
-
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
 
     .logo {
@@ -116,9 +64,6 @@
         #0ea5e9
       );
       padding: 2px;
-      box-shadow:
-        0 0 0 1px rgba(15, 23, 42, 0.8),
-        0 0 18px rgba(59, 130, 246, 0.6);
     }
 
     .logo-mark-inner {
@@ -132,160 +77,137 @@
       font-size: 14px;
       font-weight: 600;
       color: #fefce8;
-      text-shadow: 0 0 6px rgba(15, 23, 42, 0.8);
     }
 
-    .logo-text-main {
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
+    .logo-text-main { font-weight: 600; letter-spacing: 0.03em; }
+    .logo-text-sub { font-size: 12px; color: var(--text-muted); }
 
-    .logo-text-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
+    nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
       font-size: 14px;
+    }
+
+    .nav-link {
       padding: 8px 14px;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.35);
       background: rgba(15, 23, 42, 0.65);
+      color: var(--text-muted);
+      text-decoration: none;
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-      margin-left: 6px;
+      transition: 0.15s ease;
     }
 
-    nav a:hover {
+    .nav-link:hover {
       background: rgba(37, 99, 235, 0.2);
       color: #e5e7eb;
       border-color: rgba(96, 165, 250, 0.8);
     }
 
-    /* CARD + CONTENT */
+    .btn-primary {
+      border-radius: 999px;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(120deg, var(--accent), var(--warm-soft));
+      color: #0b1120;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 18px 40px rgba(250, 204, 21, 0.4);
+      transition: 0.15s ease;
+    }
 
-    .card {
-      position: relative;
-      border-radius: var(--radius-xl);
-      padding: 24px 20px;
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+      box-shadow: 0 24px 60px rgba(234, 179, 8, 0.55);
+    }
+
+    /* CONTENT */
+    .hero {
+      margin-bottom: 28px;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 4vw, 32px);
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #38bdf8, #6366f1, #facc15);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    .legal-card {
+      margin-top: 20px;
+      padding: 20px 18px 22px;
+      border-radius: 24px;
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
-      overflow: hidden;
+      font-size: 13px;
+      line-height: 1.7;
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      opacity: 0.18;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(96, 165, 250, 0.23), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(250, 204, 21, 0.2), transparent 55%);
-      pointer-events: none;
-      z-index: -1;
-      transform: translate3d(0, 8px, 0);
-      filter: blur(2px);
+    .legal-section + .legal-section {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
     }
 
-    .content-title {
-      font-size: 24px;
-      margin-bottom: 6px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .content-subtitle {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
-    .content-subtitle span {
-      color: var(--warm-main);
-    }
-
-    .content h2 {
-      font-size: 16px;
-      margin-top: 16px;
+    .legal-section h2 {
+      font-size: 15px;
       margin-bottom: 6px;
     }
 
-    .content p {
-      font-size: 13px;
+    .legal-section p {
       color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .content ul {
-      margin-left: 18px;
-      margin-bottom: 10px;
+    .legal-section ul {
+      margin: 6px 0 4px 18px;
+      padding-left: 0;
+      color: var(--text-muted);
     }
 
-    .content li {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.7;
+    .legal-section li {
       margin-bottom: 4px;
     }
 
-    .highlight {
-      color: var(--warm-main);
-      font-weight: 500;
-    }
-
+    /* FOOTER */
     footer {
-      margin-top: 32px;
+      margin-top: 40px;
       font-size: 11px;
       color: var(--text-muted);
       border-top: 1px solid rgba(15, 23, 42, 0.9);
       padding-top: 16px;
       display: flex;
       justify-content: space-between;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 8px;
     }
 
-    footer a {
-      color: var(--accent-soft);
-      text-decoration: none;
-      font-size: 11px;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 540px) {
-      .page {
-        padding-inline: 14px;
-      }
-
-      .card {
-        padding: 20px 14px;
-      }
-    }
+    footer a { color: var(--accent-soft); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="page">
+
     <header>
       <div class="logo">
-        <div class="logo-mark">
-          <div class="logo-mark-inner">FT</div>
-        </div>
+        <div class="logo-mark"><div class="logo-mark-inner">FT</div></div>
         <div>
           <div class="logo-text-main">FixTogether</div>
           <div class="logo-text-sub">Silent conflict resolution</div>
@@ -293,196 +215,210 @@
       </div>
 
       <nav>
-        <a href="index.html">Home</a>
-        <a href="terms.html">Terms</a>
-        <a href="privacy.html">Privacy</a>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="howitworks.html" class="nav-link">How it works</a>
+        <button class="btn-primary" onclick="location.href='fix.html'">
+          Start a Fix
+        </button>
       </nav>
     </header>
 
     <main>
-      <section class="card content">
-        <h1 class="content-title">Privacy Policy</h1>
-        <p class="content-subtitle">
-          Last updated: <span>November 2025</span>
+      <section class="hero">
+        <h1 class="hero-title">Privacy & <span>Data</span></h1>
+        <p class="hero-subtitle">
+          Your words are sensitive. This page explains what we collect, how we
+          use it, and how we protect it. By using FixTogether, you agree to this
+          Privacy Notice. This text is for information only and does not replace
+          local privacy laws that may apply to you.
         </p>
+      </section>
 
-        <h2>1. About this Policy</h2>
-        <p>
-          This Privacy Policy explains how FixTogether collects, uses, and protects
-          personal information when you visit our website or use our services. By
-          using FixTogether, you agree to this Policy.
-        </p>
+      <section class="legal-card">
 
-        <h2>2. Information we collect</h2>
-        <p>We may collect the following types of information:</p>
-        <ul>
-          <li>
-            <span class="highlight">Information you write in a Fix:</span>
-            your description of what happened, how you feel, what you would like to
-            happen, and any other text you choose to share.
-          </li>
-          <li>
-            <span class="highlight">Contact information:</span>
-            such as your email address if you provide it to receive results or
-            updates.
-          </li>
-          <li>
-            <span class="highlight">Technical data:</span>
-            such as IP address, browser type, device information, and basic analytics
-            (for example, pages visited and time spent on the site).
-          </li>
-          <li>
-            <span class="highlight">Payment information:</span>
-            handled by third-party payment processors (for example, Stripe or
-            similar). We do not store your full payment card details on our servers.
-          </li>
-        </ul>
+        <div class="legal-section">
+          <h2>1. What we collect</h2>
+          <p>When you use FixTogether, we may collect:</p>
+          <ul>
+            <li>
+              <strong>Conflict text:</strong> the words you write when you
+              describe what happened and how you feel.
+            </li>
+            <li>
+              <strong>Responses:</strong> the words written by the other person
+              when they use your Fix link.
+            </li>
+            <li>
+              <strong>Contact details:</strong> your email address or the email
+              address you provide so we can send the Fix or a copy to you.
+            </li>
+            <li>
+              <strong>Technical data:</strong> basic logs such as IP address,
+              browser type, device information and time of access, mainly for
+              security, abuse-prevention and analytics.
+            </li>
+          </ul>
+        </div>
 
-        <h2>3. How we use your information</h2>
-        <p>We use your information to:</p>
-        <ul>
-          <li>Provide the FixTogether service and generate AI-based messages.</li>
-          <li>
-            Send you links, summaries, or notifications related to your Fix, when
-            applicable.
-          </li>
-          <li>
-            Maintain and improve the website, including troubleshooting, security,
-            and analytics.
-          </li>
-          <li>
-            Comply with legal obligations and respond to valid requests from public
-            authorities, when required by law.
-          </li>
-        </ul>
+        <div class="legal-section">
+          <h2>2. How we use your information</h2>
+          <p>We use your information to:</p>
+          <ul>
+            <li>read both sides of the conflict and generate your Fix,</li>
+            <li>send the Fix or related emails that you request,</li>
+            <li>operate, maintain and protect the site,</li>
+            <li>
+              detect misuse or abuse of the service, and
+            </li>
+            <li>
+              create anonymised or aggregated statistics that do not identify you,
+              to help improve FixTogether.
+            </li>
+          </ul>
+          <p>
+            We do not sell your personal information to third-party marketers.
+          </p>
+        </div>
 
-        <h2>4. Legal bases (where applicable)</h2>
-        <p>
-          Depending on your location, our use of your personal data may be based on:
-        </p>
-        <ul>
-          <li>Your consent (for example, when you choose to share a Fix).</li>
-          <li>
-            The need to perform a contract (for example, when we provide a paid Fix
-            service).
-          </li>
-          <li>
-            Our legitimate interest in improving FixTogether, ensuring security, and
-            preventing abuse.
-          </li>
-        </ul>
+        <div class="legal-section">
+          <h2>3. How long we keep your words</h2>
+          <p>
+            FixTogether is designed as a calm, temporary space — not a permanent
+            archive of your conflict.
+          </p>
+          <p>
+            We keep the text of your Fix in our active systems only for as long
+            as reasonably needed to:
+          </p>
+          <ul>
+            <li>generate and deliver your Fix,</li>
+            <li>ensure the service is working correctly, and</li>
+            <li>
+              protect the service from abuse, fraud or technical issues.
+            </li>
+          </ul>
+          <p>
+            After that, your words are removed from our active systems. Backup
+            copies or logs may remain for a limited time for security,
+            technical or legal reasons, but are not used to create new Fixes.
+          </p>
+        </div>
 
-        <h2>5. How long we keep your data</h2>
-        <p>
-          We keep your information only for as long as necessary to provide the
-          service, comply with legal requirements, or for the purposes described in
-          this Policy. In practice, this means that:
-        </p>
-        <ul>
-          <li>
-            Text you submit for a Fix may be stored for a limited period, for example
-            to allow you and the other person to return to the result.
-          </li>
-          <li>
-            Payment records and invoices may be kept longer when required by law
-            (e.g., for accounting).
-          </li>
-        </ul>
+        <div class="legal-section">
+          <h2>4. Sharing your information</h2>
+          <p>We may share your information only in these situations:</p>
+          <ul>
+            <li>
+              <strong>Service providers:</strong> with trusted processors that
+              help us run FixTogether (for example, cloud hosting, email
+              delivery or AI text processing), under contracts that require them
+              to protect your data and use it only for our service.
+            </li>
+            <li>
+              <strong>When you choose to share:</strong> if you send a Fix link
+              to another person, they will see the information you decide to
+              include in that Fix.
+            </li>
+            <li>
+              <strong>Legal reasons:</strong> if we are required to do so by
+              law, regulation or a valid legal request, or if needed to protect
+              our rights, users or the public.
+            </li>
+          </ul>
+          <p>
+            We do not contact the other person for you. You stay in control of
+            who receives the Fix.
+          </p>
+        </div>
 
-        <h2>6. Sharing your information</h2>
-        <p>
-          We do not sell your personal data. We may share your information with:
-        </p>
-        <ul>
-          <li>
-            <span class="highlight">Service providers</span> who help us host the
-            website, process payments, send emails, or run analytics.
-          </li>
-          <li>
-            <span class="highlight">AI infrastructure providers</span> that process
-            the text you submit in order to generate explanations and messages.
-          </li>
-          <li>
-            <span class="highlight">Authorities or legal advisors</span> when we
-            believe it is necessary to comply with the law, protect our rights, or
-            respond to legal requests.
-          </li>
-        </ul>
+        <div class="legal-section">
+          <h2>5. Cookies and analytics</h2>
+          <p>
+            FixTogether may use cookies or similar technologies to remember your
+            settings, keep the site secure and understand how the service is
+            used (for example, which pages are visited most). Any analytics we
+            use are focused on improving the product, not building advertising
+            profiles.
+          </p>
+        </div>
 
-        <h2>7. Confidentiality and safety</h2>
-        <p>
-          We take reasonable technical and organizational measures to protect your
-          data against loss, misuse, and unauthorized access. However, no online
-          system can be 100% secure, and we cannot guarantee absolute security.
-        </p>
-        <p class="highlight">
-          Be careful not to share highly sensitive details (such as passwords,
-          bank details, or very private information that is not necessary to
-          describe the situation).
-        </p>
+        <div class="legal-section">
+          <h2>6. Security</h2>
+          <p>
+            We use reasonable technical and organisational measures to protect
+            your data against unauthorised access, loss or misuse. No online
+            service can be 100% secure, but we design FixTogether with privacy
+            and discretion in mind.
+          </p>
+          <p>
+            You can help by not including passwords, bank details or government
+            ID numbers in your Fix, and by sharing your Fix link only with
+            people you trust.
+          </p>
+        </div>
 
-        <h2>8. Cookies and similar technologies</h2>
-        <p>
-          FixTogether may use cookies or similar technologies to remember your
-          preferences, understand how the website is used, and improve the service.
-          Depending on your browser settings, you may block or delete cookies, but
-          some features of the website may not work correctly without them.
-        </p>
+        <div class="legal-section">
+          <h2>7. Your rights</h2>
+          <p>
+            Depending on where you live, you may have rights over your personal
+            data, such as the right to access, correct or delete information, or
+            to object to certain types of processing.
+          </p>
+          <p>
+            If you want to exercise these rights or have questions about your
+            data, you can contact us at the email below. We may need to verify
+            your identity before answering your request.
+          </p>
+        </div>
 
-        <h2>9. Your rights</h2>
-        <p>
-          Depending on your location, you may have rights such as accessing,
-          correcting, or deleting your personal data, limiting certain uses, or
-          objecting to processing.
-        </p>
-        <p>
-          To exercise these rights, you can contact us at:
-          <span class="highlight">privacy@fixtogether.app</span> (example address,
-          replace with your real contact).
-        </p>
+        <div class="legal-section">
+          <h2>8. International use</h2>
+          <p>
+            FixTogether may be used by people in different countries. Your data
+            may be processed in a country that is different from yours, where
+            data-protection laws may be different. We take steps to handle your
+            data in a way that is consistent with this Privacy Notice.
+          </p>
+        </div>
 
-        <h2>10. Children’s privacy</h2>
-        <p>
-          FixTogether is not directed to children. If you are a parent or guardian
-          and believe that a child has shared personal information with us without
-          your consent, please contact us so that we can take appropriate steps.
-        </p>
+        <div class="legal-section">
+          <h2>9. Changes to this notice</h2>
+          <p>
+            We may update this Privacy Notice from time to time. When we do, we
+            will change the date at the bottom of this page. If the changes are
+            important, we may highlight them on the site. If you continue to use
+            FixTogether after an update, it means you accept the new version.
+          </p>
+        </div>
 
-        <h2>11. International transfers</h2>
-        <p>
-          Our servers or service providers may be located in different countries. By
-          using FixTogether, you understand that your data may be transferred to
-          other jurisdictions, which may have different data protection laws than
-          your own country.
-        </p>
+        <div class="legal-section">
+          <h2>10. Contact</h2>
+          <p>
+            For any privacy questions about FixTogether, you can contact:
+          </p>
+          <p>
+            <strong>Email:</strong> privacy@fix-together.com
+            <br />
+            (This address is for privacy questions only. It is not monitored
+            for emergencies.)
+          </p>
+          <p style="font-size:11px; color:var(--text-muted); margin-top:8px;">
+            Last updated: 2025
+          </p>
+        </div>
 
-        <h2>12. Changes to this Policy</h2>
-        <p>
-          We may update this Privacy Policy from time to time. When we make
-          significant changes, we will update the “Last updated” date at the top of
-          this page. If you continue to use FixTogether after changes are published,
-          you agree to the new version.
-        </p>
-
-        <h2>13. Contact</h2>
-        <p>
-          If you have questions about this Privacy Policy or how we handle your
-          data, you can contact us at:<br />
-          <span class="highlight">privacy@fixtogether.app</span>
-        </p>
       </section>
     </main>
 
     <footer>
       <div>© <span id="year"></span> FixTogether. All rights reserved.</div>
       <div>
-       <a href="index.html">Home</a> ·
-       <a href="howitworks.html">How it works</a> ·
-       <a href="terms.html">Terms</a> ·
-       <a href="privacy.html">Privacy</a>
-
+        <a href="index.html">Home</a> ·
+        <a href="howitworks.html">How it works</a> ·
+        <a href="terms.html">Terms</a>
       </div>
     </footer>
+
   </div>
 
   <script>
@@ -490,4 +426,5 @@
   </script>
 </body>
 </html>
+
 
