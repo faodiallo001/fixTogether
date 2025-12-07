@@ -263,6 +263,116 @@
       line-height: 1.6;
     }
 
+
+        /* WHO IS THIS FOR */
+
+    .who {
+      margin-top: 32px;
+      margin-bottom: 32px;
+      padding: 24px 22px 26px;
+      border-radius: 28px;
+      border: 1px solid var(--border-subtle);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), rgba(15, 23, 42, 0.98) 70%),
+        radial-gradient(circle at bottom right, rgba(250, 204, 21, 0.12), #020617 85%);
+      box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
+    }
+
+    .who-header {
+      max-width: 640px;
+      margin: 0 auto 20px;
+      text-align: center;
+    }
+
+    .who-kicker {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .who-title {
+      font-size: 20px;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .who-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .who-card {
+      border-radius: 18px;
+      padding: 14px 14px 16px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.8);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    .who-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      background: radial-gradient(circle at 30% 20%, #fefce8, #facc15);
+      color: #111827;
+      box-shadow: 0 10px 25px rgba(250, 204, 21, 0.55);
+      margin-bottom: 4px;
+    }
+
+    .who-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .who-card p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .who-footer {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--warm-main);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 900px) {
+      .who-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .who {
+        padding: 20px 16px 22px;
+      }
+
+      .who-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+
     /* REVIEWS */
 
     .reviews {
@@ -563,6 +673,80 @@
           We help people reconnect when silence, pride and hurt are in the way, by turning both stories into one Fix that feels fair for each side.
         </p>
       </section>
+
+            <!-- WHO IS THIS FOR -->
+      <section class="who">
+        <div class="who-header">
+          <p class="who-kicker">WHO IS THIS FOR?</p>
+          <h2 class="who-title">FixTogether is for people who care, but can’t find the words.</h2>
+          <p class="who-subtitle">
+            When talking feels dangerous, heavy or impossible, FixTogether turns what you feel
+            into one calm, balanced Fix that the other person can read in their own time.
+          </p>
+        </div>
+
+        <div class="who-grid">
+          <article class="who-card">
+            <div class="who-icon">💔</div>
+            <h3>Couples who stopped talking</h3>
+            <p>
+              After a big fight or many small ones, you sleep in the same home
+              but live like strangers. You don’t know how to restart the conversation
+              without starting another war.
+            </p>
+          </article>
+
+          <article class="who-card">
+            <div class="who-icon">🤝</div>
+            <h3>Friends after a fight</h3>
+            <p>
+              A message, a comment, a forgotten call. Now there is pride and silence.
+              You still care, but no one wants to be the first to say “I’m hurt”.
+            </p>
+          </article>
+
+          <article class="who-card">
+            <div class="who-icon">💼</div>
+            <h3>Coworkers with tension</h3>
+            <p>
+              Deadlines, misunderstandings, tone in emails. You don’t want a drama at work,
+              but you also don’t want to pretend everything is fine.
+            </p>
+          </article>
+
+          <article class="who-card">
+            <div class="who-icon">👨‍👩‍👧</div>
+            <h3>Siblings & family</h3>
+            <p>
+              Old words, old wounds. One argument becomes a family cold war.
+              You want peace, but you don’t know how to say it without reopening everything.
+            </p>
+          </article>
+
+          <article class="who-card">
+            <div class="who-icon">🌍</div>
+            <h3>Long-distance partners</h3>
+            <p>
+              Calls end in tears, texts are misunderstood, time zones don’t help.
+              You need one clear Fix to say how you feel, without pressure in real time.
+            </p>
+          </article>
+
+          <article class="who-card">
+            <div class="who-icon">💬</div>
+            <h3>People who panic to communicate</h3>
+            <p>
+              Your heart races when you have to explain yourself. You overthink every word.
+              Writing to FixTogether feels safer than sending a raw message directly.
+            </p>
+          </article>
+        </div>
+
+        <p class="who-footer">
+          If you recognize yourself in even one of these, FixTogether is for you.
+        </p>
+      </section>
+
 
       <!-- REVIEWS -->
       <section class="reviews" aria-label="User reviews">
