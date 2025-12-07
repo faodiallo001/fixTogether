@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
 
-  <title>Terms of Use – FixTogether</title>
+  <title>FixTogether – Terms of Use</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --bg-main: #020617; /* bleu nuit */
+      --bg-main: #020617;
       --bg-card: rgba(12, 19, 38, 0.96);
-      --accent: #3b82f6;      /* bleu */
-      --accent-soft: #60a5fa; /* bleu clair */
-      --warm-main: #f7e6b5;   /* beige or */
-      --warm-soft: #e7c880;   /* or sable */
+      --accent: #3b82f6;
+      --accent-soft: #60a5fa;
+      --warm-main: #f7e6b5;
+      --warm-soft: #e7c880;
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.25);
+      --border-subtle: rgba(148, 163, 184, 0.2);
       --radius-xl: 24px;
     }
 
@@ -26,77 +26,23 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background:
-        radial-gradient(circle at top, #0b1120 0, #020617 50%, #000 100%);
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #000 100%);
       color: var(--text-main);
       min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    /* Futuristic background glow layers */
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: -120px;
-      pointer-events: none;
-      opacity: 0.4;
-      mix-blend-mode: screen;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.22), transparent 55%),
-        radial-gradient(circle at 90% 20%, rgba(99, 102, 241, 0.2), transparent 55%),
-        radial-gradient(circle at 20% 80%, rgba(250, 204, 21, 0.16), transparent 55%);
-      z-index: -2;
-      animation: drift 16s ease-in-out infinite alternate;
-    }
-
-    body::after {
-      opacity: 0.18;
-      filter: blur(10px);
-      animation-duration: 22s;
-    }
-
-    @keyframes drift {
-      0% { transform: translate3d(0, 0, 0) scale(1); }
-      100% { transform: translate3d(10px, -12px, 0) scale(1.03); }
     }
 
     .page {
       max-width: 1120px;
       margin: 0 auto;
       padding: 32px 16px 64px;
-      position: relative;
-    }
-
-    /* subtle grid overlay */
-    .page::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(
-          rgba(148, 163, 184, 0.07) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(148, 163, 184, 0.06) 1px,
-          transparent 1px
-        );
-      background-size: 26px 26px;
-      opacity: 0.12;
-      pointer-events: none;
-      z-index: -1;
-      mask-image: radial-gradient(circle at top, black 0, black 45%, transparent 100%);
     }
 
     /* HEADER */
-
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
 
     .logo {
@@ -118,9 +64,6 @@
         #0ea5e9
       );
       padding: 2px;
-      box-shadow:
-        0 0 0 1px rgba(15, 23, 42, 0.8),
-        0 0 18px rgba(59, 130, 246, 0.6);
     }
 
     .logo-mark-inner {
@@ -134,160 +77,137 @@
       font-size: 14px;
       font-weight: 600;
       color: #fefce8;
-      text-shadow: 0 0 6px rgba(15, 23, 42, 0.8);
     }
 
-    .logo-text-main {
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
+    .logo-text-main { font-weight: 600; letter-spacing: 0.03em; }
+    .logo-text-sub { font-size: 12px; color: var(--text-muted); }
 
-    .logo-text-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
+    nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
       font-size: 14px;
+    }
+
+    .nav-link {
       padding: 8px 14px;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.35);
       background: rgba(15, 23, 42, 0.65);
+      color: var(--text-muted);
+      text-decoration: none;
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-      margin-left: 6px;
+      transition: 0.15s ease;
     }
 
-    nav a:hover {
+    .nav-link:hover {
       background: rgba(37, 99, 235, 0.2);
       color: #e5e7eb;
       border-color: rgba(96, 165, 250, 0.8);
     }
 
-    /* CARD + CONTENT */
+    .btn-primary {
+      border-radius: 999px;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(120deg, var(--accent), var(--warm-soft));
+      color: #0b1120;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 18px 40px rgba(250, 204, 21, 0.4);
+      transition: 0.15s ease;
+    }
 
-    .card {
-      position: relative;
-      border-radius: var(--radius-xl);
-      padding: 24px 20px;
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+      box-shadow: 0 24px 60px rgba(234, 179, 8, 0.55);
+    }
+
+    /* CONTENT */
+    .hero {
+      margin-bottom: 28px;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 4vw, 32px);
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #38bdf8, #6366f1, #facc15);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    .legal-card {
+      margin-top: 20px;
+      padding: 20px 18px 22px;
+      border-radius: 24px;
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
-      overflow: hidden;
+      font-size: 13px;
+      line-height: 1.7;
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      opacity: 0.18;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(96, 165, 250, 0.23), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(250, 204, 21, 0.2), transparent 55%);
-      pointer-events: none;
-      z-index: -1;
-      transform: translate3d(0, 8px, 0);
-      filter: blur(2px);
+    .legal-section + .legal-section {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
     }
 
-    .content-title {
-      font-size: 24px;
-      margin-bottom: 6px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .content-subtitle {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
-    .content-subtitle span {
-      color: var(--warm-main);
-    }
-
-    .content h2 {
-      font-size: 16px;
-      margin-top: 16px;
+    .legal-section h2 {
+      font-size: 15px;
       margin-bottom: 6px;
     }
 
-    .content p {
-      font-size: 13px;
+    .legal-section p {
       color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .content ul {
-      margin-left: 18px;
-      margin-bottom: 10px;
+    .legal-section ul {
+      margin: 6px 0 4px 18px;
+      padding-left: 0;
+      color: var(--text-muted);
     }
 
-    .content li {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.7;
+    .legal-section li {
       margin-bottom: 4px;
     }
 
-    .highlight {
-      color: var(--warm-main);
-      font-weight: 500;
-    }
-
+    /* FOOTER */
     footer {
-      margin-top: 32px;
+      margin-top: 40px;
       font-size: 11px;
       color: var(--text-muted);
       border-top: 1px solid rgba(15, 23, 42, 0.9);
       padding-top: 16px;
       display: flex;
       justify-content: space-between;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 8px;
     }
 
-    footer a {
-      color: var(--accent-soft);
-      text-decoration: none;
-      font-size: 11px;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 540px) {
-      .page {
-        padding-inline: 14px;
-      }
-
-      .card {
-        padding: 20px 14px;
-      }
-    }
+    footer a { color: var(--accent-soft); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="page">
+
     <header>
       <div class="logo">
-        <div class="logo-mark">
-          <div class="logo-mark-inner">FT</div>
-        </div>
+        <div class="logo-mark"><div class="logo-mark-inner">FT</div></div>
         <div>
           <div class="logo-text-main">FixTogether</div>
           <div class="logo-text-sub">Silent conflict resolution</div>
@@ -295,172 +215,173 @@
       </div>
 
       <nav>
-        <a href="index.html">Home</a>
-        <a href="terms.html">Terms</a>
-        <a href="privacy.html">Privacy</a>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="howitworks.html" class="nav-link">How it works</a>
+        <button class="btn-primary" onclick="location.href='fix.html'">
+          Start a Fix
+        </button>
       </nav>
     </header>
 
     <main>
-      <section class="card content">
-        <h1 class="content-title">Terms of Use</h1>
-        <p class="content-subtitle">
-          Last updated: <span>November 2025</span>
+      <section class="hero">
+        <h1 class="hero-title">Terms of <span>Use</span></h1>
+        <p class="hero-subtitle">
+          These Terms of Use explain what FixTogether is, what you can expect
+          from the service, and what we expect from you. By using FixTogether,
+          you agree to these terms. If you do not agree, please do not use the site.
+          This text is for general information only and is not legal advice.
         </p>
+      </section>
 
-        <h2>1. What is FixTogether?</h2>
-        <p>
-          FixTogether is an online tool that helps two people describe a situation in
-          writing and receive a calmer, AI-generated explanation of what happened and
-          possible next steps. It is designed to reduce tension and help people
-          understand each other better.
-        </p>
-        <p class="highlight">
-          FixTogether is not therapy, not emergency support, and not legal advice.
-        </p>
+      <section class="legal-card">
 
-        <h2>2. Acceptance of these Terms</h2>
-        <p>
-          By using FixTogether, visiting our website, or purchasing a Fix, you agree to
-          these Terms of Use. If you do not agree, please do not use FixTogether.
-        </p>
-        <p>
-          If you use FixTogether on behalf of another person (for example, a family
-          member, a partner, or someone you work with), you confirm that you have the
-          right to share information about the situation with us.
-        </p>
+        <div class="legal-section">
+          <h2>1. About FixTogether</h2>
+          <p>
+            FixTogether is an online written tool that helps people in conflict
+            – couples, friends, family members, coworkers and others – explain
+            their feelings calmly and receive a balanced written Fix based on
+            both sides’ words.
+          </p>
+          <p>
+            FixTogether does not contact the other person for you. You are the
+            one who chooses whether to share your Fix link or not.
+          </p>
+        </div>
 
-        <h2>3. Who can use FixTogether</h2>
-        <p>
-          FixTogether is intended for adults who are legally able to enter into an
-          agreement. If you are under the minimum age in your country, you must only
-          use FixTogether with the consent and supervision of a parent or legal
-          guardian.
-        </p>
+        <div class="legal-section">
+          <h2>2. Not therapy, not emergency help, not legal advice</h2>
+          <p>
+            FixTogether is not a replacement for therapy, counselling,
+            mediation, legal advice or medical or mental health care.
+          </p>
+          <ul>
+            <li>We do not provide psychological, medical, psychiatric or legal services.</li>
+            <li>We do not handle emergencies or crisis situations.</li>
+            <li>
+              If you or someone else is in danger, has thoughts of self-harm,
+              or is experiencing violence, you must contact local emergency
+              services or a trusted professional immediately.
+            </li>
+          </ul>
+          <p>
+            Using FixTogether is your choice and your responsibility. Any
+            decision you take after receiving a Fix belongs to you.
+          </p>
+        </div>
 
-        <h2>4. What FixTogether does – and doesn’t do</h2>
-        <p>FixTogether can help you:</p>
-        <ul>
-          <li>Put your thoughts and feelings into words.</li>
-          <li>Share your side of a situation without shouting or attacking.</li>
-          <li>Receive a calmer message that tries to be fair to both sides.</li>
-        </ul>
-        <p>FixTogether will not:</p>
-        <ul>
-          <li>Tell you who is “right” or “wrong” in a legal sense.</li>
-          <li>Provide psychotherapy, medical care, or crisis support.</li>
-          <li>Replace a lawyer, a doctor, a mediator, or a therapist.</li>
-        </ul>
-        <p class="highlight">
-          If you or someone else is in danger, in a violent situation, or thinking
-          about self-harm, do not use FixTogether. Contact local emergency services
-          or a trusted professional immediately.
-        </p>
+        <div class="legal-section">
+          <h2>3. Who can use FixTogether</h2>
+          <p>By using FixTogether, you confirm that:</p>
+          <ul>
+            <li>You are at least 18 years old.</li>
+            <li>You are using the service for real conflicts in your own life.</li>
+            <li>
+              You will not use FixTogether to harass, threaten, intimidate,
+              humiliate or stalk another person.
+            </li>
+            <li>
+              You will not use the service for illegal activities or to share
+              content that is hateful, discriminatory or violent.
+            </li>
+          </ul>
+        </div>
 
-        <h2>5. AI-generated content</h2>
-        <p>
-          The explanations and suggestions you receive are generated with artificial
-          intelligence. They are based on the information you and the other person
-          provide. Because of this:
-        </p>
-        <ul>
-          <li>We cannot guarantee that the result will be perfect or complete.</li>
-          <li>
-            You remain fully responsible for how you use the message and what you
-            decide to do with it.
-          </li>
-          <li>
-            You should always use your own judgment and, when needed, ask advice from
-            a qualified professional.
-          </li>
-        </ul>
+        <div class="legal-section">
+          <h2>4. Your responsibilities</h2>
+          <p>
+            You are responsible for the words you write in FixTogether and for
+            what you decide to share with the other person.
+          </p>
+          <ul>
+            <li>Do not include confidential information you are not allowed to share.</li>
+            <li>Do not include passwords, banking details or government ID numbers.</li>
+            <li>
+              If you share a Fix link, the recipient may show it to others.
+              FixTogether cannot control what happens outside the site.
+            </li>
+          </ul>
+        </div>
 
-        <h2>6. Your responsibilities</h2>
-        <p>By using FixTogether, you agree to:</p>
-        <ul>
-          <li>Share only information that is truthful from your point of view.</li>
-          <li>
-            Avoid insults, hate speech, harassment, or threats in what you write.
-          </li>
-          <li>Respect the privacy of the other person and not misuse their data.</li>
-          <li>
-            Not use FixTogether to break the law or encourage illegal activities.
-          </li>
-        </ul>
+        <div class="legal-section">
+          <h2>5. Payments and refunds</h2>
+          <p>
+            Some FixTogether features are paid. When you pay for a Fix, you are
+            paying for the process of creating that Fix, not for a guaranteed
+            outcome in your relationship.
+          </p>
+          <p>
+            Unless required by applicable law, purchases are generally
+            non-refundable once the Fix has been generated or processed.
+          </p>
+        </div>
 
-        <h2>7. Payments and refunds</h2>
-        <p>
-          FixTogether may charge a fee to start a Fix. Prices are shown before you
-          confirm payment. Payment is processed by third-party providers (such as
-          Stripe or similar), and we do not store full payment card details on our
-          servers.
-        </p>
-        <p>
-          Because FixTogether starts working on your situation as soon as payment is
-          confirmed, and AI processing cannot be “returned”, purchases are generally
-          <span class="highlight">non-refundable</span>, unless required by local law
-          or unless we explicitly say otherwise.
-        </p>
+        <div class="legal-section">
+          <h2>6. Intellectual property</h2>
+          <p>
+            The FixTogether name, logo, design, text and code are owned by the
+            creator of FixTogether or used under licence. You may not copy,
+            resell or reuse the service or its design without permission.
+          </p>
+          <p>
+            You keep ownership of the words you write. By using the service,
+            you give FixTogether a limited licence to use your text only to:
+          </p>
+          <ul>
+            <li>generate your Fix,</li>
+            <li>operate, protect and improve the service, and</li>
+            <li>create anonymised or aggregated insights that do not identify you.</li>
+          </ul>
+        </div>
 
-        <h2>8. Privacy</h2>
-        <p>
-          Our use of your personal data is described in our
-          <a href="privacy.html">Privacy Policy</a>. By using FixTogether, you agree
-          that we may process your data as explained there.
-        </p>
+        <div class="legal-section">
+          <h2>7. Service availability and changes</h2>
+          <p>
+            FixTogether may change, suspend or stop the service at any time,
+            for example for maintenance, updates, security reasons or business
+            decisions. We may also update these Terms from time to time. When
+            we do, we will update the date at the bottom of this page. If you
+            continue using FixTogether after changes, it means you accept them.
+          </p>
+        </div>
 
-        <h2>9. Intellectual property</h2>
-        <p>
-          All content on the FixTogether website – including the brand, logo, layout,
-          text, and design – belongs to FixTogether or its licensors. You may not copy,
-          sell, or reuse our content without written permission, except where the law
-          clearly allows it.
-        </p>
-        <p>
-          The messages and texts you write in FixTogether remain yours, but by
-          submitting them you grant us a limited right to process them in order to
-          run the service, improve our models, and comply with law.
-        </p>
+        <div class="legal-section">
+          <h2>8. Limitation of liability</h2>
+          <p>
+            FixTogether is provided “as is”, without guarantees. To the maximum
+            extent allowed by law, FixTogether is not liable for:
+          </p>
+          <ul>
+            <li>decisions you make based on a Fix,</li>
+            <li>any outcome in your relationship or conflict,</li>
+            <li>indirect, incidental or consequential damages, or</li>
+            <li>
+              actions of the other person or other people who may see or use
+              the Fix you choose to share.
+            </li>
+          </ul>
+        </div>
 
-        <h2>10. Service availability</h2>
-        <p>
-          We try to keep FixTogether available and working smoothly, but we cannot
-          promise that it will always be online, error-free, or compatible with every
-          device or browser. We may change, pause, or stop parts of the service at
-          any time, for any reason.
-        </p>
+        <div class="legal-section">
+          <h2>9. Contact</h2>
+          <p>
+            If you have questions about these Terms, you can contact us at:
+          </p>
+          <p>
+            <strong>Email:</strong> support@fix-together.com
+            <br />
+            (This address is for general questions only. It is not monitored
+            for emergencies.)
+          </p>
+        </div>
 
-        <h2>11. Limitation of liability</h2>
-        <p>
-          As far as the law allows, FixTogether is provided “as is”, without any
-          guarantees. We are not responsible for:
-        </p>
-        <ul>
-          <li>
-            decisions you make based on an AI-generated message or explanation;
-          </li>
-          <li>
-            any loss, damage, or conflict that results from your use (or inability to
-            use) FixTogether;
-          </li>
-          <li>
-            actions taken by the other person after receiving a FixTogether message.
-          </li>
-        </ul>
+        <div class="legal-section">
+          <p style="font-size:11px; color:var(--text-muted); margin-top:8px;">
+            Last updated: 2025
+          </p>
+        </div>
 
-        <h2>12. Changes to these Terms</h2>
-        <p>
-          We may update these Terms from time to time. When we do, we will change the
-          “Last updated” date at the top of this page. If you continue to use
-          FixTogether after changes are published, you agree to the new version.
-        </p>
-
-        <h2>13. Contact</h2>
-        <p>
-          If you have questions about these Terms, you can contact us at:<br />
-          <span class="highlight">support@fixtogether.app</span> (example address,
-          change to your real one).
-        </p>
       </section>
     </main>
 
@@ -469,11 +390,10 @@
       <div>
         <a href="index.html">Home</a> ·
         <a href="howitworks.html">How it works</a> ·
-        <a href="terms.html">Terms</a> ·
         <a href="privacy.html">Privacy</a>
-
       </div>
     </footer>
+
   </div>
 
   <script>
@@ -481,4 +401,5 @@
   </script>
 </body>
 </html>
+
 
