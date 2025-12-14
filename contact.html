@@ -309,19 +309,42 @@
   </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Version "statique" : on affiche une confirmation propre (sans backend)
-    const form = document.getElementById("contactForm");
-    const success = document.getElementById("contactSuccess");
+  const form = document.getElementById("contactForm");
+  const success = document.getElementById("contactSuccess");
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      success.style.display = "block";
-      form.reset();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  </script>
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      topic: form.topic.value,
+      order: form.order.value,
+      message: form.message.value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        success.style.display = "block";
+        form.reset();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      alert("Network error. Please try again.");
+    }
+  });
+</script>
+
 </body>
 </html>
 
