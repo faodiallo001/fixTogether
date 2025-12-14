@@ -222,81 +222,49 @@
           <div class="logo-text-sub">Silent conflict resolution</div>
         </div>
       </div>
-<script src="/lang.js"></script>
-<script src="/i18n.js"></script>
 
       <nav>
-        <a href="index.html" class="nav-link">Home</a>
-        <button class="btn-primary" onclick="location.href='fix.html'">
-          Start a Fix
-        </button>
+        <a href="index.html" class="nav-link" data-i18n="nav_home"></a>
+        <a href="contact.html" class="nav-link" data-i18n="nav_contact"></a>
+        <button class="btn-primary" onclick="location.href='fix.html'" data-i18n="nav_start"></button>
       </nav>
     </header>
 
     <main>
       <section class="hero">
-        <h1 class="hero-title">How <span>FixTogether</span> works</h1>
+        <h1 class="hero-title"><span data-i18n="how_title"></span></h1>
 
-        <p class="hero-subtitle">
-          FixTogether is a calm written space for couples, friends, family members
-          or coworkers who can’t talk without tension. Each person shares their
-          version of what happened in their own words. The other person can read
-          it quietly, without pressure. FixTogether then creates one balanced
-          Fix that brings clarity, helps both sides understand each other’s
-          feelings, and offers gentle guidance on how to move forward — whether
-          that means reconnecting or letting go peacefully.
-        </p>
+        <p class="hero-subtitle" data-i18n="how_intro"></p>
       </section>
 
       <section class="section">
-        <h2 class="section-title">One conflict, four calm steps</h2>
-        <p class="section-subtitle">
-          No calls, no confrontation, no outside intervention. Just a written
-          space where both sides can finally be heard and understood.
-        </p>
+        <h2 class="section-title" data-i18n="how_section_title"></h2>
+        <p class="section-subtitle" data-i18n="how_section_sub"></p>
 
         <div class="how-grid">
 
           <div class="how-card">
             <div class="how-number">1</div>
-            <div class="how-title">You write your version</div>
-            <div class="how-text">
-              You explain what happened and how you feel in your own words,
-              freely and without interruption. This is your moment to speak
-              honestly and calmly.
-            </div>
+            <div class="how-title" data-i18n="how_1_title"></div>
+            <div class="how-text" data-i18n="how_1_text"></div>
           </div>
 
           <div class="how-card">
             <div class="how-number">2</div>
-            <div class="how-title">You receive a private Fix link</div>
-            <div class="how-text">
-              FixTogether generates a private link for this Fix. You share it
-              with the other person so they can read your version safely and
-              without emotional pressure.
-            </div>
+            <div class="how-title" data-i18n="how_2_title"></div>
+            <div class="how-text" data-i18n="how_2_text"></div>
           </div>
 
           <div class="how-card">
             <div class="how-number">3</div>
-            <div class="how-title">They write their side</div>
-            <div class="how-text">
-              The other person reads your version quietly and takes their time
-              to express their own. Both stories remain together, side by side,
-              offering a full picture of the situation.
-            </div>
+            <div class="how-title" data-i18n="how_3_title"></div>
+            <div class="how-text" data-i18n="how_3_text"></div>
           </div>
 
           <div class="how-card">
             <div class="how-number">4</div>
-            <div class="how-title">FixTogether creates the Fix</div>
-            <div class="how-text">
-              After reading both perspectives, FixTogether prepares one calm,
-              balanced Fix that helps both sides understand each other’s
-              feelings clearly and offers gentle guidance on how to move
-              forward — whether that means rebuilding the connection or
-              separating peacefully.
-            </div>
+            <div class="how-title" data-i18n="how_4_title"></div>
+            <div class="how-text" data-i18n="how_4_text"></div>
           </div>
 
         </div>
@@ -304,21 +272,29 @@
     </main>
 
     <footer>
-       <div>© <span id="year"></span> FixTogether. All rights reserved.</div>
-  <div>
-    <a href="howitworks.html">How it works</a> ·
-    <a href="contact.html">Contact</a> ·
-    <a href="terms.html">Terms</a> ·
-    <a href="privacy.html">Privacy</a>
-  </div>
+      <div>
+        © <span id="year"></span> FixTogether.
+        <span data-i18n="footer_rights"></span>
+      </div>
+      <div>
+        <a href="index.html" data-i18n="nav_home"></a> ·
+        <a href="contact.html" data-i18n="nav_contact"></a> ·
+        <a href="terms.html">Terms</a> ·
+        <a href="privacy.html">Privacy</a>
+      </div>
     </footer>
 
   </div>
+
+  <!-- LANG -->
+  <script src="/lang.js"></script>
+  <script src="/i18n.js"></script>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
+
 </html>
 
 
