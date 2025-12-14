@@ -398,29 +398,30 @@
         </div>
         <div>
           <div class="logo-text-main">FixTogether</div>
-          <div class="logo-text-sub">Silent conflict resolution</div>
+          <div class="logo-text-sub">Résolution silencieuse des conflits</div>
         </div>
       </div>
 
       <nav>
-        <a href="index.html">Home</a>
+        <a href="index.html">Accueil</a>
       </nav>
     </header>
 
     <main>
       <div class="layout">
-        <!-- LEFT: what they shared -->
+        <!-- GAUCHE : ce que la personne A a écrit -->
         <section class="card">
           <h1 class="hero-title" id="heroTitle">
-            Someone invited you to <span>FixTogether</span>
+            Quelqu’un vous a invité(e) sur <span>FixTogether</span>
           </h1>
+
           <p class="hero-subtitle" id="introText">
-            You’ve been sent this link because a conflict or misunderstanding has been
-            heavy between you. First, read their version. Then you’ll have space
-            to give yours calmly, in your own words.
+            Vous avez reçu ce lien parce qu’un conflit ou un malentendu est devenu lourd entre vous.
+            Lisez d’abord sa version. Ensuite, vous aurez votre espace pour répondre calmement,
+            avec vos propres mots.
           </p>
 
-          <h2 class="section-title">Here is their version of what happened</h2>
+          <h2 class="section-title">Voici sa version de ce qui s’est passé</h2>
 
           <div id="otherTitle" class="pill" style="display:none;"></div>
 
@@ -429,45 +430,45 @@
           <div id="otherGoal" class="pill" style="display:none;"></div>
         </section>
 
-        <!-- RIGHT: your version -->
+        <!-- DROITE : votre réponse -->
         <section class="card">
-          <h2 class="section-title">Your version</h2>
+          <h2 class="section-title">Votre version</h2>
           <p class="hero-subtitle">
-            This is not about winning or losing. It’s about both of you being heard,
-            so FixTogether can create one calmer, fair explanation for both sides
-            and send it to your emails.
+            Ici, il ne s’agit pas de “gagner” ou “perdre”.
+            Il s’agit d’être entendu(e) et compris(e), pour que FixTogether puisse créer
+            un message final neutre et apaisant, envoyé à vos deux emails.
           </p>
 
           <form id="replyForm">
-           <div class="field">
-           <label for="yourName">Your name</label>
-           <input id="yourName" type="text" placeholder="Example: faozia" required />
-           </div>
-
             <div class="field">
-              <label for="yourEmail">Your email</label>
-              <small>We’ll send the final Fix to this address as well.</small>
-              <input id="yourEmail" type="email" placeholder="you@example.com" required />
+              <label for="yourName">Votre prénom</label>
+              <input id="yourName" type="text" placeholder="Exemple : Faozia" required />
             </div>
 
             <div class="field">
-              <label for="yourView">How do you see the situation?</label>
-              <small>Describe what happened from your point of view.</small>
-              <textarea id="yourView" placeholder="Write your side here..." required></textarea>
+              <label for="yourEmail">Votre email</label>
+              <small>Nous enverrons aussi la Fix finale à cette adresse.</small>
+              <input id="yourEmail" type="email" placeholder="vous@exemple.com" required />
             </div>
 
             <div class="field">
-              <label for="yourFeel">How do you feel about it?</label>
-              <small>Hurt, angry, sad, tired, confused… put it into words.</small>
-              <textarea id="yourFeel" placeholder="Put your feelings into words here..." required></textarea>
+              <label for="yourView">Comment voyez-vous la situation ?</label>
+              <small>Décrivez ce qui s’est passé de votre point de vue.</small>
+              <textarea id="yourView" placeholder="Écrivez votre version ici…" required></textarea>
             </div>
 
-            <button type="submit" class="btn-primary">Let’s fix this</button>
+            <div class="field">
+              <label for="yourFeel">Comment vous sentez-vous à ce sujet ?</label>
+              <small>Blessé(e), en colère, triste, fatigué(e), confus(e)… mettez-le en mots.</small>
+              <textarea id="yourFeel" placeholder="Écrivez vos émotions ici…" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Envoyer ma réponse</button>
 
             <p class="info-text">
-              <strong>Important:</strong> You will not see the final explanation on this page.
-              FixTogether reads both sides and sends one neutral, written message directly
-              to both of your emails.
+              <strong>Important :</strong> vous ne verrez pas le message final sur cette page.
+              FixTogether lit les deux versions puis envoie un seul message neutre, directement
+              à vos deux emails.
             </p>
           </form>
         </section>
@@ -475,12 +476,13 @@
     </main>
 
     <footer>
-      <div>© <span id="year"></span> FixTogether. All rights reserved.</div>
+      <div>© <span id="year"></span> FixTogether. Tous droits réservés.</div>
       <div>
-        <a href="index.html">Home</a> ·
-        <a href="howitworks.html">How it works</a> ·
-        <a href="terms.html">Terms</a> ·
-        <a href="privacy.html">Privacy</a>
+        <a href="index.html">Accueil</a> ·
+        <a href="howitworks.html">Comment ça marche</a> ·
+        <a href="contact.html">Contact</a> ·
+        <a href="terms.html">Conditions</a> ·
+        <a href="privacy.html">Confidentialité</a>
       </div>
     </footer>
   </div>
@@ -497,7 +499,7 @@
         const json = decodeURIComponent(escape(atob(base64)));
         return JSON.parse(json);
       } catch (e) {
-        console.error("Cannot decode data", e);
+        console.error("Impossible de décoder les données", e);
         return null;
       }
     }
@@ -509,12 +511,11 @@
 
     if (!data || !data.what) {
       introText.textContent =
-        "The invitation link seems incomplete or expired. Please ask the person who sent it to generate a new one.";
+        "Le lien d’invitation semble incomplet ou expiré. Demandez à la personne qui vous l’a envoyé de générer un nouveau lien.";
     } else {
-      // Titre personnalisé avec le nom de la personne A si disponible
       if (data.name && data.name.trim()) {
         heroTitle.innerHTML =
-          `${data.name.trim()} invited you to <span>FixTogether</span>`;
+          `${data.name.trim()} vous a invité(e) sur <span>FixTogether</span>`;
       }
 
       if (data.title) {
@@ -531,7 +532,7 @@
       }
       if (data.goal) {
         const g = document.getElementById("otherGoal");
-        g.textContent = "What they hope for: " + data.goal;
+        g.textContent = "Ce qu’elle/il espère : " + data.goal;
         g.style.display = "inline-flex";
       }
     }
@@ -542,7 +543,7 @@
       e.preventDefault();
 
       if (!data || !data.what || !data.email) {
-        alert("The original message could not be loaded. Please ask them to send a new link.");
+        alert("Le message original n’a pas pu être chargé. Demandez un nouveau lien.");
         return;
       }
 
@@ -552,15 +553,15 @@
       const yourFeel = document.getElementById("yourFeel").value.trim();
 
       if (!yourName || !yourEmail || !yourView || !yourFeel) {
-        alert("Please fill in your name, email, your version and your feelings.");
+        alert("Veuillez remplir : votre prénom, votre email, votre version et vos émotions.");
         return;
       }
 
       const payloadA = JSON.stringify(data, null, 2);
       const payloadB =
-        `From ${yourName}:\n` +
+        `De ${yourName} :\n` +
         yourView +
-        "\n\nFeelings:\n" +
+        "\n\nÉmotions :\n" +
         yourFeel;
 
       try {
@@ -577,23 +578,23 @@
 
         const result = await response.json();
 
-// On vérifie que l'API renvoie bien { success: true }
-if (!response.ok || !result.success) {
-  console.error("Mediation error:", result);
-  alert("Could not complete the Fix. Please try again.");
-  return;
-}
+        if (!response.ok || !result.success) {
+          console.error("Erreur médiation:", result);
+          alert("Impossible de finaliser la Fix. Réessayez.");
+          return;
+        }
 
-alert("FixTogether has sent the final message to both of your emails.");
-replyForm.reset();
+        alert("FixTogether a envoyé le message final à vos deux emails.");
+        replyForm.reset();
 
       } catch (err) {
         console.error(err);
-        alert("Something went wrong. Please try again.");
+        alert("Une erreur est survenue. Réessayez.");
       }
     });
   </script>
 </body>
+
 </html>
 
 
