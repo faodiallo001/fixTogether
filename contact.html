@@ -224,42 +224,39 @@
         </div>
       </div>
 
-      <script src="/lang.js"></script>
-<script src="/i18n.js"></script>
-
-
       <nav>
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="howitworks.html" class="nav-link">How it works</a>
-        <button class="btn-primary" onclick="location.href='fix.html'">Start a Fix</button>
+        <a href="index.html" class="nav-link" data-i18n="nav_home"></a>
+        <a href="howitworks.html" class="nav-link" data-i18n="nav_how"></a>
+        <button class="btn-primary" onclick="location.href='fix.html'" data-i18n="nav_start"></button>
       </nav>
     </header>
 
     <main class="card">
-      <h1 class="hero-title">Contact <span>FixTogether</span></h1>
-      <p class="subtitle">
-        If you have a question about payment, privacy, or a technical issue, write to us here.
-        We typically respond within 24–48 hours.
-      </p>
+      <h1 class="hero-title"><span data-i18n="contact_title"></span></h1>
+      <p class="subtitle" data-i18n="contact_subtitle"></p>
 
-      <!-- IMPORTANT: ce form est "front only".
-           Pour qu'il envoie vraiment un email, il faudra un endpoint (api/contact.js) plus tard.
-           Pour l'instant, on fait un message de confirmation propre. -->
       <form id="contactForm">
         <div class="grid">
           <div>
-            <label for="name">Your name (optional)</label>
-            <input id="name" name="name" placeholder="e.g. Sofia" />
+            <label for="name" data-i18n="contact_name"></label>
+            <input id="name" name="name" data-i18n-placeholder="contact_name_ph" />
           </div>
 
           <div>
-            <label for="email">Your email*</label>
-            <input id="email" name="email" type="email" placeholder="e.g. sofia@email.com" required />
+            <label for="email" data-i18n="contact_email"></label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              data-i18n-placeholder="contact_email_ph"
+            />
           </div>
 
           <div>
-            <label for="topic">Topic</label>
+            <label for="topic" data-i18n="contact_topic"></label>
             <select id="topic" name="topic">
+              <!-- options: tu peux les laisser en anglais ou on les i18n aussi plus tard -->
               <option value="general">General question</option>
               <option value="payment">Payment / receipt</option>
               <option value="privacy">Privacy</option>
@@ -268,87 +265,93 @@
           </div>
 
           <div>
-            <label for="order">Fix link / reference (optional)</label>
-            <input id="order" name="order" placeholder="Paste your Fix link or reference" />
+            <label for="order" data-i18n="contact_order"></label>
+            <input id="order" name="order" data-i18n-placeholder="contact_order_ph" />
           </div>
         </div>
 
         <div style="margin-top: 14px;">
-          <label for="message">Your message*</label>
-          <textarea id="message" name="message" placeholder="Write your message…" required></textarea>
+          <label for="message" data-i18n="contact_message"></label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            data-i18n-placeholder="contact_message_ph"
+          ></textarea>
         </div>
 
         <div style="margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-          <button class="btn-primary" type="submit">Send message</button>
-          <div class="helper">
-            Tip: If it’s a technical issue, tell us what page you were on and what happened.
-          </div>
+          <button class="btn-primary" type="submit" data-i18n="contact_send"></button>
+          <div class="helper" data-i18n="contact_tip"></div>
         </div>
 
-        <div id="contactSuccess" class="helper" style="display:none; margin-top: 12px;">
-          ✅ Message received. Thank you — we’ll get back to you soon.
-        </div>
+        <div id="contactSuccess" class="helper" style="display:none; margin-top: 12px;" data-i18n="contact_success"></div>
       </form>
 
       <div class="card contact-box" style="margin-top: 16px; background: rgba(15, 23, 42, 0.75);">
-        <div style="font-weight:600; margin-bottom:6px;">Prefer email?</div>
+        <div style="font-weight:600; margin-bottom:6px;" data-i18n="contact_prefer"></div>
         <div class="helper" style="margin-top:0;">
-          You can also write to:
-          <a href="mailto:hello@fix-together.com">fix-together@gmail.com</a>
-          <br />
-          (Change this email to the one you want to use.)
+          <span data-i18n="contact_email_line"></span>
+          <a href="mailto:fixtogether.help@gmail.com">fixtogether.help@gmail.com</a>
         </div>
       </div>
     </main>
 
     <footer>
-      <div>© <span id="year"></span> FixTogether. All rights reserved.</div>
       <div>
-        <a href="howitworks.html">How it works</a> ·
-        <a href="contact.html">Contact</a> ·
+        © <span id="year"></span> FixTogether.
+        <span data-i18n="footer_rights"></span>
+      </div>
+      <div>
+        <a href="howitworks.html" data-i18n="nav_how"></a> ·
+        <a href="contact.html" data-i18n="nav_contact"></a> ·
         <a href="terms.html">Terms</a> ·
         <a href="privacy.html">Privacy</a>
       </div>
     </footer>
   </div>
 
+  <!-- LANG -->
+  <script src="/lang.js"></script>
+  <script src="/i18n.js"></script>
+
   <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  const form = document.getElementById("contactForm");
-  const success = document.getElementById("contactSuccess");
+    const form = document.getElementById("contactForm");
+    const success = document.getElementById("contactSuccess");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      topic: form.topic.value,
-      order: form.order.value,
-      message: form.message.value,
-    };
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        topic: form.topic.value,
+        order: form.order.value,
+        message: form.message.value,
+      };
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
 
-      if (res.ok) {
-        success.style.display = "block";
-        form.reset();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        alert("Something went wrong. Please try again.");
+        if (res.ok) {
+          success.style.display = "block";
+          form.reset();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      } catch (err) {
+        alert("Network error. Please try again.");
       }
-    } catch (err) {
-      alert("Network error. Please try again.");
-    }
-  });
-</script>
-
+    });
+  </script>
 </body>
+
 </html>
 
