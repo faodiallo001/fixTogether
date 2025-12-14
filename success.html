@@ -176,35 +176,36 @@
 
 <body>
   <div class="card">
-    <div class="eyebrow">Step 2 · Share the link</div>
-    <h1><span>Send this link</span> to the other person</h1>
+    <div class="eyebrow">Étape 2 · Partager le lien</div>
+    <h1><span>Envoyez ce message</span> à l’autre personne</h1>
+
     <p>
-      We’ve created a private page where they can read your side and answer in their own words — calmly, in writing, without pressure.
+      Nous avons créé une page privée où l’autre personne peut lire votre version
+      et répondre avec ses propres mots — calmement, par écrit, sans pression.
     </p>
 
-    <div class="steps-title">What to do now</div>
+    <div class="steps-title">Que faire maintenant ?</div>
     <div class="steps">
       <div class="step">
         <div class="step-badge">1</div>
-        <div>Copy the text below.</div>
+        <div>Copiez le message ci-dessous.</div>
       </div>
       <div class="step">
         <div class="step-badge">2</div>
-        <div>Paste it into WhatsApp, SMS, email or wherever you talk.</div>
+        <div>Collez-le sur WhatsApp, SMS, email, ou l’application où vous communiquez.</div>
       </div>
       <div class="step">
         <div class="step-badge">3</div>
-        <div>Once they answer, FixTogether will send one calm message to both of your emails.</div>
+        <div>Une fois sa réponse envoyée, FixTogether enverra un seul message final à vos deux emails.</div>
       </div>
     </div>
 
-    <div class="link-block-label">Text to send </div>
+    <div class="link-block-label">Message à envoyer</div>
 
-    <!-- UN SEUL BLOC : message + lien -->
     <textarea id="shareText" class="share-area" readonly></textarea>
 
-    <button id="copyBtn" class="btn-primary">Copy LINK </button>
-    <div class="hint">This will copy the entire message and link, ready to paste.</div>
+    <button id="copyBtn" class="btn-primary">Copier le message</button>
+    <div class="hint">Cela copie le message complet + le lien, prêt à coller.</div>
   </div>
 
   <script>
@@ -215,7 +216,7 @@
     const shareTextEl = document.getElementById("shareText");
     const copyBtn = document.getElementById("copyBtn");
 
-    let senderName = "someone";
+    let senderName = "quelqu’un";
     let replyUrl = origin + "/reply.html";
 
     if (dataParam) {
@@ -224,7 +225,6 @@
         const json = decodeURIComponent(escape(atob(base64)));
         const parsed = JSON.parse(json);
 
-        // On prend seulement le PRÉNOM + majuscule
         if (parsed && parsed.name && parsed.name.trim()) {
           const raw = parsed.name.trim().split(" ")[0];
           senderName = raw.charAt(0).toUpperCase() + raw.slice(1);
@@ -232,15 +232,14 @@
 
         replyUrl = `${origin}/reply.html?data=${encodeURIComponent(base64)}`;
       } catch (e) {
-        console.error("Could not decode data", e);
+        console.error("Impossible de décoder data", e);
       }
     }
 
-    // Message complet : phrase + lien
     const fullMessage =
-`Hi, it's ${senderName}.
-I used FixTogether to help us calmly fix something between us.
-Here is the private page where you can read my version and share yours:
+`Salut, c’est ${senderName}.
+J’ai utilisé FixTogether pour nous aider à clarifier quelque chose calmement, sans dispute.
+Voici la page privée où tu peux lire ma version et écrire la tienne :
 
 ${replyUrl}`;
 
@@ -249,14 +248,15 @@ ${replyUrl}`;
     copyBtn.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(shareTextEl.value);
-        copyBtn.textContent = "Copied";
-        setTimeout(() => (copyBtn.textContent = "Copy message"), 1500);
+        copyBtn.textContent = "Copié ✅";
+        setTimeout(() => (copyBtn.textContent = "Copier le message"), 1500);
       } catch (err) {
-        alert("Could not copy. Please select and copy manually.");
+        alert("Impossible de copier automatiquement. Sélectionnez le texte et copiez manuellement.");
       }
     });
   </script>
 </body>
+
 </html>
 
 
