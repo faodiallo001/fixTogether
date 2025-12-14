@@ -1,199 +1,173 @@
 window.TRANSLATIONS = {
+  /* =====================================================
+     ENGLISH
+  ====================================================== */
   en: {
-    // NAV / COMMON
+    /* ---------- NAV / COMMON ---------- */
     nav_home: "Home",
     nav_how: "How it works",
     nav_contact: "Contact",
     nav_start: "Start a Fix",
     footer_rights: "All rights reserved.",
 
-    // HOME — HERO
+    /* ---------- HOME ---------- */
     hero_badge: "PRIVATE CONFLICT RESOLUTION",
     hero_title_1: "When you can’t talk,",
     hero_title_2: "we talk for you.",
     hero_subtitle:
-      "For couples, friends, family members or coworkers stuck in silent tension. You both write your version of what happened, freely and in your own words. The other person can read it calmly, without pressure or confrontation. FixTogether then sends one balanced Fix that brings clarity, helps both of you understand each other’s feelings, and offers gentle guidance on how to move forward — whether that means reconnecting or letting go peacefully.",
+      "For couples, friends, family members or coworkers stuck in silent tension. You both write your version. The other person reads calmly. FixTogether sends one balanced Fix with clarity and guidance.",
     hero_price: "4.99 $ · No account · Private link",
     hero_note:
-      "We never contact the other person for you. Your words are used only to create your Fix, then cleared from our active system.",
+      "We never contact the other person for you. Your words are used only to create your Fix.",
 
-    // HOME — PANEL
     panel_kicker: "REAL PEOPLE • REAL SITUATIONS",
     panel_tagline:
-      "We help people reconnect when silence, pride and hurt are in the way, by turning both stories into one Fix that feels fair for each side.",
+      "We turn two stories into one calm Fix that feels fair for both sides.",
 
-    // HOME — WHO
     who_kicker: "WHO IS THIS FOR?",
-    who_title: "FixTogether is for people who care, but can’t find the words.",
+    who_title: "For people who care, but can’t find the words.",
     who_subtitle:
-      "When talking feels dangerous, heavy or impossible, FixTogether turns what you feel into one calm, balanced Fix that the other person can read in their own time.",
+      "When talking feels too heavy, FixTogether helps you express yourself calmly.",
     who_1_title: "Couples who stopped talking",
-    who_1_text:
-      "After a big fight or many small ones, you sleep in the same home but live like strangers. You don’t know how to restart the conversation without starting another war.",
-    who_2_title: "Friends after a fight",
-    who_2_text:
-      "A message, a comment, a forgotten call. Now there is pride and silence. You still care, but no one wants to be the first to say “I’m hurt”.",
+    who_1_text: "After fights, silence replaces communication.",
+    who_2_title: "Friends after conflict",
+    who_2_text: "Pride and silence after misunderstandings.",
     who_3_title: "Coworkers with tension",
-    who_3_text:
-      "Deadlines, misunderstandings, tone in emails. You don’t want drama at work, but you also don’t want to pretend everything is fine.",
-    who_4_title: "Siblings & family",
-    who_4_text:
-      "Old words, old wounds. One argument becomes a family cold war. You want peace, but you don’t know how to say it without reopening everything.",
+    who_3_text: "Professional misunderstandings without drama.",
+    who_4_title: "Family conflicts",
+    who_4_text: "Old wounds that need calm words.",
     who_5_title: "Long-distance partners",
-    who_5_text:
-      "Calls end in tears, texts are misunderstood, time zones don’t help. You need one clear Fix to say how you feel, without pressure in real time.",
-    who_6_title: "People who panic to communicate",
-    who_6_text:
-      "Your heart races when you have to explain yourself. You overthink every word. Writing to FixTogether feels safer than sending a raw message directly.",
-    who_footer: "If you recognize yourself in even one of these, FixTogether is for you.",
+    who_5_text: "Messages misunderstood, emotions piling up.",
+    who_6_title: "People afraid to communicate",
+    who_6_text: "Writing feels safer than talking.",
+    who_footer: "If this sounds like you, FixTogether is for you.",
 
-    // HOME — REVIEWS
-    reviews_title: "What people say about FixTogether",
-    reviews_subtitle:
-      "Short, calm words instead of shouting and silence. One Fix that holds both sides, so no one feels attacked and everyone feels heard.",
+    reviews_title: "What people say",
+    reviews_subtitle: "Calm words instead of silence or shouting.",
     reviews_avg: "★★★★★  Average rating 4.8 / 5",
-    reviews_leave: "Leave your review (optional)",
-    reviews_placeholder: "How did your Fix help your situation?",
-    reviews_name_label: "Your name (or initials)",
+    reviews_leave: "Leave a review (optional)",
+    reviews_placeholder: "How did your Fix help?",
+    reviews_name_label: "Your name",
     reviews_name_placeholder: "e.g. S. Rodriguez",
-    reviews_submit: "Share feedback",
+    reviews_submit: "Send review",
     reviews_helper:
-      "By sending a review, you agree that we may display it anonymously on this page to help future users understand how a Fix can help.",
+      "Reviews may be shown anonymously to help others.",
 
-    // HOW IT WORKS
+    /* ---------- HOW IT WORKS ---------- */
     how_title: "How FixTogether works",
     how_intro:
-      "FixTogether is a calm written space for couples, friends, family members or coworkers who can’t talk without tension. Each person shares their version of what happened in their own words. The other person can read it quietly, without pressure. FixTogether then creates one balanced Fix that brings clarity and offers gentle guidance on how to move forward — whether that means reconnecting or letting go peacefully.",
-    how_section_title: "One conflict, four calm steps",
-    how_section_sub:
-      "No calls, no confrontation, no outside intervention. Just a written space where both sides can finally be heard and understood.",
-    how_1_title: "You write your version",
-    how_1_text:
-      "You explain what happened and how you feel in your own words, freely and without interruption.",
-    how_2_title: "You receive a private Fix link",
-    how_2_text:
-      "FixTogether generates a private link for this Fix. You share it with the other person so they can read your version safely.",
-    how_3_title: "They write their side",
-    how_3_text:
-      "The other person reads your version quietly and takes their time to express their own.",
-    how_4_title: "FixTogether creates the Fix",
-    how_4_text:
-      "After reading both perspectives, FixTogether prepares one calm, balanced Fix with clarity and gentle guidance.",
+      "Each person writes their version. FixTogether creates one calm Fix.",
+    how_section_title: "One conflict, four steps",
+    how_section_sub: "No calls. No confrontation.",
+    how_1_title: "You write",
+    how_1_text: "Explain what happened and how you feel.",
+    how_2_title: "You get a private link",
+    how_2_text: "Share it with the other person.",
+    how_3_title: "They reply",
+    how_3_text: "They write their version calmly.",
+    how_4_title: "FixTogether sends the Fix",
+    how_4_text: "Both receive the final Fix by email.",
 
-    // CONTACT
+    /* ---------- CONTACT ---------- */
     contact_title: "Contact FixTogether",
     contact_subtitle:
-      "If you have a question about payment, privacy, or a technical issue, write to us here. We typically respond within 24–48 hours.",
+      "Questions about payment, privacy or technical issues.",
     contact_name: "Your name (optional)",
     contact_name_ph: "e.g. Sofia",
     contact_email: "Your email*",
-    contact_email_ph: "e.g. sofia@email.com",
+    contact_email_ph: "you@email.com",
     contact_topic: "Topic",
-    contact_order: "Fix link / reference (optional)",
-    contact_order_ph: "Paste your Fix link or reference",
+    contact_order: "Fix link (optional)",
+    contact_order_ph: "Paste your Fix link",
     contact_message: "Your message*",
     contact_message_ph: "Write your message…",
     contact_send: "Send message",
-    contact_tip: "Tip: If it’s a technical issue, tell us what page you were on and what happened.",
-    contact_success: "✅ Message received. Thank you — we’ll get back to you soon.",
+    contact_tip:
+      "Tip: tell us what page you were on and what happened.",
+    contact_success: "✅ Message received.",
     contact_prefer: "Prefer email?",
-    contact_email_line: "You can also write to:"
+    contact_email_line: "You can also write to:",
+
+    /* ---------- FIX ---------- */
+    fix_title: "Start a Fix",
+    fix_subtitle:
+      "Explain what happened and how you feel. FixTogether reads both sides.",
+    fix_price_note:
+      "Only the person who starts pays. The other replies for free.",
+    fix_field_title: "Short title (optional)",
+    fix_field_what: "What happened?",
+    fix_field_what_help: "Describe the situation from your point of view.",
+    fix_field_feel: "How do you feel?",
+    fix_field_feel_help: "Put your emotions into words.",
+    fix_field_goal: "What would you like to happen?",
+    fix_field_name: "Your name",
+    fix_field_email: "Your email",
+    fix_submit: "Fix it",
+    fix_after_pay:
+      "After payment, you receive a private link to share.",
+
+    fix_side_title: "Before you write",
+    fix_side_text:
+      "This is a calm space. Avoid insults or attacks.",
+
+    /* ---------- REPLY ---------- */
+    reply_title: "Someone invited you to FixTogether",
+    reply_intro:
+      "Read their version, then share yours calmly.",
+    reply_other_version: "Their version",
+    reply_your_version: "Your version",
+    reply_your_name: "Your name",
+    reply_your_email: "Your email",
+    reply_your_view: "Your view of the situation",
+    reply_your_feel: "Your feelings",
+    reply_submit: "Let’s fix this",
+    reply_info:
+      "The final Fix will be sent to both emails.",
+
+    /* ---------- SUCCESS ---------- */
+    success_title: "Send this link",
+    success_subtitle:
+      "This private link lets the other person reply.",
+    success_step_1: "Copy the message",
+    success_step_2: "Send it",
+    success_step_3: "Wait for the Fix by email",
+    success_copy: "Copy message",
+    success_copied: "Copied",
+
+    /* ---------- TERMS ---------- */
+    terms_title: "Terms of Use",
+    terms_intro:
+      "By using FixTogether, you agree to these terms.",
+    terms_1_title: "Service description",
+    terms_1_text:
+      "FixTogether is a written communication tool.",
+    terms_2_title: "Responsibility",
+    terms_2_text:
+      "You remain responsible for your decisions.",
+    terms_3_title: "Payments",
+    terms_3_text:
+      "Payments are for the creation of a Fix only.",
+    terms_contact: "Contact us at:",
+
+    /* ---------- PRIVACY ---------- */
+    privacy_title: "Privacy Policy",
+    privacy_intro:
+      "Your words are private and confidential.",
+    privacy_1_title: "Data collected",
+    privacy_1_text:
+      "Only data necessary to create your Fix.",
+    privacy_2_title: "Data usage",
+    privacy_2_text:
+      "Used only to generate the Fix.",
+    privacy_3_title: "Retention",
+    privacy_3_text:
+      "Texts are removed after processing.",
+    privacy_contact: "Privacy contact:"
   },
 
-  pt: {
-    nav_home: "Início",
-    nav_how: "Como funciona",
-    nav_contact: "Contato",
-    nav_start: "Iniciar um Fix",
-    footer_rights: "Todos os direitos reservados.",
-
-    hero_badge: "RESOLUÇÃO PRIVADA DE CONFLITOS",
-    hero_title_1: "Quando você não consegue falar,",
-    hero_title_2: "nós falamos por você.",
-    hero_subtitle:
-      "Para casais, amigos, familiares ou colegas presos em um silêncio cheio de tensão. Cada um escreve sua versão com calma. A outra pessoa lê sem pressão. O FixTogether cria um Fix equilibrado que traz clareza, ajuda a entender os sentimentos e oferece orientação suave para seguir em frente — seja para reconectar ou encerrar em paz.",
-    hero_price: "R$ 25 · Sem cadastro · Link privado",
-    hero_note:
-      "Nós não entramos em contato com a outra pessoa por você. Suas palavras são usadas apenas para criar o Fix e depois são removidas do nosso sistema ativo.",
-
-    panel_kicker: "PESSOAS REAIS • SITUAÇÕES REAIS",
-    panel_tagline:
-      "Ajudamos pessoas a se reconectarem quando o silêncio, o orgulho e a dor atrapalham — transformando duas histórias em um único Fix justo para os dois lados.",
-
-    who_kicker: "PARA QUEM É?",
-    who_title: "FixTogether é para quem se importa, mas não encontra as palavras.",
-    who_subtitle:
-      "Quando conversar parece pesado ou impossível, o FixTogether transforma o que você sente em um Fix calmo e equilibrado para a outra pessoa ler no tempo dela.",
-    who_1_title: "Casais que pararam de falar",
-    who_1_text:
-      "Depois de uma briga grande (ou várias pequenas), vocês vivem como estranhos. Não sabem como recomeçar sem virar outra guerra.",
-    who_2_title: "Amigos após uma discussão",
-    who_2_text:
-      "Uma mensagem, um comentário, um silêncio. Agora existe orgulho. Você ainda se importa, mas ninguém quer dizer primeiro “eu me machuquei”.",
-    who_3_title: "Colegas com tensão",
-    who_3_text:
-      "Prazos, mal-entendidos, tom nos e-mails. Você não quer drama, mas também não quer fingir que está tudo bem.",
-    who_4_title: "Irmãos e família",
-    who_4_text:
-      "Palavras antigas, feridas antigas. Um conflito vira uma guerra fria. Você quer paz, mas não quer reabrir tudo.",
-    who_5_title: "Relacionamentos à distância",
-    who_5_text:
-      "Chamadas terminam em lágrimas, mensagens são mal interpretadas, fusos atrapalham. Você precisa de um Fix claro sem pressão ao vivo.",
-    who_6_title: "Quem trava para se comunicar",
-    who_6_text:
-      "O coração acelera na hora de explicar. Você pensa demais. Escrever no FixTogether é mais seguro do que mandar uma mensagem crua.",
-    who_footer: "Se você se reconhece em pelo menos um desses, o FixTogether é para você.",
-
-    reviews_title: "O que as pessoas dizem sobre o FixTogether",
-    reviews_subtitle:
-      "Palavras curtas e calmas em vez de gritos e silêncio. Um Fix que segura os dois lados.",
-    reviews_avg: "★★★★★  Nota média 4,8 / 5",
-    reviews_leave: "Deixe seu depoimento (opcional)",
-    reviews_placeholder: "Como o seu Fix ajudou sua situação?",
-    reviews_name_label: "Seu nome (ou iniciais)",
-    reviews_name_placeholder: "ex: S. Rodrigues",
-    reviews_submit: "Enviar depoimento",
-    reviews_helper:
-      "Ao enviar, você concorda que podemos exibir anonimamente no site para ajudar outras pessoas.",
-
-    how_title: "Como o FixTogether funciona",
-    how_intro:
-      "FixTogether é um espaço de escrita calmo para casais, amigos, familiares ou colegas que não conseguem conversar sem tensão. Cada pessoa escreve sua versão. A outra lê sem pressão. Depois, o FixTogether cria um Fix equilibrado com clareza e orientação suave para seguir em frente.",
-    how_section_title: "Um conflito, quatro passos calmos",
-    how_section_sub:
-      "Sem chamadas, sem confronto, sem intervenção externa. Apenas um espaço onde os dois lados podem ser ouvidos.",
-    how_1_title: "Você escreve sua versão",
-    how_1_text:
-      "Explique o que aconteceu e como você se sente, no seu ritmo e com suas palavras.",
-    how_2_title: "Você recebe um link privado do Fix",
-    how_2_text:
-      "O FixTogether gera um link privado. Você compartilha com a outra pessoa para ela ler com calma.",
-    how_3_title: "A outra pessoa escreve o lado dela",
-    how_3_text:
-      "Ela lê sua versão e escreve a própria resposta no tempo dela.",
-    how_4_title: "O FixTogether cria o Fix",
-    how_4_text:
-      "Depois de ler os dois lados, o FixTogether cria um Fix calmo e equilibrado.",
-
-    contact_title: "Contato FixTogether",
-    contact_subtitle:
-      "Se você tiver dúvidas sobre pagamento, privacidade ou um problema técnico, escreva aqui. Respondemos em até 24–48 horas.",
-    contact_name: "Seu nome (opcional)",
-    contact_name_ph: "ex: Sofia",
-    contact_email: "Seu e-mail*",
-    contact_email_ph: "ex: sofia@email.com",
-    contact_topic: "Assunto",
-    contact_order: "Link / referência do Fix (opcional)",
-    contact_order_ph: "Cole o link do Fix ou uma referência",
-    contact_message: "Sua mensagem*",
-    contact_message_ph: "Escreva sua mensagem…",
-    contact_send: "Enviar mensagem",
-    contact_tip: "Dica: se for problema técnico, diga em qual página estava e o que aconteceu.",
-    contact_success: "✅ Mensagem enviada. Obrigado — vamos responder em breve.",
-    contact_prefer: "Prefere e-mail?",
-    contact_email_line: "Você também pode escrever para:"
-  },
-
+  /* =====================================================
+     FRANÇAIS
+  ====================================================== */
   fr: {
     nav_home: "Accueil",
     nav_how: "Comment ça marche",
@@ -205,87 +179,147 @@ window.TRANSLATIONS = {
     hero_title_1: "Quand vous n’arrivez plus à parler,",
     hero_title_2: "nous parlons pour vous.",
     hero_subtitle:
-      "Pour les couples, amis, membres de la famille ou collègues bloqués dans une tension silencieuse. Vous écrivez chacun votre version, librement, avec vos mots. L’autre personne peut lire calmement, sans pression ni confrontation. FixTogether envoie ensuite un Fix équilibré qui apporte de la clarté, aide à comprendre les émotions de chacun, et propose une guidance douce pour avancer — se reconnecter ou se quitter en paix.",
+      "Pour les couples, amis, familles ou collègues bloqués dans le silence. Chacun écrit sa version. FixTogether envoie un Fix équilibré.",
     hero_price: "4,99 $ · Sans compte · Lien privé",
     hero_note:
-      "Nous ne contactons jamais l’autre personne à votre place. Vos mots sont utilisés uniquement pour créer votre Fix, puis supprimés de notre système actif.",
+      "Nous ne contactons jamais l’autre personne à votre place.",
 
     panel_kicker: "DES GENS RÉELS • DES SITUATIONS RÉELLES",
     panel_tagline:
-      "On aide les gens à se reconnecter quand le silence, la fierté et la douleur bloquent tout, en transformant deux histoires en un seul Fix juste pour les deux côtés.",
+      "Deux histoires transformées en un Fix calme.",
 
     who_kicker: "POUR QUI ?",
-    who_title: "FixTogether est fait pour ceux qui tiennent, mais n’ont plus les mots.",
+    who_title: "Pour ceux qui tiennent, mais n’ont plus les mots.",
     who_subtitle:
-      "Quand parler paraît lourd, risqué ou impossible, FixTogether transforme ce que vous ressentez en un Fix calme et équilibré que l’autre personne peut lire à son rythme.",
-    who_1_title: "Couples qui ne se parlent plus",
-    who_1_text:
-      "Après une grosse dispute (ou trop de petites), vous vivez sous le même toit comme des étrangers. Vous ne savez plus comment relancer sans repartir en guerre.",
-    who_2_title: "Amis après une dispute",
-    who_2_text:
-      "Un message, un commentaire, un silence. Maintenant il y a de la fierté. Vous tenez encore à l’autre, mais personne ne veut dire en premier : « j’ai eu mal ».",
-    who_3_title: "Collègues avec tension",
-    who_3_text:
-      "Deadlines, malentendus, ton dans les mails. Vous ne voulez pas de drame au travail, mais vous ne voulez pas non plus faire semblant.",
-    who_4_title: "Fratrie & famille",
-    who_4_text:
-      "Vieux mots, vieilles blessures. Un conflit devient une guerre froide. Vous voulez la paix sans rouvrir tout le passé.",
+      "Quand parler semble impossible.",
+    who_1_title: "Couples en silence",
+    who_1_text: "Après les disputes.",
+    who_2_title: "Amis après conflit",
+    who_2_text: "La fierté bloque tout.",
+    who_3_title: "Collègues",
+    who_3_text: "Tensions professionnelles.",
+    who_4_title: "Famille",
+    who_4_text: "Blessures anciennes.",
     who_5_title: "Relations à distance",
-    who_5_text:
-      "Les appels finissent en larmes, les textos sont mal compris, les fuseaux n’aident pas. Vous avez besoin d’un Fix clair, sans pression en direct.",
-    who_6_title: "Personnes qui paniquent à communiquer",
-    who_6_text:
-      "Le cœur bat vite quand il faut s’expliquer. Vous suranalysez tout. Écrire via FixTogether est plus sûr que d’envoyer un message brut.",
-    who_footer: "Si vous vous reconnaissez ne serait-ce que dans un cas, FixTogether est pour vous.",
+    who_5_text: "Messages mal compris.",
+    who_6_title: "Peur de communiquer",
+    who_6_text: "Écrire est plus sûr.",
+    who_footer: "FixTogether est fait pour vous.",
 
-    reviews_title: "Ce que les gens disent de FixTogether",
-    reviews_subtitle:
-      "Des mots courts et calmes à la place des cris et du silence. Un Fix qui tient les deux côtés.",
+    reviews_title: "Ils en parlent",
+    reviews_subtitle: "Du calme au lieu du silence.",
     reviews_avg: "★★★★★  Note moyenne 4,8 / 5",
-    reviews_leave: "Laisser un avis (optionnel)",
-    reviews_placeholder: "En quoi votre Fix a-t-il aidé votre situation ?",
-    reviews_name_label: "Votre nom (ou initiales)",
-    reviews_name_placeholder: "ex : S. Rodriguez",
-    reviews_submit: "Partager mon avis",
+    reviews_leave: "Laisser un avis",
+    reviews_placeholder: "Comment votre Fix vous a aidé ?",
+    reviews_name_label: "Votre nom",
+    reviews_name_placeholder: "ex : S. Martin",
+    reviews_submit: "Envoyer",
     reviews_helper:
-      "En envoyant un avis, vous acceptez que nous puissions l’afficher anonymement sur cette page pour aider les futurs utilisateurs.",
+      "Les avis peuvent être affichés anonymement.",
 
     how_title: "Comment fonctionne FixTogether",
     how_intro:
-      "FixTogether est un espace d’écriture calme pour les couples, amis, famille ou collègues qui n’arrivent plus à parler sans tension. Chacun écrit sa version. L’autre lit sans pression. Ensuite, FixTogether crée un Fix équilibré avec clarté et guidance douce pour avancer — se reconstruire ou se séparer paisiblement.",
-    how_section_title: "Un conflit, quatre étapes calmes",
-    how_section_sub:
-      "Pas d’appels, pas de confrontation, pas d’intervention extérieure. Juste un espace écrit où les deux côtés peuvent enfin être entendus.",
-    how_1_title: "Vous écrivez votre version",
-    how_1_text:
-      "Expliquez ce qui s’est passé et ce que vous ressentez, avec vos mots, sans interruption.",
-    how_2_title: "Vous recevez un lien privé",
-    how_2_text:
-      "FixTogether génère un lien privé pour ce Fix. Vous le partagez pour que l’autre personne lise en sécurité.",
-    how_3_title: "L’autre écrit son côté",
-    how_3_text:
-      "L’autre personne lit calmement et prend le temps d’exprimer sa version.",
-    how_4_title: "FixTogether crée le Fix",
-    how_4_text:
-      "Après lecture des deux perspectives, FixTogether prépare un Fix calme, équilibré, avec clarté et guidance.",
+      "Chacun écrit sa version. FixTogether crée un Fix.",
+    how_section_title: "Un conflit, quatre étapes",
+    how_section_sub: "Sans confrontation.",
+    how_1_title: "Vous écrivez",
+    how_1_text: "Votre version.",
+    how_2_title: "Lien privé",
+    how_2_text: "À partager.",
+    how_3_title: "L’autre répond",
+    how_3_text: "Calmement.",
+    how_4_title: "Fix envoyé",
+    how_4_text: "Par email.",
 
-    contact_title: "Contacter FixTogether",
+    contact_title: "Contact",
     contact_subtitle:
-      "Question sur le paiement, la confidentialité ou un souci technique ? Écrivez-nous ici. Réponse généralement sous 24–48 h.",
-    contact_name: "Votre prénom (optionnel)",
+      "Question, paiement ou souci technique.",
+    contact_name: "Votre prénom",
     contact_name_ph: "ex : Sofia",
     contact_email: "Votre email*",
-    contact_email_ph: "ex : sofia@email.com",
+    contact_email_ph: "email@exemple.com",
     contact_topic: "Sujet",
-    contact_order: "Lien / référence du Fix (optionnel)",
-    contact_order_ph: "Collez le lien du Fix ou une référence",
+    contact_order: "Lien Fix (optionnel)",
+    contact_order_ph: "Collez le lien",
     contact_message: "Votre message*",
-    contact_message_ph: "Écrivez votre message…",
+    contact_message_ph: "Écrivez ici…",
     contact_send: "Envoyer",
-    contact_tip: "Astuce : si c’est technique, dites sur quelle page vous étiez et ce qui s’est passé.",
-    contact_success: "✅ Message reçu. Merci — on vous répond vite.",
-    contact_prefer: "Vous préférez par email ?",
-    contact_email_line: "Vous pouvez aussi écrire à :"
+    contact_tip:
+      "Précisez la page concernée.",
+    contact_success: "✅ Message reçu.",
+    contact_prefer: "Par email ?",
+    contact_email_line: "Vous pouvez écrire à :",
+
+    fix_title: "Démarrer un Fix",
+    fix_subtitle:
+      "Expliquez la situation et vos ressentis.",
+    fix_price_note:
+      "Seule la première personne paie.",
+    fix_field_title: "Titre (optionnel)",
+    fix_field_what: "Que s’est-il passé ?",
+    fix_field_what_help: "Votre version.",
+    fix_field_feel: "Comment vous sentez-vous ?",
+    fix_field_feel_help: "Vos émotions.",
+    fix_field_goal: "Que souhaitez-vous ?",
+    fix_field_name: "Votre prénom",
+    fix_field_email: "Votre email",
+    fix_submit: "Créer le Fix",
+    fix_after_pay:
+      "Vous recevrez un lien privé.",
+
+    fix_side_title: "Avant d’écrire",
+    fix_side_text:
+      "Restez respectueux et calme.",
+
+    reply_title: "Invitation FixTogether",
+    reply_intro:
+      "Lisez puis partagez votre version.",
+    reply_other_version: "Sa version",
+    reply_your_version: "Votre version",
+    reply_your_name: "Votre prénom",
+    reply_your_email: "Votre email",
+    reply_your_view: "Votre point de vue",
+    reply_your_feel: "Vos ressentis",
+    reply_submit: "Envoyer",
+    reply_info:
+      "Le Fix final arrive par email.",
+
+    success_title: "Partager le lien",
+    success_subtitle:
+      "Envoyez ce lien privé.",
+    success_step_1: "Copier",
+    success_step_2: "Envoyer",
+    success_step_3: "Attendre le Fix",
+    success_copy: "Copier",
+    success_copied: "Copié",
+
+    terms_title: "Conditions d’utilisation",
+    terms_intro:
+      "En utilisant FixTogether, vous acceptez ces conditions.",
+    terms_1_title: "Le service",
+    terms_1_text:
+      "Outil d’expression écrite.",
+    terms_2_title: "Responsabilité",
+    terms_2_text:
+      "Vos décisions restent les vôtres.",
+    terms_3_title: "Paiement",
+    terms_3_text:
+      "Paiement pour la création du Fix.",
+    terms_contact: "Contact :",
+
+    privacy_title: "Confidentialité",
+    privacy_intro:
+      "Vos données sont protégées.",
+    privacy_1_title: "Données collectées",
+    privacy_1_text:
+      "Uniquement le nécessaire.",
+    privacy_2_title: "Utilisation",
+    privacy_2_text:
+      "Création du Fix uniquement.",
+    privacy_3_title: "Conservation",
+    privacy_3_text:
+      "Suppression après traitement.",
+    privacy_contact: "Contact confidentialité :"
   }
 };
 
