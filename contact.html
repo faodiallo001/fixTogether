@@ -1,1 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+
+  <title>Contact – FixTogether</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-main: #020617;
+      --bg-card: rgba(12, 19, 38, 0.96);
+      --accent: #3b82f6;
+      --accent-soft: #60a5fa;
+      --warm-main: #f7e6b5;
+      --warm-soft: #e7c880;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.2);
+      --radius-xl: 24px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .logo { display: flex; align-items: center; gap: 10px; }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: conic-gradient(from 160deg, #0ea5e9, #6366f1, #fbbf24, #f97316, #0ea5e9);
+      padding: 2px;
+    }
+
+    .logo-mark-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 10%, #fefce8, #0f172a 55%, #020617 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fefce8;
+    }
+
+    .logo-text-main { font-weight: 600; letter-spacing: 0.03em; }
+    .logo-text-sub { font-size: 12px; color: var(--text-muted); }
+
+    nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .nav-link {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.65);
+      color: var(--text-muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: 0.15s ease;
+    }
+
+    .nav-link:hover {
+      background: rgba(37, 99, 235, 0.2);
+      color: #e5e7eb;
+      border-color: rgba(96, 165, 250, 0.8);
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      padding: 10px 18px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(120deg, var(--accent), var(--warm-soft));
+      color: #0b1120;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 18px 40px rgba(250, 204, 21, 0.35);
+      transition: 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+      box-shadow: 0 24px 60px rgba(234, 179, 8, 0.55);
+    }
+
+    .card {
+      border-radius: 22px;
+      padding: 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.8);
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 4vw, 34px);
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #38bdf8, #6366f1, #facc15);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 720px;
+      margin-bottom: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    @media (min-width: 840px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      padding: 10px 11px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    textarea { min-height: 130px; resize: vertical; }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent-soft);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.35);
+    }
+
+    .helper {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-top: 8px;
+    }
+
+    .contact-box a {
+      color: var(--accent-soft);
+      text-decoration: none;
+    }
+
+    .contact-box a:hover { text-decoration: underline; }
+
+    footer {
+      margin-top: 40px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer a { color: var(--accent-soft); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <div class="logo-mark"><div class="logo-mark-inner">FT</div></div>
+        <div>
+          <div class="logo-text-main">FixTogether</div>
+          <div class="logo-text-sub">Silent conflict resolution</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="howitworks.html" class="nav-link">How it works</a>
+        <button class="btn-primary" onclick="location.href='fix.html'">Start a Fix</button>
+      </nav>
+    </header>
+
+    <main class="card">
+      <h1 class="hero-title">Contact <span>FixTogether</span></h1>
+      <p class="subtitle">
+        If you have a question about payment, privacy, or a technical issue, write to us here.
+        We typically respond within 24–48 hours.
+      </p>
+
+      <!-- IMPORTANT: ce form est "front only".
+           Pour qu'il envoie vraiment un email, il faudra un endpoint (api/contact.js) plus tard.
+           Pour l'instant, on fait un message de confirmation propre. -->
+      <form id="contactForm">
+        <div class="grid">
+          <div>
+            <label for="name">Your name (optional)</label>
+            <input id="name" name="name" placeholder="e.g. Sofia" />
+          </div>
+
+          <div>
+            <label for="email">Your email*</label>
+            <input id="email" name="email" type="email" placeholder="e.g. sofia@email.com" required />
+          </div>
+
+          <div>
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic">
+              <option value="general">General question</option>
+              <option value="payment">Payment / receipt</option>
+              <option value="privacy">Privacy</option>
+              <option value="technical">Technical issue</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="order">Fix link / reference (optional)</label>
+            <input id="order" name="order" placeholder="Paste your Fix link or reference" />
+          </div>
+        </div>
+
+        <div style="margin-top: 14px;">
+          <label for="message">Your message*</label>
+          <textarea id="message" name="message" placeholder="Write your message…" required></textarea>
+        </div>
+
+        <div style="margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <button class="btn-primary" type="submit">Send message</button>
+          <div class="helper">
+            Tip: If it’s a technical issue, tell us what page you were on and what happened.
+          </div>
+        </div>
+
+        <div id="contactSuccess" class="helper" style="display:none; margin-top: 12px;">
+          ✅ Message received. Thank you — we’ll get back to you soon.
+        </div>
+      </form>
+
+      <div class="card contact-box" style="margin-top: 16px; background: rgba(15, 23, 42, 0.75);">
+        <div style="font-weight:600; margin-bottom:6px;">Prefer email?</div>
+        <div class="helper" style="margin-top:0;">
+          You can also write to:
+          <a href="mailto:hello@fix-together.com">hello@fix-together.com</a>
+          <br />
+          (Change this email to the one you want to use.)
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> FixTogether. All rights reserved.</div>
+      <div>
+        <a href="howitworks.html">How it works</a> ·
+        <a href="contact.html">Contact</a> ·
+        <a href="terms.html">Terms</a> ·
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Version "statique" : on affiche une confirmation propre (sans backend)
+    const form = document.getElementById("contactForm");
+    const success = document.getElementById("contactSuccess");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      success.style.display = "block";
+      form.reset();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
 
